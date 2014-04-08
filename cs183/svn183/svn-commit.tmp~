@@ -1,0 +1,9 @@
+
+--This line, and those below, will be ignored--
+
+A    tests
+AM   tests/test2.txt
+AM   tests/check_dup_uids.sh
+AM   tests/check_no_problems.sh
+AM   tests/test.txt
+AM   passcheck.sh

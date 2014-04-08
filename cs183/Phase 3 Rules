@@ -1,0 +1,11 @@
+1. var define
+2. no mult declarations
+3. array out of bounds
+4. int array interchange - i = 2, i is an array = symantic error
+5. decl array <= 0
+
+
+SYMBOL TABLE
+1. var name - when there is a use, check var name
+2. type 
+3. value

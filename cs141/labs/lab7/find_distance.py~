@@ -1,0 +1,102 @@
+#!/usr/bin/env python2.7
+#
+# CS 141 Spring 2012
+# Lab 7
+##############################
+
+#David Klein
+#860880864
+#Lab 6
+
+import sys, heapq
+from heapq import *
+
+graph = sys.stdin.readlines()
+nrow = len(graph)
+ncol = len(graph[0])-1
+
+dist=[[-1]*ncol for i in range(nrow)]
+seen=[[0]*ncol for i in range(nrow)]
+
+def getcell(incr):
+    if incr>0:
+        for i in range(nrow):
+            for j in range(ncol):
+                if graph[i][j]!='#':
+                    return (i,j)
+    else:
+        for i in range(nrow-1, 0, -1):
+            for j in range(ncol-1, 0, -1):
+                if (graph[i][j]!='#'):
+                    return (i,j)
+        
+    return (-1,-1)
+
+def find_distance(start, end):
+    
+    heap = []
+
+    x = start[0]
+    y = start[1]
+
+    for i in range(0, nrow):
+       for j in range(0, ncol):
+          dist[i][j] = float('inf')
+
+    dist[x][y] = graph[x][y]
+    heapq.heappush( heap, (dist[x][y], (x,y)) )
+    
+    for m in range(0, 1):
+       d, node = heapq.heappop(heap)
+       i = node[0]
+       j = node[1]
+
+       if( node == end ):
+          dist[i][j] = graph[i][j]
+          break
+
+#       if( dist[i][j] == float('inf') ):
+#          break
+
+       # find neighbors of node 
+       n1 = (i-1, j) #top neighbor
+       n2 = (i+1, j) #bottom neighbor
+       n3 = (i, j-1) #left neighbor
+       n4 = (i, j+1) #right neighbor
+
+       d1 = graph[n1[0]][n1[1]]+d
+       d2 = graph[n2[0]][n2[1]]+d
+       d3 = graph[n3[0]][n3[1]]+d
+       d4 = graph[n4[0]][n4[1]]+d
+
+
+       heapq.heappush(heap, (d1, (n1[0],n1[1])) )
+       heapq.heappush(heap, (d2, (n2[0],n2[1])) )
+       heapq.heappush(heap, (d3, (n3[0],n3[1])) )
+       heapq.heappush(heap, (d4, (n4[0],n4[1])) )
+
+       print heap
+       
+#       for x in range(0, 3):
+#          d, node = heapq.heappop(heap)
+#          if( d != '#' ):
+#             break     
+#       while( x > 1 ):
+#          heapq.heappop(heap)
+#          x = x-1
+
+#       heapq.heappush(heap, (d, node))
+       
+#       dist[node[0]][node[1]] = graph[node[0]][node[1]]
+       
+    print dist
+
+       
+   
+    return dist[end[0]][end[1]]
+
+start=getcell(+1); assert start[0]>=0 and start[1]>=0
+end=getcell(-1);   assert end[0]>=0   and end[1]>=0
+find_distance(start, end)
+print "shortest path distance:", dist[end[0]][end[1]]
+

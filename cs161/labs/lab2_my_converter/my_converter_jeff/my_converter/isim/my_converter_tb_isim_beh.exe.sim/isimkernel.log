@@ -1,0 +1,28 @@
+Command line:
+   my_converter_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  1158
+
+Fri Apr 27 17:46:38 2012
+
+
+ Elaboration Time: 0.109375 sec
+
+ Current Memory Usage: 470.741 Meg
+
+ Total Signals          : 25
+ Total Nets             : 646
+ Total Signal Drivers   : 23
+ Total Blocks           : 6
+ Total Primitive Blocks : 5
+ Total Processes        : 16
+ Total Traceable Variables  : 16
+ Total Scalar Nets and Variables : 1068
+
+ Total Simulation Time: 0.125 sec
+
+ Current Memory Usage: 470.741 Meg
+
+Fri Apr 27 17:47:01 2012
+

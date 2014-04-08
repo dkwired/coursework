@@ -1,0 +1,23 @@
+ISim log file
+Running: C:\Documents and Settings\Embedded Systems Lab\Desktop\lab1_alu\my_ALU_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Documents and Settings/Embedded Systems Lab/Desktop/lab1_alu/my_ALU_tb_isim_beh.wdb 
+ISim O.76xd (signature 0x2f00eba5)
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+at 10 ns: Note: Testing Unsigned Add (/my_alu_tb/).
+at 70 ns: Note: Testing Signed Add (/my_alu_tb/).
+at 140 ns: Note: Testing Unsigned Subtract (/my_alu_tb/).
+at 200 ns: Note: Testing Signed Subtract (/my_alu_tb/).
+at 230 ns, Instance /my_alu_tb/ : Warning: Test_3: carryout incorrect
+at 260 ns, Instance /my_alu_tb/ : Warning: Test_6: carryout incorrect
+at 270 ns: Note: Testing And (/my_alu_tb/).
+at 280 ns, Instance /my_alu_tb/ : Warning: Test_1: result incorrect
+at 280 ns: Note: Testing OR (/my_alu_tb/).
+at 290 ns, Instance /my_alu_tb/ : Warning: Test_1: result incorrect
+at 290 ns: Note: Testing XOR (/my_alu_tb/).
+at 300 ns, Instance /my_alu_tb/ : Warning: Test_1: result incorrect
+at 300 ns: Note: Testing Divide by 2 (/my_alu_tb/).

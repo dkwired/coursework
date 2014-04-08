@@ -1,0 +1,12 @@
+David Klein
+860880864
+CS165 Fall 2013
+
+Lab Assignment 8
+
+Part 1:
+
+Part one was given. Files can be seen in subfolder part1.
+
+Part 2:
+

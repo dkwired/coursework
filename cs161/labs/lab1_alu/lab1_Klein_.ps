@@ -1,0 +1,3684 @@
+%!PS-Adobe-3.0
+%%Title: lab1_report.txt, lab1_alu.vhd, lab1_alb_tb.vhd, gen.c, Makefile
+%%For: David Klein
+%%Creator: a2ps version 4.13
+%%CreationDate: Fri Apr 13 17:53:49 2012
+%%BoundingBox: 24 24 588 768
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%Pages: 8
+%%PageOrder: Ascend
+%%DocumentMedia: Letter 612 792 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontType get 0 eq {
+    currentfont /FontMatrix get 3 get
+  }{
+    currentfont /FontMatrix get 3 get 1000 mul
+  } ifelse
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% composite fonts for ASCII-EUC mixed string
+% Version 1.2 1/31/1990
+% Orignal Ken'ichi HANDA (handa@etl.go.jp)
+% Modified Norio Katayama (katayama@rd.nacsis.ac.jp),1998
+% Extend & Fix Koji Nakamaru (maru@on.cs.keio.ac.jp), 1999
+% Anyone can freely copy, modify, distribute this program.
+
+/copyfont {	% font-dic extra-entry-count  copyfont  font-dic
+	1 index maxlength add dict begin
+	{	1 index /FID ne 2 index /UniqueID ne and
+		{def} {pop pop} ifelse
+	} forall
+	currentdict
+	end
+} bind def
+
+/compositefont { % ASCIIFontName EUCFontName RomanScale RomanOffset Rot(T/F) compositefont font
+    /RomanRotation exch def
+    /RomanOffset exch def
+    /RomanScale exch def
+    userdict /fixeucfont_dict known not {
+	userdict begin
+	    /fixeucfont_dict 2 dict begin
+		/UpperByteEncoding [
+		    16#00 1 16#20 { pop 0 } for
+		    16#21 1 16#28 { 16#20 sub } for
+		    16#29 1 16#2F { pop 0 } for
+		    16#30 1 16#74 { 16#27 sub } for
+		    16#75 1 16#FF { pop 0 } for
+		] def
+	        /LowerByteEncoding [
+		    16#00 1 16#A0 { pop /.notdef } for
+		    16#A1 1 16#FE { 16#80 sub 16 2 string cvrs
+				    (cXX) dup 1 4 -1 roll
+				    putinterval cvn } for
+		    /.notdef
+		] def
+		currentdict
+	    end def
+	end
+    } if
+    findfont dup /FontType get 0 eq {
+	14 dict begin
+	    %
+	    % 7+8 bit EUC font
+	    %
+	    12 dict begin
+		/EUCFont exch def
+		/FontInfo (7+8 bit EUC font) readonly def
+		/PaintType 0 def
+		/FontType 0 def
+		/FontMatrix matrix def
+		% /FontName
+		/Encoding fixeucfont_dict /UpperByteEncoding get def
+		/FMapType 2 def
+		EUCFont /WMode known
+		{ EUCFont /WMode get /WMode exch def }
+		{ /WMode 0 def } ifelse
+		/FDepVector [
+		    EUCFont /FDepVector get 0 get
+		    [ 16#21 1 16#28 {} for 16#30 1 16#74 {} for ]
+		    {
+			13 dict begin
+			    /EUCFont EUCFont def
+			    /UpperByte exch 16#80 add def	
+			    % /FontName
+			    /FontInfo (EUC lower byte font) readonly def
+			    /PaintType 0 def
+			    /FontType 3 def
+			    /FontMatrix matrix def
+			    /FontBBox {0 0 0 0} def
+			    /Encoding
+				fixeucfont_dict /LowerByteEncoding get def
+			    % /UniqueID
+			    % /WMode
+			    /BuildChar {
+				gsave
+				exch dup /EUCFont get setfont
+				/UpperByte get
+				2 string
+				dup 0 4 -1 roll put
+				dup 1 4 -1 roll put
+				dup stringwidth setcharwidth
+				0 0 moveto show
+				grestore
+			    } bind def
+			    currentdict
+			end
+			/lowerbytefont exch definefont
+		    } forall
+		] def
+		currentdict
+	    end
+	    /eucfont exch definefont
+	    exch
+	    findfont 1 copyfont dup begin
+		RomanRotation {
+			/FontMatrix FontMatrix
+			[ 0 RomanScale neg RomanScale 0 RomanOffset neg 0 ]
+			matrix concatmatrix def
+		}{
+			/FontMatrix FontMatrix
+			[ RomanScale 0 0 RomanScale 0 RomanOffset ] matrix concatmatrix
+			def
+			/CDevProc
+			    {pop pop pop pop 0 exch -1000 exch 2 div 880} def
+		} ifelse
+	    end
+	    /asciifont exch definefont
+	    exch
+	    /FDepVector [ 4 2 roll ] def
+	    /FontType 0 def
+	    /WMode 0 def
+	    /FMapType 4 def
+	    /FontMatrix matrix def
+	    /Encoding [0 1] def
+	    /FontBBox {0 0 0 0} def
+%	    /FontHeight 1.0 def % XXXX
+	    /FontHeight RomanScale 1.0 ge { RomanScale }{ 1.0 } ifelse def
+	    /Descent -0.3 def   % XXXX
+	    currentdict
+	end
+	/tmpfont exch definefont
+	pop
+	/tmpfont findfont
+    }{
+	pop findfont 0 copyfont
+    } ifelse
+} def	
+
+/slantfont {	% FontName slant-degree  slantfont  font'
+    exch findfont 1 copyfont begin
+    [ 1 0 4 -1 roll 1 0 0 ] FontMatrix exch matrix concatmatrix
+    /FontMatrix exch def
+    currentdict
+    end
+} def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 612 def
+/sw 792 def
+/llx 24 def
+/urx 768 def
+/ury 588 def
+/lly 24 def
+/#copies 1 def
+/th 15.000000 def
+/fnfs 11 def
+/bfs 7.060185 def
+/cw 4.236111 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   520.335631 th add
+def
+/pmw urx llx sub pw 2 mul sub 1 div def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+  dup pmw add pw add
+] def
+/y [
+  pmh ph add 0 mul ph add
+  dup
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 5 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (Names: Wojciech Karas \(no longer adding\), David Klein) p n
+(2) # (Login: kleind) N
+(3) # (Email: dklei003@ucr.edu) N
+(4) # (Lab Section: 022) N
+(5) # (Assignment: Lab 1) N
+(6) # (I acknowledge all content is original.) N
+(7) # () N
+(8) # (I. Lab objective) N
+(9) # (The lab objective was to introduce us to using Xilinx ISE 13 tool-chain and deve) N
+0 T (lop a ALU.) N
+(10) # () N
+(11) # (II . Personal contributions) N
+(12) # (The work was shared for this exercise. As a group we followed the steps to creat) N
+0 T (e a Xilinx project, synthesize, test, and place & route the design. Wojciech did) N
+0 T ( the logic and coding for the ALU and David aided in the design of the ALU as we) N
+0 T (ll as coding.) N
+(13) # () N
+(14) # (III. Skill learned & knowledge gained.) N
+(15) # (For this lab project we developed our knowledge of how to implement a ALU design) N
+0 T ( in Xilinx; as well as, use a test bench to similate our design.) N
+(16) # () N
+(17) # (IV. Known bugs locations) N
+(18) # (After several designs...We tested our design with all possible cases, the only b) N
+0 T (ug was with our Signed Subtractor in the case of a carryout issue with -3 - -1 =) N
+0 T ( -2. No idea why this was happening.) N
+(19) # () N
+(20) # (V. Feedback on the lab) N
+(21) # (Overall the lab was...interesting. Feel free to update any old files. =P) N
+(lab1_report.txt) (Page 1/1) (Apr 13, 12 17:53) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab1_report.txt) (1/8) (Friday April 13, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 2
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Wojciech Karas, David Klein) c n
+(2) # (--Email: wkara001@ucr.edu, dklei003@ucr.edu) N
+(3) # (--Lab Section: 022) N
+(4) # (--Assignment: Lab 1 ALU) N
+(5) # () N
+(6) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(7) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(8) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(ALL) K
+(;) p n
+(9) # () S
+(use) K
+( IEEE.STD_LOGIC_UNSIGNED.) p
+(ALL) K
+(;) p n
+(10) # () N
+(11) # () S
+(entity) K
+( ) p
+(my_ALU) l
+( ) p
+(is) K n
+(12) # () S
+() p 8 T () S
+(generic) K
+(\( NUMBITS) p 32 T (: natural) S 48 T (:= 4 \);) N
+(13) # () S 8 T () S
+(port) K
+(\() p n
+(14) # () S 8 T () S 16 T (A) S 24 T () S 32 T () S 40 T (: ) S
+(in) K
+(  std_logic_vector\(NUMBITS-1 ) p
+(downto) K
+( ) p n
+0 T (0\);) N
+(15) # () S 8 T () S 16 T (B) S 24 T () S 32 T () S 40 T (: ) S
+(in) K
+(  std_logic_vector\(NUMBITS-1 ) p
+(downto) K
+( ) p n
+0 T (0\);) N
+(16) # () S 8 T () S 16 T (opcode) S 24 T (: ) S
+(in) K
+(  std_logic_vector\(2 ) p
+(downto) K
+( 0\);) p n
+(17) # () S 8 T () S 16 T (result) S 24 T (: ) S
+(out) K
+( std_logic_vector\(NUMBITS-1 ) p
+(downto) K
+( 0\);) p n
+(18) # () S 8 T () S 16 T (carryout) S 32 T (: ) S
+(out) K
+( std_logic;) p n
+(19) # () S 8 T () S 16 T (overflow) S 32 T (: ) S
+(out) K
+( std_logic;) p n
+(20) # () S 8 T () S 16 T (zero) S 24 T () S 32 T (: ) S
+(out) K
+( std_logic) p n
+(21) # () S 8 T (\);) N
+(22) # () S
+(end) K
+( my_ALU;) p n
+(23) # () N
+(24) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( my_alu ) p
+(is) K n
+(25) # () N
+(26) # (signal) S
+( A_sig ) p 16 T () S 24 T () S 32 T (: std_logic_vector\(NUMBITS ) S
+(downto) K
+( 0\);) p n
+(27) # () S
+(signal) K
+( B_sig ) p 16 T () S 24 T () S 32 T (: std_logic_vector\(NUMBITS ) S
+(downto) K
+( 0\);) p n
+(28) # () S
+(signal) K
+( result_sig ) p 24 T (: std_logic_vector\(NUMBITS ) S
+(downto) K
+( 0\);) p n
+(29) # () S
+(signal) K
+( carryout_sig  : std_logic;) p n
+(30) # () S
+(signal) K
+( overflow_sig  : std_logic;) p n
+(31) # () S
+(signal) K
+( zero_sig ) p 24 T () S 32 T (: std_logic;) N
+(32) # () N
+(33) # () S
+(begin) K n
+(34) # () N
+(35) # () S
+() p 8 T (ALU : ) S
+(process) K
+(\(A, B, opcode\)) p n
+(36) # () S 8 T () N
+(37) # () S 8 T () S
+(variable) K
+( result_var) p 32 T (: std_logic_vector\(NUMBITS ) S
+(downto) K
+( 0\);) p n
+(38) # () S 8 T () N
+(39) # () S 8 T () S
+(begin) K n
+(40) # () N
+(41) # () S
+() p 8 T () S
+(--unsigned add) c n
+(42) # () S
+() p 8 T () S
+(if) K
+(\(opcode = ") p
+(000) str
+("\) ) p
+(then) K n
+(43) # () S
+() p 8 T () N
+(44) # () S 8 T (result_sig <= \(') S
+(0) str
+(' & A\) + \(') p
+(0) str
+(' & B\);) p n
+(45) # () S 8 T (result_var := \(') S
+(0) str
+(' & A\) + \(') p
+(0) str
+(' & B\);) p n
+(46) # () S 8 T () N
+(47) # () S 8 T (UNSIGADD_OVERFLOW : ) S
+(if) K
+(\(result_var\(NUMBITS\) = ') p
+(1) str
+('\) ) p
+(then) K n
+(48) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(1) str
+(';) p n
+(49) # () S 8 T () S
+(else) K n
+(50) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(0) str
+(';) p n
+(51) # () S 8 T () S
+(end) K
+( ) p
+(if) K
+( UNSIGADD_OVERFLOW;) p n
+(52) # () S 8 T () N
+(53) # () S 8 T () S
+(--signed add) c n
+(54) # () S
+() p 8 T () S
+(elsif) K
+(\(opcode = ") p
+(001) str
+("\) ) p
+(then) K n
+(55) # () S
+() p 8 T () N
+(56) # () S 8 T (result_sig <= \(A\(NUMBITS-1\) & A\) + \(B\(NUMBITS-1\) & B\);) N
+(57) # () S 8 T (result_var := \(A\(NUMBITS-1\) & A\) + \(B\(NUMBITS-1\) & B\);) N
+(58) # () S 8 T () N
+(59) # () S 8 T (SIGADD_OVERFLOW : ) S
+(if) K
+(\(A \(NUMBITS-1\) = ') p
+(0) str
+(' ) p
+(AND) K
+( B\(NUMBITS-1\) = ') p
+(0) str
+(' ) p
+(AND) K
+( resu) p n
+0 T (lt_var\(NUMBITS-1\) = ') S
+(1) str
+('\) ) p
+(then) K n
+(60) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(1) str
+(';) p n
+(61) # () S 8 T () S
+(elsif) K
+( \(A\(NUMBITS-1\) = ') p
+(1) str
+(' ) p
+(AND) K
+( B\(NUMBITS-1\) = ') p
+(1) str
+(' ) p
+(AND) K
+( result_var\(NUMBITS-) p n
+0 T (1\) = ') S
+(0) str
+('\) ) p
+(then) K n
+(62) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(1) str
+(';) p n
+(63) # () S 8 T () S
+(else) K n
+(64) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(0) str
+(';) p 40 T () S 48 T () N
+(65) # () S 8 T () S
+(end) K
+( ) p
+(if) K
+( SIGADD_OVERFLOW;) p n
+(66) # () N
+(67) # () S 8 T () S
+(--unsigned sub) c n
+(68) # () S
+() p 8 T () S
+(elsif) K
+(\(opcode = ") p
+(010) str
+("\) ) p
+(then) K n
+(69) # () S
+() p 8 T () N
+(lab1_alu.vhd) (Page 1/2) (Apr 13, 12 16:49) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(70) # () p 8 T (result_sig <= \(') S
+(0) str
+(' & A\) - \(') p
+(0) str
+(' & B\);) p n
+(71) # () S 8 T (result_var := \(') S
+(0) str
+(' & A\) - \(') p
+(0) str
+(' & B\);) p n
+(72) # () S 8 T () N
+(73) # () S 8 T (UNSIGSUB_OVERFLOW : ) S
+(if) K
+(\( A < B \) ) p
+(then) K n
+(74) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(1) str
+(';) p n
+(75) # () S 8 T () S 16 T (result_sig <= ') S
+(0) str
+(' & result_var\(NUMBITS-1 ) p
+(downto) K
+( 0\);) p n
+(76) # () S 8 T () S
+(else) K n
+(77) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(0) str
+(';) p n
+(78) # () S 8 T () S
+(end) K
+( ) p
+(if) K
+( UNSIGSUB_OVERFLOW;) p n
+(79) # () N
+(80) # () S 8 T () S
+(--signed sub) c n
+(81) # () S
+() p 8 T () S
+(elsif) K
+(\(opcode = ") p
+(011) str
+("\) ) p
+(then) K n
+(82) # () S
+() p 8 T () N
+(83) # () S 8 T (result_sig <= \(A\(NUMBITS-1\) & A\) - \(B\(NUMBITS-1\) & B\);) N
+(84) # () S 8 T (result_var := \(A\(NUMBITS-1\) & A\) - \(B\(NUMBITS-1\) & B\);) N
+(85) # () S 8 T () N
+(86) # () S 8 T (SIGSUB_OVERFLOW : ) S
+(if) K
+(\(A\(NUMBITS-1\) = ') p
+(0) str
+(' ) p
+(AND) K
+( B\(NUMBITS-1\) = ') p
+(0) str
+(' ) p
+(AND) K
+( resul) p n
+0 T (t_var\(NUMBITS-1\) = ') S
+(1) str
+('\) ) p
+(then) K n
+(87) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(1) str
+(';) p n
+(88) # () S 8 T () S
+(elsif) K
+( \(A\(NUMBITS-1\) = ') p
+(1) str
+(' ) p
+(AND) K
+( B\(NUMBITS-1\) = ') p
+(0) str
+(' ) p
+(AND) K
+( result_var\(NUMBITS-) p n
+0 T (1\) = ') S
+(0) str
+('\) ) p
+(then) K n
+(89) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(1) str
+(';) p n
+(90) # () S 8 T () S
+(else) K n
+(91) # () S
+() p 8 T () S 16 T (overflow_sig <= ') S
+(0) str
+(';) p n
+(92) # () S 8 T () S
+(end) K
+( ) p
+(if) K
+( SIGSUB_OVERFLOW;) p n
+(93) # () S 8 T () N
+(94) # () S 8 T () S
+(--bit-wise AND) c n
+(95) # () S
+() p 8 T () S
+(elsif) K
+(\(opcode = ") p
+(100) str
+("\) ) p
+(then) K n
+(96) # () S
+() p 8 T () N
+(97) # () S 8 T (result_sig <= \(') S
+(0) str
+(' & A\) ) p
+(AND) K
+( \(') p
+(0) str
+(' & B\);) p n
+(98) # () S 8 T (result_var := \(') S
+(0) str
+(' & A\) ) p
+(AND) K
+( \(') p
+(0) str
+(' & B\);) p n
+(99) # () S 8 T () N
+(100) # () S 8 T () S
+(--bit-wise OR) c n
+(101) # () S
+() p 8 T () S
+(elsif) K
+(\(opcode = ") p
+(101) str
+("\) ) p
+(then) K n
+(102) # () S
+() p 8 T () N
+(103) # () S 8 T (result_sig <= \(') S
+(0) str
+(' & A\) ) p
+(OR) K
+( \(') p
+(0) str
+(' & B\);) p n
+(104) # () S 8 T (result_var := \(') S
+(0) str
+(' & A\) ) p
+(OR) K
+( \(') p
+(0) str
+(' & B\);) p n
+(105) # () S 8 T () N
+(106) # () S 8 T () S
+(--bit-wise XOR) c n
+(107) # () S
+() p 8 T () S
+(elsif) K
+(\(opcode = ") p
+(110) str
+("\) ) p
+(then) K n
+(108) # () S
+() p 8 T () N
+(109) # () S 8 T (result_sig <= \(') S
+(0) str
+(' & A\) ) p
+(XOR) K
+( \(') p
+(0) str
+(' & B\);) p n
+(110) # () S 8 T (result_var := \(') S
+(0) str
+(' & A\) ) p
+(XOR) K
+( \(') p
+(0) str
+(' & B\);) p n
+(111) # () S 8 T () N
+(112) # () S 8 T () S
+(--divide A by 2) c n
+(113) # () S
+() p 8 T () S
+(elsif) K
+(\(opcode = ") p
+(111) str
+("\) ) p
+(then) K
+() p 40 T () N
+(114) # () S 8 T () N
+(115) # () S 8 T (result_sig <= ") S
+(00) str
+(" & A\(NUMBITS-1 ) p
+(downto) K
+( 1\);) p n
+(116) # () S 8 T (result_var := ") S
+(00) str
+(" & A\(NUMBITS-1 ) p
+(downto) K
+( 1\);) p n
+(117) # () S 8 T () N
+(118) # () S 8 T () S
+(end) K
+( ) p
+(if) K
+( START_ALU;) p n
+(119) # () S 8 T () N
+(120) # () S 8 T (ZERO_CHECK : ) S
+(if) K
+(\( result_var = 0 \) ) p
+(then) K n
+(121) # () S
+() p 8 T () S 16 T (zero_sig <= ') S
+(1) str
+(';) p n
+(122) # () S 8 T () S
+(else) K n
+(123) # () S
+() p 8 T () S 16 T (zero_sig <= ') S
+(0) str
+(';) p n
+(124) # () S 8 T () S
+(end) K
+( ) p
+(if) K
+( ZERO_CHECK;) p n
+(125) # () S 8 T () N
+(126) # () S 8 T () S
+(end) K
+( ) p
+(process) K
+( ALU;) p n
+(127) # () S 8 T () N
+(128) # () S 8 T (result <= result_sig\(NUMBITS-1 ) S
+(downto) K
+( 0\);) p n
+(129) # () S 8 T (overflow <= overflow_sig;) N
+(130) # () S 8 T (carryout <= result_sig\(NUMBITS\);) N
+(131) # () S 8 T (zero <= zero_sig;) N
+(132) # () S 8 T () N
+(133) # () S
+(end) K
+( Behavioral;) p
+(lab1_alu.vhd) (Page 2/2) (Apr 13, 12 16:49) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab1_alu.vhd) (2/8) (Friday April 13, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 3
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--Names: Wojciech Karas, David Klein) c n
+(2) # (--Email: wkara001@ucr.edu, dklei003@ucr.edu) N
+(3) # (--Lab Section: 022) N
+(4) # (--Assignment: Lab 1 ALU Testbench) N
+(5) # () N
+(6) # () S
+(LIBRARY ) K
+(ieee) l
+(;) p n
+(7) # () S
+(USE) K
+( ieee.std_logic_1164.) p
+(ALL) K
+(;) p n
+(8) # () S
+(USE) K
+( ieee.std_logic_unsigned.) p
+(all) K
+(;) p n
+(9) # () S
+(USE) K
+( ieee.numeric_std.) p
+(ALL) K
+(;) p n
+(10) # () S
+(USE) K
+( ieee.std_logic_arith.) p
+(all) K
+(;) p n
+(11) # ( ) N
+(12) # () S
+(ENTITY) K
+( ) p
+(my_ALU_tb) l
+( ) p
+(IS) K n
+(13) # (END) S
+( my_ALU_tb;) p n
+(14) # ( ) N
+(15) # () S
+(ARCHITECTURE) K
+( behavior ) p
+(OF) K
+( my_ALU_tb ) p
+(IS) K
+( ) p n
+(16) # ( ) N
+(17) # (    ) S
+(-- Component Declaration for the Unit Under Test \(UUT\)) c n
+(18) # () S
+( ) p n
+(19) # (    ) S
+(COMPONENT) K
+( my_alu) p n
+(20) # () S 8 T ( ) S
+(generic) K
+(\() p n
+(21) # () S 8 T () S 16 T (numbits) S 24 T (: natural) S 40 T (:= 4) N
+(22) # () S 8 T ( \);) N
+(23) # (    ) S
+(PORT) K
+(\() p n
+(24) # (         A : ) S
+(IN) K
+(  std_logic_vector\(0 ) p
+(to) K
+( 3\);) p n
+(25) # (         B : ) S
+(IN) K
+(  std_logic_vector\(0 ) p
+(to) K
+( 3\);) p n
+(26) # (         opcode : ) S
+(IN) K
+(  std_logic_vector\(0 ) p
+(to) K
+( 2\);) p n
+(27) # (         result : ) S
+(OUT) K
+(  std_logic_vector\(0 ) p
+(to) K
+( 3\);) p n
+(28) # (         carryout : ) S
+(OUT) K
+(  std_logic;) p n
+(29) # (         overflow : ) S
+(OUT) K
+(  std_logic;) p n
+(30) # (         zero : ) S
+(OUT) K
+(  std_logic) p n
+(31) # (        \);) N
+(32) # (    ) S
+(END) K
+( ) p
+(COMPONENT) K
+(;) p n
+(33) # (    ) N
+(34) # () N
+(35) # (   ) S
+(--Inputs) c n
+(36) # () S
+(   ) p
+(signal) K
+( A : std_logic_vector\(0 ) p
+(to) K
+( 3\) := \() p
+(others) K
+( => ') p
+(0) str
+('\);) p n
+(37) # (   ) S
+(signal) K
+( B : std_logic_vector\(0 ) p
+(to) K
+( 3\) := \() p
+(others) K
+( => ') p
+(0) str
+('\);) p n
+(38) # (   ) S
+(signal) K
+( opcode : std_logic_vector\(0 ) p
+(to) K
+( 2\) := \() p
+(others) K
+( => ') p
+(0) str
+('\);) p n
+(39) # () N
+(40) # ( ) S 8 T () S
+(--Outputs) c n
+(41) # () S
+(   ) p
+(signal) K
+( result : std_logic_vector\(0 ) p
+(to) K
+( 3\);) p n
+(42) # (   ) S
+(signal) K
+( carryout : std_logic;) p n
+(43) # (   ) S
+(signal) K
+( overflow : std_logic;) p n
+(44) # (   ) S
+(signal) K
+( zero : std_logic;) p n
+(45) # ( ) N
+(46) # () S
+(BEGIN) K n
+(47) # () S
+( ) p n
+(48) # () S 8 T () S
+(-- Instantiate the Unit Under Test \(UUT\)) c n
+(49) # () S
+(   uut: my_alu ) p
+(generic) K
+( ) p
+(map) K
+(\() p n
+(50) # () S 8 T () S 16 T (numbits => 4) N
+(51) # () S 8 T (\)) N
+(52) # () S 8 T () S
+(PORT) K
+( ) p
+(MAP) K
+( \() p n
+(53) # (          A => A,) N
+(54) # (          B => B,) N
+(55) # (          opcode => opcode,) N
+(56) # (          result => result,) N
+(57) # (          carryout => carryout,) N
+(58) # (          overflow => overflow,) N
+(59) # (          zero => zero) N
+(60) # (        \);) N
+(61) # () N
+(62) # () N
+(63) # (   ) S
+(-- Stimulus process) c n
+(64) # () S
+(   stim_proc: ) p
+(process) K n
+(65) # () S
+(   ) p
+(begin) K
+() p 16 T () S 24 T () N
+(66) # (      ) S
+(-- hold reset state for 100ms.) c n
+(67) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(68) # () S 8 T () S 16 T () N
+(69) # () S 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(70) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(71) # () S
+() p 8 T () S 16 T () S
+(-- Testing Unsigned Add) c n
+(lab1_alb_tb.vhd) (Page 1/9) (Apr 13, 12 16:49) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(72) # () p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(73) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(74) # () S
+() p 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing Unsigned Add) str
+(";) p n
+(75) # () S 8 T () S 16 T (opcode <= ") S
+(000) str
+(";) p n
+(76) # () S 8 T () S 16 T () N
+(77) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 1 zero) c n
+(78) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(0, 4\);) N
+(79) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(0, 4\);) N
+(80) # () S 8 T () S 16 T () S 24 T () N
+(81) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(82) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(0, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_1: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(83) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_1: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(84) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_1: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(85) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(1) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_1: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(86) # () S 8 T () S 16 T () S 24 T () N
+(87) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(88) # () S
+() p 8 T () S 16 T () S 24 T () S
+(-- Test 2) c 40 T (sum +X) N
+(89) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(1, 4\);) N
+(90) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(2, 4\);) N
+(91) # () S 8 T () S 16 T () S 24 T () N
+(92) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(93) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(3, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_2: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(94) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_2: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(95) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_2: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(96) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_2: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(97) # () S 8 T () S 16 T () S 24 T () N
+(98) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 3 sum min+1) c n
+(99) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(0, 4\);) N
+(100) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(1, 4\);) N
+(101) # () S 8 T () S 16 T () S 24 T () N
+(102) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(103) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(1, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_3: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(104) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_3: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(105) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_3: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(106) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_3: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(107) # () S 8 T () S 16 T () S 24 T () N
+(108) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 4 sum max-1) c n
+(109) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(7, 4\);) N
+(110) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(7, 4\);) N
+(111) # () S 8 T () S 16 T () S 24 T () N
+(112) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(113) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(14, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_4: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(114) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_4: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(115) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_4: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(116) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_4: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(117) # () S 8 T () S 16 T () S 24 T () N
+(118) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 5 sum max) c n
+(119) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(8, 4\);) N
+(120) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(7, 4\);) N
+(121) # () S 8 T () S 16 T () S 24 T () N
+(122) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(lab1_alb_tb.vhd) (Page 2/9) (Apr 13, 12 16:49) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab1_alb_tb.vhd) (3/8) (Friday April 13, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 4
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(123) # () p 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(15, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_5: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(124) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_5: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(125) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_5: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(126) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_5: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(127) # () S 8 T () S 16 T () S 24 T () N
+(128) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 6 overflow) c n
+(129) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(8, 4\);) N
+(130) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(9, 4\);) N
+(131) # () S 8 T () S 16 T () S 24 T () N
+(132) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(133) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(1, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_6: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(134) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(1) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_6: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(135) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(1) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_6: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(136) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_6: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(137) # () S 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(138) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(139) # () S
+() p 8 T () S 16 T () S
+(-- Testing Signed add) c n
+(140) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(141) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(142) # () S
+() p 8 T () S 16 T (opcode <= ") S
+(001) str
+(";) p n
+(143) # () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing Signed Add) str
+(";) p n
+(144) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 1 zero) c n
+(145) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(0, 4\);) N
+(146) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(0, 4\);) N
+(147) # () S 8 T () S 16 T () S 24 T () N
+(148) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(149) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(0, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_1: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(150) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_1: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(151) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_1: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(152) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(1) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_1: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(153) # () S 8 T () S 16 T () S 24 T () N
+(154) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(155) # () S
+() p 8 T () S 16 T () S 24 T () S
+(-- Test 2) c 40 T (sum +X) N
+(156) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(2, 4\);) N
+(157) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(-1, 4\);) N
+(158) # () S 8 T () S 16 T () S 24 T () N
+(159) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(160) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(1, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_2: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(161) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_2: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(162) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_2: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(163) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_2: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(164) # () S 8 T () S 16 T () S 24 T () N
+(165) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 3 sum min+1) c n
+(166) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(-4, 4\);) N
+(167) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(-3, 4\);) N
+(168) # () S 8 T () S 16 T () S 24 T () N
+(169) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(170) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(-7, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_3: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(lab1_alb_tb.vhd) (Page 3/9) (Apr 13, 12 16:49) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(171) # () p 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(1) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_3: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(172) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_3: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(173) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_3: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(174) # () S 8 T () S 16 T () S 24 T () N
+(175) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 4 sum max-1) c n
+(176) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(3, 4\);) N
+(177) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(3, 4\);) N
+(178) # () S 8 T () S 16 T () S 24 T () N
+(179) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(180) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(6, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_4: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(181) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_4: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(182) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_4: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(183) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_4: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(184) # () S 8 T () S 16 T () S 24 T () N
+(185) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 5 sum max) c n
+(186) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(4, 4\);) N
+(187) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(3, 4\);) N
+(188) # () S 8 T () S 16 T () S 24 T () N
+(189) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(190) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(7, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_5: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(191) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_5: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(192) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_5: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(193) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_5: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(194) # () S 8 T () S 16 T () S 24 T () N
+(195) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 6 overflow) c n
+(196) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(5, 4\);) N
+(197) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(4, 4\);) N
+(198) # () S 8 T () S 16 T () S 24 T () N
+(199) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(200) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(9, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_6: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(201) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_6: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(202) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(1) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_6: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(203) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_6: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(204) # () S 8 T () S 16 T () S 24 T () N
+(205) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(206) # () S
+() p 8 T () S 16 T () S 24 T () S
+(-- Test 7) c 40 T (sum -X) N
+(207) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(-1, 4\);) N
+(208) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(-2, 4\);) N
+(209) # () S 8 T () S 16 T () S 24 T () N
+(210) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(211) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(-3, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_7: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(212) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(1) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_7: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(213) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_7: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(214) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_7: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(215) # () S 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(216) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(217) # () S
+() p 8 T () S 16 T () S
+(-- Testing Unsigned Subtract) c n
+(lab1_alb_tb.vhd) (Page 4/9) (Apr 13, 12 16:49) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab1_alb_tb.vhd) (4/8) (Friday April 13, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5-6) 5
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(218) # () p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(219) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(220) # () S
+() p 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing Unsigned Subtract) str
+(";) p n
+(221) # () S 8 T () S 16 T (opcode <= ") S
+(010) str
+(";) p n
+(222) # () S 8 T () S 16 T () N
+(223) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 1) c n
+(224) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(2, 4\);) N
+(225) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(1, 4\);) N
+(226) # () S 8 T () S 16 T () S 24 T () N
+(227) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(228) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(1, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_1: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(229) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_1: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(230) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_1: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(231) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_1: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(232) # () S 8 T () S 16 T () S 24 T () N
+(233) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(234) # () S
+() p 8 T () S 16 T () S 24 T () S
+(-- Test 2) c 40 T (sum +X) N
+(235) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(6, 4\);) N
+(236) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(4, 4\);) N
+(237) # () S 8 T () S 16 T () S 24 T () N
+(238) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(239) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(2, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_2: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(240) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_2: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(241) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_2: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(242) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_2: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(243) # () S 8 T () S 16 T () S 24 T () N
+(244) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 3 sum min+1) c n
+(245) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(15, 4\);) N
+(246) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(14, 4\);) N
+(247) # () S 8 T () S 16 T () S 24 T () N
+(248) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(249) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(1, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_3: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(250) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_3: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(251) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_3: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(252) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_3: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(253) # () S 8 T () S 16 T () S 24 T () N
+(254) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 4 sum max-1) c n
+(255) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(15, 4\);) N
+(256) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(1, 4\);) N
+(257) # () S 8 T () S 16 T () S 24 T () N
+(258) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(259) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(14, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_4: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(260) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_4: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(261) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_4: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(262) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_4: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(263) # () S 8 T () S 16 T () S 24 T () N
+(264) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 5 sum max) c n
+(265) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(15, 4\);) N
+(266) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(0, 4\);) N
+(267) # () S 8 T () S 16 T () S 24 T () N
+(268) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(lab1_alb_tb.vhd) (Page 5/9) (Apr 13, 12 16:49) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(269) # () p 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(15, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_5: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(270) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_5: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(271) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_5: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(272) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_5: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(273) # () S 8 T () S 16 T () S 24 T () N
+(274) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 6 overflow) c n
+(275) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(7, 4\);) N
+(276) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(8, 4\);) N
+(277) # () S 8 T () S 16 T () S 24 T () N
+(278) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(279) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(-1, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_6: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(280) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_6: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(281) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(1) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_6: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(282) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_6: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(283) # () S 8 T () S 16 T () N
+(284) # () S 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(285) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(286) # () S
+() p 8 T () S 16 T () S
+(-- Testing Signed Subtract) c n
+(287) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(288) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(289) # () S
+() p 8 T () S 16 T (opcode <= ") S
+(011) str
+(";) p n
+(290) # () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing Signed Subtract) str
+(";) p n
+(291) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 1) c n
+(292) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(2, 4\);) N
+(293) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(1, 4\);) N
+(294) # () N
+(295) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(296) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(1, 4\)) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_1: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(297) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_1: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(298) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_1: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(299) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_1: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(300) # () S 8 T () S 16 T () S 24 T () N
+(301) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(302) # () S
+() p 8 T () S 16 T () S 24 T () S
+(-- Test 2) c 40 T (sum +X) N
+(303) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(2, 4\);) N
+(304) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(-1, 4\);) N
+(305) # () S 8 T () S 16 T () S 24 T () N
+(306) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(307) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(3, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_2: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(308) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_2: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(309) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_2: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(310) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_2: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(311) # () S 8 T () S 16 T () S 24 T () N
+(312) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 3 sum min+1) c n
+(313) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(-7, 4\);) N
+(314) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(1, 4\);) N
+(315) # () S 8 T () S 16 T () S 24 T () N
+(316) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(317) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(-8, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+(lab1_alb_tb.vhd) (Page 6/9) (Apr 13, 12 16:49) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab1_alb_tb.vhd) (5/8) (Friday April 13, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (7-8) 6
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+0 T (Test_3: result incorrect) str
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(318) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(1) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_3: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(319) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_3: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(320) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_3: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(321) # () S 8 T () S 16 T () S 24 T () N
+(322) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 4 sum max-1) c n
+(323) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(7, 4\);) N
+(324) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(0, 4\);) N
+(325) # () S 8 T () S 16 T () S 24 T () N
+(326) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(327) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(7, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_4: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(328) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_4: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(329) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_4: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(330) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_4: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(331) # () S 8 T () S 16 T () S 24 T () N
+(332) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 5 sum max) c n
+(333) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(7, 4\);) N
+(334) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(0, 4\);) N
+(335) # () S 8 T () S 16 T () S 24 T () N
+(336) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(337) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(7, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_5: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(338) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_5: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(339) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_5: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(340) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_5: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(341) # () S 8 T () S 16 T () S 24 T () N
+(342) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 6 overflow) c n
+(343) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(-5, 4\);) N
+(344) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(-4, 4\);) N
+(345) # () S 8 T () S 16 T () S 24 T () N
+(346) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(347) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(-1, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_6: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(348) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(1) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_6: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(349) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_6: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(350) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_6: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(351) # () S 8 T () S 16 T () S 24 T () N
+(352) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(353) # () S
+() p 8 T () S 16 T () S 24 T () S
+(-- Test 7) c 40 T (sum -X) N
+(354) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(-3, 4\);) N
+(355) # () S 8 T () S 16 T () S 24 T (B <= conv_std_logic_vector\(-1, 4\);) N
+(356) # () S 8 T () S 16 T () S 24 T () N
+(357) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(358) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(-2, 4\) ) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_7: result incorrect) S
+(" ) p 32 T () S
+(severity) K
+( Warning;) p n
+(359) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( carryout = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_7: carryout incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(360) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( overflow = ') p
+(0) str
+(' ) p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Test_7: overflow incorrect) str
+(") p 56 T () S
+(severity) K
+( Warning;) p n
+(361) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( zero = ') p
+(0) str
+(') p 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+0 T () S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S
+(report) K
+( ") p
+(Test_7: zero incorrect) str
+(") p 64 T () S 72 T () S
+(severity) K
+() p n
+0 T ( Warning;) N
+(362) # (      ) N
+(363) # () S 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(364) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+(lab1_alb_tb.vhd) (Page 7/9) (Apr 13, 12 16:49) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+0 T (-------------------) c n
+(365) # () S
+() p 8 T () S 16 T () S
+(-- Testing And) c n
+(366) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(367) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(368) # () S
+() p 8 T () S 16 T (opcode <= ") S
+(100) str
+(";) p n
+(369) # () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing And) str
+(";) p n
+(370) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 1) c n
+(371) # () S
+() p 8 T () S 16 T () S 24 T (A <= ") S
+(1010) str
+(";) p n
+(372) # () S 8 T () S 16 T () S 24 T (B <= ") S
+(1010) str
+(";) p n
+(373) # () S 8 T () S 16 T () S 24 T () N
+(374) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(375) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = ") p
+(0000) str
+(") p 48 T () S
+(report) K
+( ") p
+(Test_1: result incorrect) str
+(") p n
+0 T () S 0 T () S
+(severity) K
+( Warning;) p n
+(376) # () S 8 T () S 16 T () S 24 T () N
+(377) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(378) # () S
+() p 8 T () S 16 T () N
+(379) # () S 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(380) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(381) # () S
+() p 8 T () S 16 T () S
+(-- Testing OR) c n
+(382) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(383) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(384) # () S
+() p 8 T () S 16 T (opcode <= ") S
+(101) str
+(";) p n
+(385) # () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing OR) str
+(";) p n
+(386) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 1) c n
+(387) # () S
+() p 8 T () S 16 T () S 24 T (A <= ") S
+(1010) str
+(";) p n
+(388) # () S 8 T () S 16 T () S 24 T (B <= ") S
+(1010) str
+(";) p n
+(389) # () S 8 T () S 16 T () S 24 T () N
+(390) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(391) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = ") p
+(1111) str
+(") p 48 T () S
+(report) K
+( ") p
+(Test_1: result incorrect) str
+(") p n
+0 T () S 0 T () S
+(severity) K
+( Warning;) p n
+(392) # () S 8 T () S 16 T () S 24 T () N
+(393) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(394) # () S
+() p 8 T () S 16 T () S 24 T () N
+(395) # () S 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(396) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(397) # () S
+() p 8 T () S 16 T () S
+(-- Testing XOR) c n
+(398) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(399) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(400) # () S
+() p 8 T () S 16 T (opcode <= ") S
+(110) str
+(";) p n
+(401) # () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing XOR) str
+(";) p n
+(402) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 1) c n
+(403) # () S
+() p 8 T () S 16 T () S 24 T (A <= ") S
+(1010) str
+(";) p n
+(404) # () S 8 T () S 16 T () S 24 T (B <= ") S
+(1010) str
+(";) p n
+(405) # () S 8 T () S 16 T () S 24 T () N
+(406) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(407) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = ") p
+(1111) str
+(") p 48 T () S
+(report) K
+( ") p
+(Test_1: result incorrect) str
+(") p n
+0 T () S 0 T () S
+(severity) K
+( Warning;) p n
+(408) # () S 8 T () S 16 T () S 24 T () N
+(409) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(410) # () S
+() p 8 T () S 16 T () S 24 T () N
+(411) # () S 8 T () S 16 T () S 24 T () S
+(-- -----------------------------------------------------) c n
+0 T (---------------------------) N
+(412) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(413) # () S
+() p 8 T () S 16 T () S
+(-- Testing Divide by 2) c n
+(414) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(415) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(416) # () S
+() p 8 T () S 16 T (opcode <= ") S
+(111) str
+(";) p n
+(417) # () S 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing Divide by 2) str
+(";) p n
+(418) # () S 8 T () S 16 T () S 24 T () S
+(-- Test 1) c n
+(419) # () S
+() p 8 T () S 16 T () S 24 T (A <= conv_std_logic_vector\(2, 4\);) N
+(lab1_alb_tb.vhd) (Page 8/9) (Apr 13, 12 16:49) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab1_alb_tb.vhd) (6/8) (Friday April 13, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (9) 7
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(420) # () p 8 T () S 16 T () S 24 T () N
+(421) # () S 8 T () S 16 T () S 24 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(422) # () S 8 T () S 16 T () S 24 T () S
+(assert) K
+( result = conv_std_logic_vector\(1, 4\)) p 72 T () S
+(report) K
+( ") p
+() str n
+0 T (Test_1: result incorrect) S
+(") p 32 T () S
+(severity) K
+( Warning;) p n
+(423) # () S 8 T () S 16 T () S 24 T () N
+(424) # () S 8 T () S 16 T () S 24 T () S
+(--Enter Additional Test Cases here!) c n
+(425) # () S
+() p 8 T () S 16 T () S 24 T () N
+(426) # () S 8 T () S 16 T () S
+(wait) K
+(;) p n
+(427) # (   ) S
+(end) K
+( ) p
+(process) K
+(;) p n
+(428) # () N
+(429) # () S
+(END) K
+(;) p n
+(lab1_alb_tb.vhd) (Page 9/9) (Apr 13, 12 16:49) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab1_alb_tb.vhd) (7/8) (Friday April 13, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 8
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (# To generate the turnin, type "make all".) c n
+(2) # (# To run other commands type "make <command>". I.E. "make turnin".) N
+(3) # (# To remove the executeable and any extraneous files type "make clean" at ) N
+(4) # (# the command prompt.) N
+(5) # (###############################################################################) N
+(6) # (#Variable to hold lab number) N
+(7) # () S
+(LABNUM) l
+(=1) p n
+(8) # () N
+(9) # () S
+(#Variable to hold first lastname) c n
+(10) # () S
+(LASTNAME1) l
+(=Klein) p n
+(11) # () N
+(12) # () S
+(#Variable to hold second lastname) c n
+(13) # () S
+(LASTNAME2) l
+(=) p n
+(14) # () N
+(15) # () S
+(#Variable of Tarball generated) c n
+(16) # () S
+(TAR) l
+(=lab$\(LABNUM\)_$\(LASTNAME1\)_$\(LASTNAME2\).tgz) p n
+(17) # () N
+(18) # () S
+(#Variable of Post Script generated) c n
+(19) # () S
+(PSPRINT) l
+(=lab$\(LABNUM\)_$\(LASTNAME1\)_$\(LASTNAME2\).ps) p n
+(20) # () S
+(PDFPRINT) l
+(=lab$\(LABNUM\)_$\(LASTNAME1\)_$\(LASTNAME2\).pdf) p n
+(21) # () N
+(22) # () S
+(#File hiearachy is lab$\(LABNUM\)_$\(PART\)$\(SUBPART\)$\(TESTBENCH\).$\(EXTENSION\)) c n
+(23) # (#$\(LABNUM\)= lab number) N
+(24) # (#$\(PART\)= if a lab part exists in order from 1 to infinity) N
+(25) # (#$\(SUBPART\)= if other components were used to make this component that were ) N
+(26) # (#            not included then put them here in order from a to z. If "a" ) N
+(27) # (#            requires sub parts then put "a"$\(subsubpart\) I.E. "a1" now ) N
+(28) # (#            numbering. Continue letter/number trend to infinity.) N
+(29) # (#$\(TESTBENCH\)= if this is a test bench file then put "tb" to indicate it ) N
+(30) # (#              is test bench for this part) N
+(31) # (#$\(EXTENSION\)= is the character file extension) N
+(32) # () N
+(33) # (#Files to be included in the PS/PDF print) N
+(34) # () S
+(FILES) l
+(=lab1_report.txt lab1_alu.vhd lab1_alb_tb.vhd gen.c Makefile) p n
+(35) # () N
+(36) # () S
+(#Variable of to use G++ GNU compiler to compile C files) c n
+(37) # () S
+(COMPILER) l
+(=gcc) p n
+(38) # () N
+(39) # () S
+(# -g Produce debug information, necessary for debugging. ) c n
+(40) # (# -Wall ) S 16 T (Show all reasonable warnings...) N
+(41) # (# -Werror Make all warnings into errors.) N
+(42) # (# -ansi This flag tells the compiler to enforce ANSI C standards ) N
+(43) # (# -pedantic More pedantic ansi, warnings for stuff you probably didn't mean. ) N
+(44) # (# -O2 Optimize even more. GCC performs nearly all supported optimizations that) N
+(45) # (#  do not involve a space-speed tradeoff. As compared to -O, this option ) N
+(46) # (#) S 8 T (increases both compilation time and the performance of the generated cod) N
+0 T (e.) N
+(47) # (# -O3 Optimize yet more. -O3 turns on all optimizations specified by -O2 ) N
+(48) # (#  and also turns on the -finline-functions, -funswitch-loops, ) N
+(49) # (#  -fpredictive-commoning, -fgcse-after-reload, -ftree-vectorize and ) N
+(50) # (#  -fipa-cp-clone options.) N
+(51) # () N
+(52) # (#Variable of GCC Compiler flags) N
+(53) # () S
+(COMPILEFLAGS) l
+(= -g -Wall -Werror -ansi -pedantic -O3) p n
+(54) # () N
+(55) # () S
+(#Variable of Program name) c n
+(56) # () S
+(PROGRAM) l
+(=genvhdl) p n
+(57) # () N
+(58) # () S
+(#Targets) c n
+(59) # (#Compile all, specifically first clean, print,) N
+(60) # (# turnin, and compile in this order) N
+(61) # () S
+(all) L
+(: clean print turnin) p n
+(62) # () N
+(63) # () S
+(#Compile C code) c n
+(64) # () S
+(compile) L
+(:) p n
+(65) # () S 8 T ($\(COMPILER\) $\(COMPILEFLAGS\) -o $\(PROGRAM\) gen.c) N
+(66) # () N
+(67) # () S
+(#Remove unnecessary files) c n
+(68) # () S
+(clean) L
+(:) p n
+(69) # () S 8 T (rm -rf *~ $\(PSPRINT\) $\(PDFPRINT\) $\(TAR\) $\(PROGRAM\)) N
+(70) # () N
+(71) # () S
+(#Print files to a .ps document) c n
+(72) # () S
+(print) L
+(:) p n
+(Makefile) (Page 1/2) (Apr 13, 12 17:50) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(73) # () p 8 T (a2ps -M letter --line-numbers=1 -o $\(PSPRINT\) $\(FILES\)) N
+(74) # () N
+(75) # () S
+(printpdf) L
+(:) p n
+(76) # () S 8 T (enscript -2 --fancy-header --line-numbers=1 --truncate-lines \\) N
+(77) # () S 8 T (--word-wrap --style=emacs --tabsize=3 --landscape $\(FILES\) \\) N
+(78) # () S 8 T (-o - | ps2pdfwr - $\(PDFPRINT\)) N
+(79) # () N
+(80) # () S
+(#Create a tar ball for project turn in) c n
+(81) # () S
+(turnin) L
+(:) p n
+(82) # () S 8 T (tar -czvf $\(TAR\) $\(PSPRINT\) $\(FILES\)) N
+(83) # () N
+(Makefile) (Page 2/2) (Apr 13, 12 17:50) title
+border
+grestore
+(Printed by David Klein) rhead
+(Makefile) (8/8) (Friday April 13, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

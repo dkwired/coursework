@@ -1,0 +1,65 @@
+--SuperUser Register New Video
+INSERT INTO video VALUES( videoid, title, year, online_price, dvd_price, null (votes), null (rating), episode, season_id );
+
+--SuperUser Remove User
+DELETE FROM users WHERE user_id=#userid;
+
+--SuperUser Remove User Comment
+DELETE FROM comment WHERE comment_id=#commentid;
+
+--Add Comment
+INSERT INTO comment VALUES( comment_id, user_id, video_id, comment_time, content );
+
+--Add Rating
+INSERT INTO rate VALUES( user_id, video_id, rate_time, rating );
+
+--Add Favorite (Like)
+INSERT INTO likes VALUES( user_id, video_id );
+
+--View Followers
+SELECT F.user_id_to
+FROM follow F
+WHERE F.user_id_from=#userid
+
+--View Followers Prefered
+SELECT P.user_id, G.genre_name
+FROM genre G, follow F, prefers P
+WHERE P.user_id=F.user_id_to AND P.genre_id=G.genre_id AND F.user_id_from=#userid
+
+--View Followers Comments
+SELECT U.user_id, V.title, C.content
+FROM comment C, follow F, video V
+WHERE C.user_id=F.user_id_to AND C.video_id=V.video_id AND F.user_id_from=#userid
+
+--View Followers Rating
+SELECT R.user_id, V.title, R.rating
+FROM rate R, follow F, video V
+WHERE F.user_id_to=R.user_id AND R.video_id=V.video_id AND F.user_id_from=#userid
+
+--View Followers Orders
+SELECT O.user_id, V.title
+FROM orders O, follow F, video V
+WHERE F.user_id_to=O.user_id AND O.video_id=V.video_id AND F.user_id_from=#userid 
+
+--Follow User
+INERT INTO follow VALUES( user_id_to, user_id_from, follow_time );
+
+--Stop Following User
+DELETE FROM follow WHERE user_id_to=user# AND user_id_from=#userid;
+
+--Change Password
+UPDATE users SET password=new_password WHERE user_id=#userid
+
+--Check Current Balance
+SELECT U.balance
+FROM users U
+WHERE U.user_id=#userid
+
+--Add to Prefered List
+INSERT INTO prefers VALUES(user_id, genre_id)
+SELECT genre_id
+FROM genre
+WHERE genre_name=#user_entered_genre;
+
+--Add Order
+INSERT INTO orders VALUES( order_id, video_id, user_id );

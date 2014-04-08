@@ -1,0 +1,210 @@
+#!/usr/bin/env python2.7
+#
+# CS 141 Spring 2012
+#
+################################
+
+#David Klein
+#860880864
+#CS 141 - Project 1
+
+import sys, random
+
+BASE=256
+CAP=1024
+
+def gcd(a, b):
+    while b>0:
+        r=a%b; a=b; b=r
+    return a
+
+# return (g,x,y) 
+# such that a*x + b*y = g
+def extgcd(a, b):
+    if b==0: return (a, 1, 0)
+    g, xx, yy = extgcd(b, a%b)
+    q=a/b
+    return (g, yy, xx-q*yy)
+
+# return the multiplicative inverse of a modulo p
+# assume gcd(a,p)=1
+def inv(a, p):
+    g,x,y = extgcd(a,p)
+    x=x%p
+    if x<0: x+=p
+    return x
+    
+# Miller-Rabin primality test
+# source
+# http://en.literateprograms.org/Miller-Rabin_primality_test_%28Python%29#chunk%20use:Miller-Rabin
+def is_prime(n):
+    d = n-1; s=0
+    while d%2==0:
+        d >>= 1; s += 1
+    for repeat in xrange(20):
+        a = 0
+        while a == 0:
+            a = random.randrange(n)
+        if not miller_rabin_pass(a, s, d, n):
+            return False
+    return True
+
+def miller_rabin_pass(a, s, d, n):
+    a_to_power = pow(a, d, n)
+    if a_to_power == 1: return True
+    for i in xrange(s-1):
+        if a_to_power == n-1: return True
+        a_to_power = (a_to_power * a_to_power) % n
+    return a_to_power == n-1
+
+def generate_random_prime(approx_bits):
+    candidate = 4; modulus = 2
+    if approx_bits == 0: approx_bits = 1
+    modulus = pow(2, approx_bits)
+
+    while True:
+        candidate = random.randrange(modulus) + modulus
+        if is_prime(candidate): 
+            return candidate
+
+
+# generate a random integer in 2..modulus-1
+# among those having a multiplicative inverse mod modulus
+def generate_random_invertible(modulus):
+    candidate=1
+    while True:
+        candidate = random.randrange(1,modulus-1)+1
+        if gcd(candidate, modulus)==1:
+            return candidate
+
+
+# generates an RSA key with n-bit modulus N
+# return [p, q, N, e, d]
+def gen_key(number_of_bits):
+    if( number_of_bits % 2 == 0 ):
+       p = generate_random_prime(number_of_bits/2)
+       q = generate_random_prime(number_of_bits/2)
+    else:
+       p = generate_random_prime((number_of_bits-1)/2)
+       q = generate_random_prime((number_of_bits-1)/2)   
+    
+    N = p * q
+    phi = (p-1)*(q-1)
+   
+    for i in range(40, phi / 2):
+        g,e,y = extgcd(i, phi)
+        if( g == 1 ): 
+	   e = i
+	   break
+
+    d = inv(e, phi)
+
+    print 'p=%d q=%d N=%d e=%d d=%d' % (p, q, N, e, d)
+
+    return p, q, N, e, d
+
+def rsa_encrypt(x, e, N):
+    for index, item in enumerate(x):
+       item = item**e % N
+       x[index] = item
+
+    return x
+
+def rsa_decrypt(x, d, N):
+    for index, item in enumerate(x):
+       item = item**d % N
+       x[index] = item
+    return x
+
+def rsa_break(e, N):
+    p = 0
+    q = 0
+    for x in range(2, N/2):
+       temp = N / x
+       if( is_prime(temp) and ((temp*x)==N)):
+          p = temp
+          q = x
+       	  break
+
+    phi = (p-1)*(q-1)
+
+    d = inv(e, phi)
+
+    print p
+    print q
+
+    return d
+
+def text_to_numbers(N, str):
+    ret = []
+    l = len(str)
+    p = 0; x = 0
+    while p<l:
+        x = x*BASE + ord(str[p])
+        p += 1
+        if x*BASE >= N: 
+            ret.append(x)
+            x = 0
+    return ret
+
+def parse(N, num):
+    ret=[]
+    while num>0:
+        ret.append(num % BASE)
+        num/=BASE
+    ret.reverse()
+    return ret
+    
+def numbers_to_text(N, l):
+    strlst=[]
+    for num in l:
+        strlst.extend(parse(N, num))
+    return ''.join([chr(num) for num in strlst])
+
+# test code
+if __name__=='__main__':
+
+    # test text_to_numbers()
+    # and numbers_to_text()
+    num=1024
+    str='hello'
+    l=text_to_numbers(num, str)
+    print l
+    str = numbers_to_text(num, l)
+    print str
+
+    # test is_prime()
+    # prints the first a few primes
+    for i in range(100):
+        if is_prime(i+10): print i+10,
+    print
+
+    # test generate_random_prime
+    b=28
+    p = generate_random_prime(b)
+    print 'prime %s' % repr(p)
+
+    # test generate_random_invertible
+    m=18
+    r=generate_random_invertible(m)
+    print 'random invertible %s' % repr(r)
+
+    g,x,y=extgcd(r,m)
+    print '%d * %d + %d * %d = %d' % (r, x, m, y, g)
+    print r*x + m*y == g
+
+    rr = inv(r,m)
+    print 'inv(%d) = %d mod %d' % (r, rr, m)
+    print r*rr%m==1
+
+    p,q,N,e,d = gen_key(b)
+
+    x = l
+    print 'Numbers to encrypt:'; print x
+    #x = rsa_encrypt(x, e, N)
+    print 'Encrypted numbers:'; print x
+    #x = rsa_decrypt(x, d, N)
+    print 'Decrypted numbers:'; print x
+
+    d_new = rsa_break(e, N)
+    print 'd_new=%d' % (d_new)

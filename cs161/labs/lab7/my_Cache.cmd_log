@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab7/my_Cache.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab7/my_Cache.syr" 

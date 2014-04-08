@@ -1,0 +1,111 @@
+--SuperUser Register New Video
+INSERT INTO video VALUES( videoid, title, year, online_price, dvd_price, null (votes), null (rating), episode, season_id );
+
+--SuperUser Remove User
+DELETE FROM users WHERE user_id=#userid;
+
+--SuperUser Remove User Comment
+DELETE FROM comment WHERE comment_id=#commentid;
+
+--SuperUser List all normal users
+SELECT user_id
+FROM users U
+where user_id NOT IN (SELECT super_user_id FROM super_user);
+
+--Add Comment
+INSERT INTO comment VALUES( comment_id, user_id, video_id, comment_time, content );
+
+--Add Rating
+INSERT INTO rate VALUES( user_id, video_id, rate_time, rating );
+
+--Add Favorite (Like)
+INSERT INTO likes VALUES( user_id, video_id );
+
+--View Followers
+SELECT F.user_id_to
+FROM follow F
+WHERE F.user_id_from=#userid
+
+--View Followers Prefered
+SELECT P.user_id, G.genre_name
+FROM genre G, follow F, prefers P
+WHERE P.user_id=F.user_id_to AND P.genre_id=G.genre_id AND F.user_id_from=#userid
+
+--View Followers Comments
+SELECT U.user_id, V.title, C.content
+FROM comment C, follow F, video V
+WHERE C.user_id=F.user_id_to AND C.video_id=V.video_id AND F.user_id_from=#userid
+
+--View Followers Rating
+SELECT R.user_id, V.title, R.rating
+FROM rate R, follow F, video V
+WHERE F.user_id_to=R.user_id AND R.video_id=V.video_id AND F.user_id_from=#userid
+
+--View Followers Orders
+SELECT O.user_id, V.title
+FROM orders O, follow F, video V
+WHERE F.user_id_to=O.user_id AND O.video_id=V.video_id AND F.user_id_from=#userid 
+
+--Follow User
+INERT INTO follow VALUES( user_id_to, user_id_from, follow_time );
+
+--Stop Following User
+DELETE FROM follow WHERE user_id_to=user# AND user_id_from=#userid;
+
+--Change Password
+UPDATE users SET password=new_password WHERE user_id=#userid
+
+--Check Current Balance
+SELECT U.balance
+FROM users U
+WHERE U.user_id=#userid
+
+--View User preferred list
+SELECT genre_name
+FROM genre G, users U, prefers P
+WHERE U.user_id=#userid AND P.user_id=U.user_id AND G.genre_id=P.genre_id
+
+--Add to Prefered List
+INSERT INTO prefers VALUES('user1', '5');
+
+--Add Order
+INSERT INTO orders VALUES( order_id, video_id, user_id );
+
+--List Videos by Director
+SELECT Drctr.first_name, Drctr.last_name, V.title
+FROM video V, director Drctr, directed Drctd
+WHERE Drctr.director_id=Drctd.director_id AND Drctd.video_id=V.video_id
+
+--List Videos by Star
+SELECT S.first_name, S.last_name, V.title
+FROM video V, star S, played P
+WHERE V.video_id=P.video_id AND P.star_id=S.star_id
+
+--List Videos by Author
+SELECT A.first_name, A.last_name, V.title
+FROM video V, author A, written W
+WHERE V.video_id=W.video_id AND W.author_id=A.author_id
+
+--List Videos by Entered Word
+--entered="\'%" + entered text + "\%'";
+SELECT title
+FROM video
+WHERE title LIKE entered;
+
+--List Directors by Entered Word
+--fname="\'%" + entered text + "\%'";
+--lname="\'%" + entered text + "\%'";
+SELECT first_name, last_name
+FROM director
+WHERE first_name LIKE fname AND last_name LIKE lname;
+
+--List Directors by Entered Word
+--fname="\'%" + entered text + "\%'";
+--lname="\'%" + entered text + "\%'";
+SELECT first_name, last_name
+FROM author
+WHERE first_name LIKE fname AND last_name LIKE lname;
+WHERE title LIKE entered;
+
+--Add Series
+INSERT INTO comment VALUES( );

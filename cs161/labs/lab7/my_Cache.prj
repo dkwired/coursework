@@ -1,0 +1,6 @@
+vhdl work "CAM_CELL.vhd"
+vhdl work "CAM_Row.vhd"
+vhdl work "Decoder.vhd"
+vhdl work "Control_Unit.vhd"
+vhdl work "CAM_Array.vhd"
+vhdl work "my_Cache.vhd"

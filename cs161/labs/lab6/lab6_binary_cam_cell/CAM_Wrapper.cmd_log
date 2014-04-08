@@ -1,0 +1,64 @@
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab6_binary_cam_cell/CAM_Wrapper.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "CAM_Wrapper.ngc" CAM_Wrapper.ngd  
+map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o CAM_Wrapper_map.ncd CAM_Wrapper.ngd CAM_Wrapper.pcf 
+par -w -intstyle ise -ol high -mt off CAM_Wrapper_map.ncd CAM_Wrapper.ncd CAM_Wrapper.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr CAM_Wrapper.pcf 

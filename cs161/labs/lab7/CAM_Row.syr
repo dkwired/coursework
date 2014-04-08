@@ -1,0 +1,385 @@
+Release 13.3 - xst O.76xd (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Reading design: CAM_Row.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "CAM_Row.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "CAM_Row"
+Output Format                      : NGC
+Target Device                      : xc6vlx240t-1-ff1156
+
+---- Source Options
+Top Module Name                    : CAM_Row
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab7\CAM_CELL.vhd" into library work
+Parsing entity <CAM_Cell>.
+Parsing architecture <Binary_CAM_Cell> of entity <cam_cell>.
+Parsing VHDL file "C:\Documents and Settings\Embedded Systems Lab\Desktop\lab7\CAM_Row.vhd" into library work
+Parsing entity <CAM_Row>.
+Parsing architecture <Binary_CAM_Row> of entity <cam_row>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <CAM_Row> (architecture <Binary_CAM_Row>) with generics from library <work>.
+
+Elaborating entity <CAM_Cell> (architecture <Binary_CAM_Cell>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <CAM_Row>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab7/cam_row.vhd".
+        CAM_WIDTH = 32
+WARNING:Xst:647 - Input <valid_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <CAM_Row> synthesized.
+
+Synthesizing Unit <CAM_Cell>.
+    Related source file is "c:/documents and settings/embedded systems lab/desktop/lab7/cam_cell.vhd".
+    Found 1-bit register for signal <sb_sig>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <CAM_Cell> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 32
+ 1-bit register                                        : 32
+# Xors                                                 : 32
+ 1-bit xor2                                            : 32
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Registers                                            : 32
+ Flip-Flops                                            : 32
+# Xors                                                 : 32
+ 1-bit xor2                                            : 32
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <CAM_Row> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block CAM_Row, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 32
+ Flip-Flops                                            : 32
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : CAM_Row.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 24
+#      GND                         : 1
+#      LUT4                        : 1
+#      LUT6                        : 10
+#      MUXCY                       : 11
+#      VCC                         : 1
+# FlipFlops/Latches                : 32
+#      FDCE                        : 32
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 35
+#      IBUF                        : 34
+#      OBUF                        : 1
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6vlx240tff1156-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              32  out of  301440     0%  
+ Number of Slice LUTs:                   11  out of  150720     0%  
+    Number used as Logic:                11  out of  150720     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:     43
+   Number with an unused Flip Flop:      11  out of     43    25%  
+   Number with an unused LUT:            32  out of     43    74%  
+   Number of fully used LUT-FF pairs:     0  out of     43     0%  
+   Number of unique control sets:         1
+
+IO Utilization: 
+ Number of IOs:                          38
+ Number of bonded IOBs:                  36  out of    600     6%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 32    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: 0.989ns
+   Maximum output required time after clock: 2.289ns
+   Maximum combinational path delay: 1.920ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 96 / 96
+-------------------------------------------------------------------------
+Offset:              0.989ns (Levels of Logic = 1)
+  Source:            rst (PAD)
+  Destination:       gen_row[0].CAMBit/sb_sig (FF)
+  Destination Clock: clk rising
+
+  Data Path: rst to gen_row[0].CAMBit/sb_sig
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            32   0.003   0.552  rst_IBUF (rst_IBUF)
+     FDCE:CLR                  0.434          gen_row[0].CAMBit/sb_sig
+    ----------------------------------------
+    Total                      0.989ns (0.437ns logic, 0.552ns route)
+                                       (44.2% logic, 55.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 32 / 1
+-------------------------------------------------------------------------
+Offset:              2.289ns (Levels of Logic = 12)
+  Source:            gen_row[25].CAMBit/sb_sig (FF)
+  Destination:       row_match (PAD)
+  Source Clock:      clk rising
+
+  Data Path: gen_row[25].CAMBit/sb_sig to row_match
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             1   0.375   0.778  gen_row[25].CAMBit/sb_sig (gen_row[25].CAMBit/sb_sig)
+     LUT6:I0->O            1   0.068   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_lut<1> (gen_row[0].CAMBit/cell_match_bit_out_wg_lut<1>)
+     MUXCY:S->O            1   0.290   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<1> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<1>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<2> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<2>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<3> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<3>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<4> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<4>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<5> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<5>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<6> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<7> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<8> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<9> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<9>)
+     MUXCY:CI->O           1   0.220   0.399  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<10> (row_match_OBUF)
+     OBUF:I->O                 0.003          row_match_OBUF (row_match)
+    ----------------------------------------
+    Total                      2.289ns (1.112ns logic, 1.177ns route)
+                                       (48.6% logic, 51.4% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 32 / 1
+-------------------------------------------------------------------------
+Delay:               1.920ns (Levels of Logic = 13)
+  Source:            search_word<25> (PAD)
+  Destination:       row_match (PAD)
+
+  Data Path: search_word<25> to row_match
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.003   0.781  search_word_25_IBUF (search_word_25_IBUF)
+     LUT6:I1->O            1   0.068   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_lut<1> (gen_row[0].CAMBit/cell_match_bit_out_wg_lut<1>)
+     MUXCY:S->O            1   0.290   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<1> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<1>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<2> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<2>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<3> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<3>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<4> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<4>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<5> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<5>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<6> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<6>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<7> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<7>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<8> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<8>)
+     MUXCY:CI->O           1   0.020   0.000  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<9> (gen_row[0].CAMBit/cell_match_bit_out_wg_cy<9>)
+     MUXCY:CI->O           1   0.220   0.399  gen_row[0].CAMBit/cell_match_bit_out_wg_cy<10> (row_match_OBUF)
+     OBUF:I->O                 0.003          row_match_OBUF (row_match)
+    ----------------------------------------
+    Total                      1.920ns (0.740ns logic, 1.180ns route)
+                                       (38.5% logic, 61.5% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 8.80 secs
+ 
+--> 
+
+Total memory usage is 155456 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

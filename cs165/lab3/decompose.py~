@@ -1,0 +1,10 @@
+#! /usr/bin/python
+
+k = 2
+N = 9630
+while N > 1:
+    if N % k == 0:   // if k evenly divides into N
+        print k      // this is a factor
+        N = N / k    // divide N by k so that we have the rest of the number left.
+    else:
+        k = k + 1

@@ -1,0 +1,19 @@
+---------------------------------------------------------------------
+name: David Klein
+sid: 860880864
+name of lab partner, if any:
+---------------------------------------------------------------------
+any feedback or questions:
+
+---------------------------------------------------------------------
+ANSWERS TO 1:
+a) The 16th input in the test-input-large.txt file clocks in at just above .9sec.
+b) The running time of fast_exp is O(n^3). Each multiplication call is O(n^2) and we have at most n recursive calls. So we have at least O(n^3).
+c - optional)
+
+ANSWER TO 2:
+
+Using test input: 515737782 292027263 1011445129 we can see that c*y*n^2 would make this run exponentially slow. Total calculation for using slow_exp on input 16 of test-input-large.txt would take upwards of 100 years to compute, if not ever!
+---------------------------------------------------------------------
+
+TURN IN _ALL_ FILES IN THIS DIRECTORY -- SEE README.txt.

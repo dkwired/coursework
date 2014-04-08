@@ -1,0 +1,21 @@
+#!/usr/bin/env python2.7
+#
+###################################
+# CS141, 12 Spring
+#
+# fib1.py
+###################################
+import sys, timeit
+
+def fib1(n):
+    print n
+    if n<=1:
+        return n
+    return fib1(n-1)+fib1(n-2)
+
+n=10
+if len(sys.argv)>1:
+    n=int(sys.argv[1])
+t=timeit.Timer(lambda: fib1(n))
+l=t.timeit(1)
+print l

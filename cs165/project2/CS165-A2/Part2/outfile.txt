@@ -1,0 +1,27 @@
+Backdoor found in D-Link router firmware code
+The backdoor could be used to modify a router's settings, a dangerous vulnerability
+By Jeremy Kirk, IDG News Service |  Data Protection
+
+October 14, 2013, 12:49 AM — A backdoor found in firmware used in several D-Link routers could allow an attacker to change a device's settings, a serious security problem that could be used for surveillance.
+
+Craig Heffner, a vulnerability researcher with Tactical Network Solutions who specializes in wireless and embedded systems, found the vulnerability. Heffner wrote on his blog that the web interface for some D-Link routers could be accessed if a browser's user agent string is set to "xmlset_roodkcableoj28840ybtide."
+
+Curiously, if the second half of the user agent string is reversed and the number is removed, it reads "edit by joel backdoor," suggesting it was intentionally placed there.
+
+"My guess is that the developers realized that some programs/services needed to be able to change the device's settings automatically," Heffner wrote. "Realizing that the web server already had all the code to change these settings, they decided to just send requests to the web server whenever they needed to change something.
+
+"The only problem was that the web server required a username and password, which the end user could change. Then, in a eureka moment, Joel jumped up and said, 'Don't worry, for I have a cunning plan'!"
+
+The technology industry has been rattled by documents leaked by former NSA contractor Edward Snowden, which indicate the spy agency pursues ways to subvert security measures through backdoors. But developers sometimes make mistakes and in other cases, make poor security decisions.
+
+With access to a router's settings, an attacker could potentially steer someone's Internet traffic through another their own server and read their unencrypted data traffic.
+
+To find other vulnerable D-Link router models, Heffner used a special search engine called Shodan, which is designed to find any device connected to the Internet, ranging from refrigerators to CCTV cameras to routers.
+
+The affected models likely include D-Link's DIR-100, DI-524, DI-524UP, DI-604S, DI-604UP, DI-604+, TM-G5240 and possibly the DIR-615. The same firmware is also used in the BRL-04UR and BRL-04CW routers made by Planex, Heffner wrote.
+
+A web search turned up the suspicious user agent string in a post on a Russian forum three years ago, Heffner wrote, which means somebody has known about it for a while.
+
+D-Link officials could be immediately reached for comment on Monday.
+
+http://www.itworld.com/data-protection/378427/backdoor-found-d-link-router-firmware-code

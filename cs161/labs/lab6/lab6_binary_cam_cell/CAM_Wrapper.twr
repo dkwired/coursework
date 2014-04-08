@@ -1,0 +1,212 @@
+--------------------------------------------------------------------------------
+Release 13.3 Trace  (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\13.3\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 1 -n
+3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr
+CAM_Wrapper.pcf
+
+Design file:              CAM_Wrapper.ncd
+Physical constraint file: CAM_Wrapper.pcf
+Device,package,speed:     xc6vlx240t,ff1156,C,-1 (PRODUCTION 1.15 2011-10-03, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clk
+-------------------------+------------+------------+------------+------------+------------------+--------+
+                         |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source                   | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+-------------------------+------------+------------+------------+------------+------------------+--------+
+rst                      |    1.194(R)|      SLOW  |   -0.174(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<0>           |    1.113(R)|      SLOW  |   -0.289(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<1>           |    1.139(R)|      SLOW  |   -0.261(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<2>           |    1.244(R)|      SLOW  |   -0.409(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<3>           |    0.871(R)|      FAST  |   -0.012(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<4>           |    0.428(R)|      FAST  |    0.646(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<5>           |    0.903(R)|      FAST  |   -0.052(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<6>           |    0.828(R)|      FAST  |    0.039(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<7>           |    0.755(R)|      SLOW  |    0.146(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<8>           |    0.478(R)|      FAST  |    0.537(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<9>           |    0.720(R)|      FAST  |    0.285(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<10>          |    0.977(R)|      FAST  |   -0.107(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<11>          |    0.794(R)|      FAST  |    0.112(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<12>          |    0.701(R)|      FAST  |    0.245(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<13>          |    0.709(R)|      FAST  |    0.233(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<14>          |    0.581(R)|      FAST  |    0.444(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<15>          |    0.502(R)|      FAST  |    0.514(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<16>          |    0.745(R)|      FAST  |    0.182(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<17>          |    0.555(R)|      FAST  |    0.472(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<18>          |    0.771(R)|      FAST  |    0.166(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<19>          |    0.556(R)|      FAST  |    0.458(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<20>          |    0.269(R)|      FAST  |    0.713(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<21>          |    0.672(R)|      FAST  |    0.324(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<22>          |    0.007(R)|      FAST  |    1.084(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<23>          |    0.070(R)|      FAST  |    0.936(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<24>          |    0.214(R)|      FAST  |    0.754(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<25>          |   -0.098(R)|      FAST  |    1.240(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<26>          |    0.086(R)|      FAST  |    0.942(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<27>          |    0.009(R)|      FAST  |    1.108(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<28>          |    0.197(R)|      FAST  |    0.955(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<29>          |   -0.380(R)|      FAST  |    1.694(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<30>          |   -0.203(R)|      FAST  |    1.448(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<31>          |    0.343(R)|      FAST  |    0.680(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<32>          |   -0.213(R)|      FAST  |    1.445(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<33>          |   -0.304(R)|      FAST  |    1.550(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<34>          |   -0.087(R)|      FAST  |    1.256(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<35>          |   -0.021(R)|      FAST  |    1.126(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<36>          |    0.319(R)|      FAST  |    0.795(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<37>          |   -0.187(R)|      FAST  |    1.353(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<38>          |   -0.333(R)|      FAST  |    1.594(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<39>          |    0.325(R)|      FAST  |    0.787(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<40>          |    0.327(R)|      FAST  |    0.750(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<41>          |   -0.215(R)|      FAST  |    1.423(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<42>          |    0.288(R)|      FAST  |    0.835(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<43>          |   -0.260(R)|      FAST  |    1.462(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<44>          |   -0.016(R)|      FAST  |    1.139(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<45>          |    0.188(R)|      FAST  |    0.920(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<46>          |    0.063(R)|      FAST  |    1.007(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<47>          |   -0.098(R)|      FAST  |    1.278(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<48>          |   -0.060(R)|      FAST  |    1.209(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<49>          |    0.094(R)|      FAST  |    0.948(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<50>          |    0.063(R)|      FAST  |    1.019(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<51>          |    0.030(R)|      FAST  |    1.049(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<52>          |    0.119(R)|      FAST  |    0.931(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<53>          |    0.125(R)|      FAST  |    0.910(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<54>          |    0.221(R)|      FAST  |    0.737(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<55>          |    0.144(R)|      FAST  |    0.895(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<56>          |    0.382(R)|      SLOW  |    0.529(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<57>          |    0.204(R)|      FAST  |    0.760(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<58>          |    0.141(R)|      FAST  |    0.891(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<59>          |    0.255(R)|      FAST  |    0.688(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<60>          |    0.373(R)|      SLOW  |    0.497(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<61>          |    0.210(R)|      FAST  |    0.726(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<62>          |    0.212(R)|      FAST  |    0.754(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<63>          |    1.189(R)|      SLOW  |   -0.326(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<64>          |    0.781(R)|      SLOW  |    0.134(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<65>          |    1.246(R)|      SLOW  |   -0.226(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<66>          |    0.720(R)|      SLOW  |    0.175(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<67>          |    0.613(R)|      SLOW  |    0.284(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<68>          |    1.291(R)|      SLOW  |   -0.468(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<69>          |    1.387(R)|      SLOW  |   -0.501(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<70>          |    1.125(R)|      SLOW  |   -0.294(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<71>          |    0.951(R)|      SLOW  |   -0.145(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<72>          |    0.804(R)|      SLOW  |    0.110(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<73>          |    1.254(R)|      SLOW  |   -0.417(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<74>          |    0.566(R)|      SLOW  |    0.341(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<75>          |    0.855(R)|      SLOW  |    0.123(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<76>          |    1.025(R)|      SLOW  |   -0.014(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<77>          |    0.880(R)|      FAST  |    0.007(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<78>          |    0.885(R)|      FAST  |   -0.013(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<79>          |    0.992(R)|      FAST  |   -0.166(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<80>          |    0.491(R)|      FAST  |    0.372(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<81>          |    0.352(R)|      FAST  |    0.552(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<82>          |    0.462(R)|      FAST  |    0.399(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<83>          |    0.567(R)|      SLOW  |    0.303(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<84>          |    0.455(R)|      SLOW  |    0.445(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<85>          |    0.147(R)|      FAST  |    0.857(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<86>          |    0.618(R)|      SLOW  |    0.353(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<87>          |    0.655(R)|      SLOW  |    0.283(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<88>          |    0.042(R)|      FAST  |    0.999(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<89>          |    0.368(R)|      FAST  |    0.572(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<90>          |    0.100(R)|      FAST  |    0.897(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<91>          |    0.281(R)|      FAST  |    0.677(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<92>          |    0.128(R)|      FAST  |    0.902(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<93>          |    0.153(R)|      FAST  |    0.836(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<94>          |    0.156(R)|      FAST  |    0.828(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<95>          |    0.254(R)|      FAST  |    0.748(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<96>          |    0.192(R)|      FAST  |    0.804(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<97>          |    0.160(R)|      FAST  |    0.831(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<98>          |    0.145(R)|      FAST  |    0.865(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<99>          |    0.079(R)|      FAST  |    0.989(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<100>         |    0.467(R)|      FAST  |    0.577(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<101>         |    0.177(R)|      FAST  |    0.828(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<102>         |    0.548(R)|      FAST  |    0.475(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<103>         |    0.446(R)|      FAST  |    0.553(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<104>         |    0.443(R)|      FAST  |    0.552(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<105>         |    0.666(R)|      FAST  |    0.268(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<106>         |    0.506(R)|      FAST  |    0.474(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<107>         |    0.313(R)|      FAST  |    0.743(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<108>         |   -0.107(R)|      FAST  |    1.266(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<109>         |    0.360(R)|      FAST  |    0.719(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<110>         |    0.289(R)|      FAST  |    0.816(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<111>         |   -0.098(R)|      FAST  |    1.275(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<112>         |   -0.124(R)|      FAST  |    1.278(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<113>         |    0.310(R)|      FAST  |    0.758(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<114>         |    0.300(R)|      FAST  |    0.776(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<115>         |   -0.064(R)|      FAST  |    1.182(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<116>         |    0.312(R)|      FAST  |    0.767(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<117>         |    0.399(R)|      FAST  |    0.572(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<118>         |    0.298(R)|      FAST  |    0.773(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<119>         |   -0.183(R)|      FAST  |    1.391(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<120>         |   -0.212(R)|      FAST  |    1.421(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<121>         |    0.063(R)|      FAST  |    1.153(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<122>         |   -0.244(R)|      FAST  |    1.470(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<123>         |    0.363(R)|      FAST  |    0.710(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<124>         |    0.401(R)|      FAST  |    0.735(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<125>         |    0.383(R)|      FAST  |    0.616(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<126>         |    0.323(R)|      FAST  |    0.782(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<127>         |    0.406(R)|      FAST  |    0.590(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<0>|    1.244(R)|      SLOW  |   -0.370(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<1>|    1.521(R)|      SLOW  |   -0.648(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<2>|    1.453(R)|      SLOW  |   -0.529(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<3>|    1.230(R)|      SLOW  |   -0.360(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<4>|    0.488(R)|      SLOW  |    0.365(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<5>|    0.324(R)|      FAST  |    0.601(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<6>|    0.261(R)|      FAST  |    0.672(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<7>|    0.280(R)|      FAST  |    0.685(R)|      SLOW  |clk_BUFGP         |   0.000|
+-------------------------+------------+------------+------------+------------+------------------+--------+
+
+Clock clk to Pad
+------------------------+-----------------+------------+-----------------+------------+------------------+--------+
+                        |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination             |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------------------+-----------------+------------+-----------------+------------+------------------+--------+
+decoded_match_address<0>|         9.512(R)|      SLOW  |         4.231(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<1>|         8.891(R)|      SLOW  |         3.836(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<2>|         9.672(R)|      SLOW  |         4.311(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<3>|         9.639(R)|      SLOW  |         4.329(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<4>|         9.447(R)|      SLOW  |         4.252(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<5>|         8.849(R)|      SLOW  |         3.834(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<6>|         8.802(R)|      SLOW  |         3.806(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<7>|         8.632(R)|      SLOW  |         3.750(R)|      FAST  |clk_BUFGP         |   0.000|
+------------------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    2.810|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Fri Jun 01 16:06:47 2012 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 464 MB
+
+
+

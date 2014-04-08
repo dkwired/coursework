@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[31].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[30].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[29].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[28].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[27].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[26].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[25].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[24].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[23].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[22].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[21].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[20].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[19].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[18].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[17].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[16].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[15].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[14].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[13].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[12].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[11].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[10].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[9].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[8].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[7].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[6].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[5].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[4].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[3].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[2].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[1].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">c:/documents and settings/embedded systems lab/desktop/lab7/cam_array.vhd</arg>&quot; line <arg fmt="%s" index="2">34</arg>: Output port &lt;<arg fmt="%s" index="3">valid_out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">gen_arr[0].CAMWord</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">valid_out</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+</messages>
+

@@ -1,0 +1,33 @@
+---------------------------------------------------------------------
+name: David Klein
+sid: 860880864
+name of project partner, if any:
+---------------------------------------------------------------------
+any feedback or questions:
+
+---------------------------------------------------------------------
+1. For each of the files that you modified, explain the algorithm that
+you implemented.  Give a general analysis of the worst-case running time 
+of the algorithm as a function of the number n of bits in the RSA key
+numbers (N and e or d as appropriate).  For rsa_decrypt and rsa_encrypt,
+also give a worst-case analysis of the running time of the entire
+main() routine (not just your subroutine), taking into account not
+only N and e or d, but also the number of lines of input
+(call this number L).
+
+(a) gen_key:
+First we generate p and q depending on if the number of the bits passed in is odd or even. We can calculate everything from there on out. The worst case running time for this function is the time it takes to calc extgcd, which is O(n**2). Once we have found the gcd = 1 then we can exit.
+
+(b) rsa_decrypt, rsa_encrypt:
+This is a general iteration through function. We take the list, and iterate through. We just encrypt and decrypt. We just perform the modulus operation on each item. This is done in O(n**3)
+
+(c) rsa_break:
+We first know that we do not need to calculate all the way to 2**n bits. We can calculate up to N/2. This cuts our list down by half. Also, we can break when we have found a value to meets our 2 conditions. (1) be a prime number (2) that number times the current iterative value is equal to N. Worst case running time for this function is still O(2**n) time.
+
+2. For rsa_break, estimate roughly how many years your routine would take 
+to break a 1000-bit key.  Explain your calculation carefully.
+
+For a 1000-bit key we would never finish. However, if by the time we are still calculating this value with normal computers, quantum computing is perfected...we would be able to do this in O(n) time.
+
+---------------------------------------------------------------------
+

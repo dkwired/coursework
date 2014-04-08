@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab7/test.xst" -ofn "C:/Documents and Settings/Embedded Systems Lab/Desktop/lab7/test.syr" 

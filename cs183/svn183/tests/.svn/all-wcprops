@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/kleind/svn183/!svn/ver/4/tests
+END
+test2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/kleind/svn183/!svn/ver/4/tests/test2.txt
+END
+check_dup_uids.sh
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/kleind/svn183/!svn/ver/4/tests/check_dup_uids.sh
+END
+check_no_problems.sh
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/kleind/svn183/!svn/ver/4/tests/check_no_problems.sh
+END
+test.txt
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/kleind/svn183/!svn/ver/4/tests/test.txt
+END

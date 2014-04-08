@@ -1,0 +1,26 @@
+Names: David Klein, William Thurston
+Login: kleind, wthur001
+Email: dklei003@ucr.edu, wthur001@ucr.edu
+Lab Section: 021
+Assignment: Lab #5
+I acknowledge all content is original.
+
+I. Lab Objective
+
+This lab was to understand and convert densely packed decimals and binary coded decimals. 
+
+II. Personal Contributions
+
+Will worked on the VHDL coding, and David helped with DCD coding logic.
+
+III. Skills Learned & Knowledge Gained
+
+Learned how to convert DCD and BCD
+
+IV. Known Bug Locations
+
+None
+
+V. Feedback on the Lab
+
+Most excellent!

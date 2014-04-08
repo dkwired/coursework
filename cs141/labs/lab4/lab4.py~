@@ -1,0 +1,107 @@
+#!/usr/bin/env python2.7
+
+import sys, timeit, random, math
+
+debug = False
+
+class LargeInt:
+   base_bits = 32
+   base = 1 << base_bits
+   base_mask = base - 1
+   
+   def __init__(self, value = 0):
+      if type(value) == list:
+         self.digits = value
+      elif type(value) == LargeInt:
+         self.digits = list(value.digits)
+      else:
+         self.digits = []  # list of bits, least-significant bit *first*
+         while value > 0:
+            self.digits.append(value & LargeInt.base_mask)
+            value /= LargeInt.base
+
+   def to_int(self):
+      value, power = 0, 1
+      for i in range(len(self.digits)):
+         value += self.digits[i] * power
+         power *= LargeInt.base
+      return value
+
+   def __str__(self):
+      return "_".join("%d" % d for d in reversed(self.digits or [0])) + (" b%d" % LargeInt.base)
+
+   def _get_ith_digit(self, i):
+      return self.digits[i] if i < len(self.digits) else 0
+
+   def add(self, other, sign = 1):
+      n = max(len(self.digits), len(other.digits))
+      result_digits = []
+      carry = 0
+
+      for i in range(n):
+         a = self._get_ith_digit(i)
+         b = other._get_ith_digit(i)
+         total = a + sign * b + carry
+         carry = total / LargeInt.base
+         total = total % LargeInt.base
+         result_digits.append(total)
+      if carry:
+         assert carry > 0, "subtracted larger from smaller %s, %s" % (self.to_int(), other.to_int())
+         result_digits.append(carry)
+
+      r = LargeInt(result_digits)
+      if debug: assert r.to_int() == self.to_int() + sign * other.to_int()
+      return r
+
+   def subtract(self, other):
+      return self.add(other, sign = -1)
+         
+   def is_zero(self):
+      return all(b == 0 for b in self.digits)
+
+   def _left_shift(self, digits = 1):
+      r = LargeInt(([0] * digits) + self.digits)
+      if debug: assert self.to_int() << (self.base_bits*digits) == r.to_int()
+      return r
+
+   def _right_shift(self, digits = 1):
+      r = LargeInt(self.digits[digits:])
+      if debug: assert self.to_int() >> (self.base_bits*digits) == r.to_int()
+      return r
+
+   def _least_significant_digits(self, digits):
+      r = LargeInt(self.digits[:digits])
+      if debug: assert self.to_int() & ((1 << (self.base_bits*digits))-1) == r.to_int()
+      return r
+
+   def multiply(self, other):
+      # TODO: your implementation here
+      # code for base case here
+
+      # helper function
+      def split(largeInt, n):
+         least = largeInt._least_significant_digits(n/2)
+         most = largeInt._right_shift(n/2)
+         if debug: assert least.to_int() + (most.to_int() << (LargeInt.base_bits*(n/2))) == largeInt.to_int()
+         return least, most
+
+      # code for recursive step here
+      return 1 # change this line with your implementation
+
+def random_large_int(bits):
+   def random_digit():
+      return int(random.random() * LargeInt.base)
+   return LargeInt([random_digit() for i in range(bits/LargeInt.base_bits)])
+
+def format(time):
+   return "%6.6g" % (time*10**6)
+
+maxbits = 600000
+n = 64
+while n <= maxbits:
+   x = random_large_int(n)
+   y = random_large_int(n)
+   time = timeit.Timer(lambda: x.multiply(y)).timeit(10)/10
+   print >>sys.stderr, n, len(x.digits), format(time), format((time) / n**1.6)
+   n *= 2
+

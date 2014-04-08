@@ -1,0 +1,452 @@
+package edu.ucr.cs166;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.lang.NumberFormatException;
+
+public class ConsolePrompts {
+
+	//private static final String GENRE_DATA_FILE_PATH = "../../../../dataset/genre.data";
+	//private static final String VIDEO_DATA_FILE_PATH = "../../../../dataset/video.data";
+	private static final String GENRE_DATA_FILE_PATH = "../dataset/genre.data";
+	private static final String VIDEO_DATA_FILE_PATH = "../dataset/video.data";
+
+	private static BufferedReader in = new BufferedReader(
+		new InputStreamReader(System.in));
+
+	public static void Greeting(){
+		System.out.println(
+			"\n\n*******************************************************\n" +
+			"              User Interface      	               \n" +
+			"*******************************************************\n");
+	}
+	
+	////////////////////////////////////////////////////////////////
+	// Menus
+	////////////////////////////////////////////////////////////////
+	
+	public static int getMainMenuChoice() {
+		clearScreen();
+		System.out.println("MAIN MENU");
+		System.out.println("---------");
+		System.out.println("0. Register as a new user");
+		System.out.println("1. User login");
+		System.out.println("2. System administrator login");
+		System.out.println("3. < EXIT");
+
+		return getMenuChoice(0, 3);
+	}
+	
+	//TODO
+	public static int getUserMenuChoice() {
+		clearScreen();
+		System.out.println("USER MENU");
+		System.out.println("---------");
+		System.out.println("0. Order a movie");
+		System.out.println("1. Comment on a movie");
+		System.out.println("2. View other users' movie comments");
+		System.out.println("3. Rank a movie");
+		System.out.println("4. Add a movie to your favorites list");
+		System.out.println("5. View information of those whom you follow");
+		System.out.println("6. Follow or stop following another user");
+		System.out.println("7. Check your current account balance");
+		System.out.println("8. Add money to your account");
+		System.out.println("9. Add movie genres to your preferred list");
+		System.out.println("10. Set favorites list view permission"); //TODO needed?
+		System.out.println("11. Set follow permissions for other users"); //TODO needed?
+		System.out.println("12. Change your address information");
+		System.out.println("13. Change your password");
+		System.out.println("14. < LOGOUT");
+
+		return getMenuChoice(0, 14);
+	}
+	
+	//TODO
+	public static int getAdminMenuChoice() {
+		clearScreen();
+		System.out.println("SYSTEM ADMINISTRATION MENU");
+		System.out.println("---------");
+		System.out.println("0. Register a new movie");
+		System.out.println("1. Register a new series");
+		System.out.println("2. Remove users");
+		System.out.println("3. Remove user comments");
+		System.out.println("4. < LOGOUT");
+
+		return getMenuChoice(0, 4);
+	}
+	
+	public static int getMenuChoice(int min, int max) {
+		int input = Integer.MAX_VALUE;
+		// returns only if a correct value is given.
+		while(true) {
+			System.out.print("Please make your choice: ");
+			try { // read the integer, parse it and break.
+				input = Integer.parseInt(in.readLine());
+			} catch (Exception e) {/*do nothing*/}
+			if(input >= min && input <= max)
+				break;
+			System.out.println("You must choose a number between "+min+" and "+max+".");
+		}
+		return input;
+	}
+	
+	////////////////////////////////////////////////////////////////
+	// User Prompts
+	////////////////////////////////////////////////////////////////
+	
+	public static String[] getUserName() {
+		String[] names = new String[3];
+		String msgPrefix = "Please enter your ";
+		String msgPostfix = " name (39 characters max): ";
+		String[] msgNames = {"first", "middle", "last"};
+		String buf = "";
+		for(int i = 0; i < names.length; ++i) {
+			System.out.print("\n" + msgPrefix + msgNames[i] + msgPostfix);
+			buf = getStdInLine();
+			if(buf.length() == 0 && msgNames[i].compareTo("middle") != 0)
+				System.out.println("You must provide your " + msgNames[i--] + " name in order to register.");
+			else
+				names[i] = buf;
+		}
+		return names;
+	}
+	
+	public static String[] getUserCredentials() {
+		String[] id = new String[2];
+		String buf = "";
+		
+		while(true) {
+			System.out.print("\nPlease enter your new user ID (5 to 8 characters): ");
+			buf = getStdInLine();
+			if(buf.length() > 4 && buf.length() < 9)
+				break;
+			System.out.println("Your user ID must be between 5 and 8 characters long.");
+		}
+		id[0] = buf;
+		while(true) {
+			System.out.print("\nPlease enter a new password (9 to 35 characters): ");
+			buf = getStdInLine();
+			if(buf.length() > 8 && buf.length() < 36)
+				break;
+			System.out.println("Your password must be between 9 and 35 characters long.");
+		}
+		id[1] = buf;
+		return id;
+	}
+	
+	public static String getUserEmail() {
+		String email = "";
+		while(true) {
+			System.out.print("\nPlease enter your primary email address: ");
+			email = getStdInLine();
+			if(email.matches("[^@]+@[^@]+\\.[^@]+"))
+				break;
+			System.out.println("That is not a valid email address.");
+		}
+		return email;
+	}
+	
+	public static String[] getUserAddress() {
+		String[] address = new String[5];
+		String[][] msgs = {{"street1: ",".*"},{"street2: ",".*"},
+			{"state: ","[a-zA-Z]*"},{"country: ","[a-zA-Z]*"},{"zip code: ","([0-9]{5})?"}};
+		String buf = "";
+		System.out.println("\nPlease enter your address information (required for DVD purchases)");
+		for(int i = 0; i < msgs.length; ++i) {
+			System.out.print(msgs[i][0]);
+			buf = getStdInLine();
+			if(buf.matches(msgs[i][1])) {
+				address[i] = buf;
+				continue;
+			}
+			System.out.println("Invalid entry: "+buf);
+			--i;
+		}
+		return address;
+	}
+	
+	/**
+	 * Returns video_id and price
+	 */
+	public static ArrayList<VideoOrder> getUserOrderInfo() {
+		ArrayList<VideoOrder> order = new ArrayList<VideoOrder>();
+		String mov = "";
+		String type = "";
+		VideoOrder vo;
+		System.out.println("\nPlease make your selection(s) ");
+		while(true) {
+			System.out.print("\nMovie ID: ");
+			mov = getStdInLine();
+			if(mov.length() == 0)
+				break;
+			System.out.print("Online (1) or DVD (2): ");
+			type = getStdInLine();
+			if(type.compareTo("1") != 0 && type.compareTo("2") != 0) {
+				System.out.println("You must choose either 1 or 2 for Online or DVD");
+				continue;
+			}
+			vo = new VideoOrder();
+			vo.video_id = mov;
+			if(type.compareTo("1") == 0)
+				vo.type = 1;
+			else
+				vo.type = 2;
+			order.add(vo);
+		}
+		return order;
+	}
+	
+	public static String[] getUserComment() {
+		String[] comment = new String[2];
+		String buf = "";
+		while(true) {
+			System.out.print("\nWhat movie id would you like to comment on?: ");
+			buf = getStdInLine();
+			if(buf.compareTo("x") == 0 || buf.compareTo("X") == 0)
+				return null;
+			if(buf.length() == 0) {
+				System.out.println("Please select a movie id or enter 'x' to exit.");
+				continue;
+			}
+			comment[0] = buf;
+			break;
+		}
+		while(true) {
+			System.out.print("\nPlease provide your comment (299 character max): ");
+			buf = getStdInLine();
+			if(buf.compareTo("x") == 0 || buf.compareTo("X") == 0) {
+				return null;
+			} else if(buf.length() == 0) {
+				System.out.println("Your comment cannot be blank.  You may also enter 'x' to exit.");
+				continue;
+			}
+			comment[1] = buf;
+			break;
+		}
+		return comment;
+	}
+	
+	public static String[] getUserRank() {
+		String[] rank = new String[2];
+		String buf = "";
+		while(true) {
+			System.out.print("\nWhat movie number would you like to rank?: ");
+			buf = getStdInLine();
+			if(buf.compareTo("x") == 0 || buf.compareTo("X") == 0) {
+				return null;
+			}
+			if(buf.length() == 0) {
+				System.out.println("Please select a movie id or enter 'x' to exit.");
+				continue;
+			}
+			rank[0] = buf;
+			break;
+		}
+		int i;
+		while(true) {
+			System.out.print("\nPlease provide a ranking between 0 and 10: ");
+			buf = getStdInLine();
+			if(buf.compareTo("x") == 0 || buf.compareTo("X") == 0)
+				return null;
+			i = -1;
+			try {
+				i = Integer.parseInt(buf);
+			} catch(NumberFormatException e) {/*do nothing*/}
+			
+			if(i < 0 || i > 10) {
+				System.out.println("The rank must be a value between 0 and 10.  You may also enter 'x' to exit.");
+				continue;
+			}
+			rank[1] = buf;
+			break;
+		}
+		return rank;
+	}
+	
+	public static ArrayList<String> getUserPreferredGenres() {
+		ArrayList<String> prefs = new ArrayList<String>();
+
+		System.out.print("\nMake your selection(s): ");
+		String buf = getStdInLine();
+		if(buf.length() == 0)
+			return prefs;
+		String[] choices = buf.split("\\s+");
+		for(int i = 0; i < choices.length; ++i)
+			prefs.add(choices[i]);
+		return prefs;
+	}
+	
+	public static ArrayList<String> getUserFavorites() {
+		ArrayList<String> favs = new ArrayList<String>();
+		System.out.print("\nMake your selection(s): ");
+		String buf = getStdInLine();
+		if(buf == "")
+			return favs;
+		String[] choices = buf.split("\\s+");
+		for(int i = 0; i < choices.length; ++i)
+			favs.add(choices[i]);
+		return favs;
+	}
+	
+	public static String getUserMoneyAmount() {
+		System.out.println("\nHow much money would you like to transfer to this account?");
+		String buf = "";
+		int i;
+		while(true) {
+			System.out.print("Enter a whole dollar value only (no change): ");
+			buf = getStdInLine();
+			if(buf.compareTo("x") == 0 || buf.compareTo("X") == 0)
+				return "";
+			i = -1;
+			try {
+				i = Integer.parseInt(buf);
+			} catch(NumberFormatException e) {/*do nothing*/}
+			if(i < 1) {
+				System.out.println("You must enter a positive dollar value.  You may also enter 'x' to exit.\n");
+				continue;
+			}
+			break;
+		}
+		return buf;
+	}
+	
+	public static String getNewUserPassword() {
+		String pwd = "";
+		while(true) {
+			System.out.print("\nPlease enter a new password (9 to 35 characters): ");
+			pwd = getStdInLine();
+			if(pwd.compareTo("x") == 0 || pwd.compareTo("X") == 0)
+				return "";
+			if(pwd.length() != 8) {
+				System.out.println("You must provide a password between 9 and 35 characters long.\nYou may also enter 'x' to exit.");
+				continue;
+			}
+			break;
+		}
+		return pwd;
+	}
+	
+	////////////////////////////////////////////////////////////////
+	// Admin Prompts
+	////////////////////////////////////////////////////////////////
+	
+	public static String[] getNewMovieInfo() {
+		String[] info = new String[4];
+		String[] msg = {"Title (39 characters max): ","Release year (yyyy): ","Online price (whole dollars): ",
+			"DVD price (whole dollars): "};
+		clearScreen();
+		System.out.println("Please enter the following information for the new movie.");
+		for(int i = 0; i < msg.length; ++i) {
+			System.out.print(msg[i]);
+			info[i] = getStdInLine();
+		}
+		return info;
+	}
+	
+	public static String[] getNewSeriesInfo() {
+		String[] info = new String[6];
+		String[] msg = {"Title (39 characters max): ","Release year (yyyy): ","Online price (whole dollars): ",
+			"DVD price (whole dollars): ","Episode name (8 characters max): ","Season number: "};
+		clearScreen();
+		System.out.println("Please enter the following information for the new series.");
+		for(int i = 0; i < msg.length; ++i) {
+			System.out.print(msg[i]);
+			info[i] = getStdInLine();
+		}
+		return info;
+	}
+	
+	////////////////////////////////////////////////////////////////
+	// General Prompts
+	////////////////////////////////////////////////////////////////
+	
+	public static String[] getLoginInfo() {
+		String[] info = new String[2];
+		System.out.print("\nPlease enter your user id: ");
+		info[0] = getStdInLine();
+		System.out.print("\nPlease enter your password: ");
+		info[1] = getStdInLine();
+		return info;
+	}
+	
+	public static String getMovieSelection() {
+		String buf = "";
+		
+		clearScreen();
+		System.out.println("Please choose a movie number from the list below.");
+		HashMap<String, String[]> movInfo = printMovieInfo();
+		while(true) {
+			System.out.print("\nChoose a movie number: ");
+			buf = getStdInLine();
+			if(buf.compareTo("x") == 0 || buf.compareTo("X") == 0)
+				return "";
+			else if(!movInfo.containsKey(buf)) {
+				System.out.println("You must provide a valid movie number.  You may also enter 'x' to exit.");
+				continue;
+			}
+			break;
+		}
+		return buf;
+	}
+	
+	public static String getCommentID() {
+		System.out.print("\nSelect a comment id from those above: ");
+		String buf = getStdInLine();
+		return buf;
+	}
+	
+	public static String getUserID() {
+		System.out.print("\nType in the user id exactly as shown in the list: ");
+		String id = getStdInLine();
+		return id;
+	}
+	
+	////////////////////////////////////////////////////////////////
+	// Other
+	////////////////////////////////////////////////////////////////
+	
+	private static HashMap<String, String[]> printMovieInfo() {
+		ArrayList<String> movies = FileIO.readFileLines(VIDEO_DATA_FILE_PATH);
+		HashMap<String, String[]> movInfo = new HashMap<String, String[]>();
+		String[] data;
+		String format = "%-5.5s %-50.50s %-15.15s %-15.15s %-15.15s%n";
+		System.out.printf(format, "ID","TITLE","RELEASE YEAR","ONLINE PRICE","DVD PRICE");
+		for(int i = 0; i < movies.size(); ++i) {
+			data = movies.get(i).split(";");
+			movInfo.put(data[0], data);
+			System.out.printf(format, data[0].trim(), data[1].trim(), data[2].trim(), "$"+data[3].trim(), "$"+data[4].trim());
+		}
+		return movInfo;
+	}
+	
+	public static void clearScreen() {
+		int newLines = 40;
+		for(int i = 0; i < newLines; ++i)
+			System.out.println();
+	}
+	
+	public static void waitOnKeyPress() {
+		System.out.print("Press [Enter] to continue...");
+		try { in.readLine(); } catch(IOException e) {/*do nothing*/}
+	}
+	
+	public static class VideoOrder {
+		public String video_id;
+		public int type;
+	}
+	
+	public static String getStdInLine() {
+		String buf = "";
+		try {
+			buf = in.readLine();
+		} catch(IOException e) {
+			System.out.println("Invalid input!");
+		}
+		return buf;
+	}
+	
+}
+

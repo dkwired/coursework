@@ -1,0 +1,493 @@
+
+starting timer
+
+creating thread  Idler 
+
+creating thread IntCatcher
+
+creating thread  Owner #1
+
+creating thread  Owner #2
+
+Starting thread 
+Starting thread 
+creating thread  Owner #3
+ Owner #1
+creating thread Sharer #1
+IntCatcher
+creating thread 
+Starting thread 
+Starting thread Sharer #2
+
+creating thread Sharer #3
+
+Starting thread Sharer #1 pt=47607827831104
+
+Ln 574 of    start by Sharer #1/1/0/none: waiting for my first CPU ...
+
+Ln 576 of    start by Sharer #1/0/0/none: got my first CPU
+
+Starting thread 
+Starting thread  Owner #2 pt=47607796361536
+
+Starting thread 
+Ln 574 pt=47607806851392
+ Idler  pt=47607785871680
+Ln 574 of    start by  pt=47607941069120 Owner #2/0/0/none: 
+ Owner #3 pt=47607817341248
+
+Ln 574 of    start    
+Ln 574 of Sharer #2 pt=47607911024960
+
+
+Ln 574Sharer #3waiting for my first CPU ...
+ of    start by    start by IntCatcher/0/0/none:  by  Owner #3/0/0/none: waiting for my first CPU ...
+ Owner #1/0/0/none: 
+Ln 574
+Ln waiting for my first CPU ...
+waiting for my first CPU ...
+
+Ln 202 of  suspend by IntCatcher/0/2/IntCatcher: Suspending thread 
+     of  pt=47607921514816    
+Ln 202 of 
+Ln 202 of    start by Sharer #2/0/0/none: waiting for my first CPU ...
+   start by  Idler /0/0/none: 
+Ln 202 of  suspend     202 suspend
+ by 
+Ln 574waiting for my first CPU ...
+
+Ln 202 of  suspend by  Idler /0/6/ Idler : Suspending thread 
+ by  Owner #1/0/4/IntCatcher: Suspending thread 
+     of  suspend by  Owner #2/0/3/IntCatcher: Suspending thread 
+ of Sharer #2/0/5/IntCatcher: Suspending thread 
+ suspend by  Owner #3/0/1/ Owner #3:      of Suspending thread 
+   start by Sharer #3/0/5/IntCatcher: waiting for my first CPU ...
+
+Ln 202 of  suspend by Sharer #3/0/7/ Idler : Suspending thread 
+
+Ln 578 of    start by Sharer #1/0/7/ Idler : exiting and releasing cpu.
+
+Ln 208 of   resume by Sharer #1/1/6/IntCatcher: Resuming 
+
+Ln 204 of  suspend by  Idler /1/6/IntCatcher: Unsuspended thread 
+
+Ln 576 of    start by  Idler /0/6/IntCatcher: got my first CPU
+
+Ln 422 of   action by  Idler /0/6/IntCatcher: Idler running
+
+Ln 425 of   action by  Idler /0/6/IntCatcher: calling wakeme_at
+
+Ln 396 of wakeme_at by  Idler /0/6/IntCatcher:  ->wakeup wait 
+
+Ln 586 of     wait by  Idler /0/6/IntCatcher: releasing CPU just prior to wait.
+
+Ln 208 of   resume by  Idler /1/5/ Owner #3: Resuming 
+
+Ln 589 of     wait by  Idler /1/5/ Owner #3: WAITING
+
+Ln 202 of  suspend by  Idler /1/5/ Owner #3: Suspending thread 
+
+Ln 204 of  suspend by IntCatcher/1/5/ Owner #3: Unsuspended thread 
+
+Ln 576 of    start by IntCatcher/0/5/ Owner #3: got my first CPU
+
+Ln 612 of   action by IntCatcher/0/5/ Owner #3: now running
+
+Ln 208 of   resume by IntCatcher/1/4/ Owner #2: Resuming 
+
+Ln 204 of  suspend by  Owner #3/1/4/ Owner #2: Unsuspended thread 
+
+Ln 576 of    start by  Owner #3/0/4/ Owner #2: got my first CPU
+
+Ln 578 of    start by  Owner #3/0/4/ Owner #2: exiting and releasing cpu.
+
+Ln 208 of   resume by  Owner #3/1/3/ Owner #1: Resuming 
+
+Ln 204 of  suspend by  Owner #2/1/3/ Owner #1: Unsuspended thread 
+
+Ln 576 of    start by  Owner #2/0/3/ Owner #1: got my first CPU
+
+Ln 556 of  handler by IntCatcher/0/3/ Owner #1: TICK 0
+
+Ln 407 of     tick by IntCatcher/0/3/ Owner #1: now=0 alarm=5 sleepers=1
+
+Ln 559 of  handler by IntCatcher/0/3/ Owner #1: DEFERRING 
+
+Ln 616 of   action by IntCatcher/0/3/ Owner #1:  requesting CPU.
+
+Ln 202 of  suspend by IntCatcher/0/4/IntCatcher: Suspending thread 
+
+Ln 578 of    start by  Owner #2/0/4/IntCatcher: exiting and releasing cpu.
+
+Ln 208 of   resume by  Owner #2/1/3/ Owner #1: Resuming 
+
+Ln 204 of  suspend by IntCatcher/1/3/ Owner #1: Unsuspended thread 
+
+Ln 208 of   resume by IntCatcher/1/2/Sharer #2: Resuming 
+
+Ln 204 of  suspend by  Owner #1/1/2/Sharer #2: Unsuspended thread 
+
+Ln 576 of    start by  Owner #1/0/2/Sharer #2: got my first CPU
+
+Ln 578 of    start by  Owner #1/0/2/Sharer #2: exiting and releasing cpu.
+
+Ln 208 of   resume by  Owner #1/1/1/Sharer #3: Resuming 
+
+Ln 204 of  suspend by Sharer #2/1/1/Sharer #3: Unsuspended thread 
+
+Ln 576 of    start by Sharer #2/0/1/Sharer #3: got my first CPU
+
+Ln 578 of    start by Sharer #2/0/1/Sharer #3: exiting and releasing cpu.
+
+Ln 208 of   resume by Sharer #2/1/0/none: Resuming 
+
+Ln 204 of  suspend by Sharer #3/1/0/none: Unsuspended thread 
+
+Ln 576 of    start by Sharer #3/0/0/none: got my first CPU
+
+Ln 578 of    start by Sharer #3/0/0/none: exiting and releasing cpu.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 1
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=1 alarm=5 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 2
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=2 alarm=5 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 3
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=3 alarm=5 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 4
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=4 alarm=5 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 5
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=5 alarm=5 sleepers=1
+
+Ln 246 of   signal by IntCatcher/1/0/none: Signalling
+
+Ln 208 of   resume by IntCatcher/1/0/none: Resuming 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 204 of  suspend by  Idler /1/0/none: Unsuspended thread 
+
+Ln 398 of wakeme_at by  Idler /0/0/none:  wakeup-> 
+
+Ln 425 of   action by  Idler /0/0/none: calling wakeme_at
+
+Ln 396 of wakeme_at by  Idler /0/0/none:  ->wakeup wait 
+
+Ln 586 of     wait by  Idler /0/0/none: releasing CPU just prior to wait.
+
+Ln 589 of     wait by  Idler /1/0/none: WAITING
+
+Ln 202 of  suspend by  Idler /1/0/none: Suspending thread 
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 6
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=6 alarm=10 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 7
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=7 alarm=10 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 8
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=8 alarm=10 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 9
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=9 alarm=10 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 10
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=10 alarm=10 sleepers=1
+
+Ln 246 of   signal by IntCatcher/1/0/none: Signalling
+
+Ln 208 of   resume by IntCatcher/1/0/none: Resuming 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 204 of  suspend by  Idler /1/0/none: Unsuspended thread 
+
+Ln 398 of wakeme_at by  Idler /0/0/none:  wakeup-> 
+
+Ln 425 of   action by  Idler /0/0/none: calling wakeme_at
+
+Ln 396 of wakeme_at by  Idler /0/0/none:  ->wakeup wait 
+
+Ln 586 of     wait by  Idler /0/0/none: releasing CPU just prior to wait.
+
+Ln 589 of     wait by  Idler /1/0/none: WAITING
+
+Ln 202 of  suspend by  Idler /1/0/none: Suspending thread 
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 11
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=11 alarm=15 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 12
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=12 alarm=15 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 13
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=13 alarm=15 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 14
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=14 alarm=15 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 15
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=15 alarm=15 sleepers=1
+
+Ln 246 of   signal by IntCatcher/1/0/none: Signalling
+
+Ln 208 of   resume by IntCatcher/1/0/none: Resuming 
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 204 of  suspend by  Idler /1/0/none: Unsuspended thread 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 398 of wakeme_at by  Idler /0/0/none:  wakeup-> 
+
+Ln 202 of  suspend by IntCatcher/0/1/IntCatcher: Suspending thread 
+
+Ln 425 of   action by  Idler /0/1/IntCatcher: calling wakeme_at
+
+Ln 396 of wakeme_at by  Idler /0/1/IntCatcher:  ->wakeup wait 
+
+Ln 586 of     wait by  Idler /0/1/IntCatcher: releasing CPU just prior to wait.
+
+Ln 208 of   resume by  Idler /1/0/none: Resuming 
+
+Ln 589 of     wait by  Idler /1/0/none: WAITING
+
+Ln 202 of  suspend by  Idler /1/0/none: Suspending thread 
+
+Ln 204 of  suspend by IntCatcher/1/0/none: Unsuspended thread 
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 16
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=16 alarm=20 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 17
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=17 alarm=20 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 18
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=18 alarm=20 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 19
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=19 alarm=20 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 20
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=20 alarm=20 sleepers=1
+
+Ln 246 of   signal by IntCatcher/1/0/none: Signalling
+
+Ln 208 of   resume by IntCatcher/1/0/none: Resuming 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 204 of  suspend by  Idler /1/0/none: Unsuspended thread 
+
+Ln 398 of wakeme_at by  Idler /0/0/none:  wakeup-> 
+
+Ln 425 of   action by  Idler /0/0/none: calling wakeme_at
+
+Ln 396 of wakeme_at by  Idler /0/0/none:  ->wakeup wait 
+
+Ln 586 of     wait by  Idler /0/0/none: releasing CPU just prior to wait.
+
+Ln 589 of     wait by  Idler /1/0/none: WAITING
+
+Ln 202 of  suspend by  Idler /1/0/none: Suspending thread 
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 21
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=21 alarm=25 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 22
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=22 alarm=25 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 23
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=23 alarm=25 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 24
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=24 alarm=25 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 25
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=25 alarm=25 sleepers=1
+
+Ln 246 of   signal by IntCatcher/1/0/none: Signalling
+
+Ln 208 of   resume by IntCatcher/1/0/none: Resuming 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 204 of  suspend by  Idler /1/0/none: Unsuspended thread 
+
+Ln 398 of wakeme_at by  Idler /0/0/none:  wakeup-> 
+
+Ln 425 of   action by  Idler /0/0/none: calling wakeme_at
+
+Ln 396 of wakeme_at by  Idler /0/0/none:  ->wakeup wait 
+
+Ln 586 of     wait by  Idler /0/0/none: releasing CPU just prior to wait.
+
+Ln 589 of     wait by  Idler /1/0/none: WAITING
+
+Ln 202 of  suspend by  Idler /1/0/none: Suspending thread 
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 26
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=26 alarm=30 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 27
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=27 alarm=30 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 28
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=28 alarm=30 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 29
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=29 alarm=30 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 30
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=30 alarm=30 sleepers=1
+
+Ln 246 of   signal by IntCatcher/1/0/none: Signalling
+
+Ln 208 of   resume by IntCatcher/1/0/none: Resuming 
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 
+Ln 204 of  suspend by 616 Idler /1/0/none: Unsuspended thread 
+ of 
+Ln 398     of wakeme_at  action by IntCatcher/1/0/none:  requesting CPU.
+ by  Idler /0/0/none:  wakeup-> 
+
+Ln 425 of   action by  Idler /0/1/IntCatcher: calling wakeme_at
+
+Ln 
+Ln 396 of wakeme_at by  Idler /0/1/IntCatcher:  ->wakeup wait 202
+ of 
+Ln 586 of     wait by  Idler /0/1/IntCatcher: releasing CPU just prior to wait.
+
+Ln 208 of   resume by  Idler /1/0/none:  suspendResuming 
+
+Ln 589 of  by     wait by IntCatcher/0/1/IntCatcher: Suspending thread 
+ Idler /1/0/none: WAITING
+
+Ln 202 of  suspend
+Ln 204 of  suspend by  by  Idler /1/0/none: Suspending thread 
+IntCatcher/1/0/none: Unsuspended thread 
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 31
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=31 alarm=35 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 32
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=32 alarm=35 sleepers=1
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 33
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=33 alarm=35 sleepers=1
+
+Ln 559 of  handler by IntCatcher/1/0/none: DEFERRING 
+
+Ln 616 of   action by IntCatcher/1/0/none:  requesting CPU.
+
+Ln 556 of  handler by IntCatcher/1/0/none: TICK 34
+
+Ln 407 of     tick by IntCatcher/1/0/none: now=34 alarm=35 sleepers=1
+run: main.cc:562: static void InterruptSystem::handler(int): Assertion `tickcount < 35' failed.

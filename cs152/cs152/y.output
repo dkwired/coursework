@@ -1,0 +1,1825 @@
+Terminals which are not used
+
+   EQUAL
+   LINE
+
+
+State 58 conflicts: 1 shift/reduce
+State 119 conflicts: 2 shift/reduce
+State 120 conflicts: 2 shift/reduce
+State 135 conflicts: 2 shift/reduce
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 @1: /* empty */
+
+    2 @2: /* empty */
+
+    3 @3: /* empty */
+
+    4 program: PROGRAM @1 IDENT @2 SEMI @3 block ENDPROGRAM
+
+    5 @4: /* empty */
+
+    6 block: decl_block BEGINPROGRAM @4 stmt_block
+
+    7 decl_block: /* empty */
+
+    8 @5: /* empty */
+
+    9 decl_block: declaration SEMI @5 decl_block
+
+   10 @6: /* empty */
+
+   11 declaration: ident_block COLON @6 array_block INT
+
+   12 ident_block: /* empty */
+   13            | IDENT
+
+   14 @7: /* empty */
+
+   15 @8: /* empty */
+
+   16 ident_block: IDENT @7 COMMA @8 ident_block
+
+   17 array_block: /* empty */
+
+   18 @9: /* empty */
+
+   19 @10: /* empty */
+
+   20 @11: /* empty */
+
+   21 @12: /* empty */
+
+   22 array_block: ARRAY @9 LPAR @10 NUM @11 RPAR @12 OF
+
+   23 stmt_block: /* empty */
+
+   24 @13: /* empty */
+
+   25 stmt_block: statement SEMI @13 stmt_block
+
+   26 statement: stmt_var
+   27          | stmt_if
+   28          | stmt_while
+   29          | stmt_do
+   30          | stmt_read
+   31          | stmt_write
+   32          | CONTINUE
+
+   33 @14: /* empty */
+
+   34 stmt_var: var ASSIGN @14 expression
+
+   35 @15: /* empty */
+
+   36 @16: /* empty */
+
+   37 stmt_if: IF @15 bool_exp THEN @16 stmt_block stmt_else ENDIF
+
+   38 stmt_else: /* empty */
+
+   39 @17: /* empty */
+
+   40 stmt_else: ELSE @17 stmt_block
+
+   41 @18: /* empty */
+
+   42 @19: /* empty */
+
+   43 stmt_while: WHILE @18 bool_exp BEGINLOOP @19 stmt_block ENDLOOP
+
+   44 @20: /* empty */
+
+   45 @21: /* empty */
+
+   46 @22: /* empty */
+
+   47 @23: /* empty */
+
+   48 stmt_do: DO @20 BEGINLOOP @21 stmt_block ENDLOOP @22 WHILE @23 bool_exp
+
+   49 @24: /* empty */
+
+   50 stmt_read: READ @24 var_block
+
+   51 @25: /* empty */
+
+   52 stmt_write: WRITE @25 var_block
+
+   53 var_block: /* empty */
+   54          | var
+
+   55 @26: /* empty */
+
+   56 var_block: var COMMA @26 var_block
+
+   57 bool_exp: relation_and_expression relation_and_expression_block
+
+   58 relation_and_expression: relation_expression relation_expression_block
+
+   59 relation_and_expression_block: /* empty */
+
+   60 @27: /* empty */
+
+   61 relation_and_expression_block: OR @27 relation_and_expression relation_and_expression_block
+
+   62 relation_expression_block: /* empty */
+
+   63 @28: /* empty */
+
+   64 relation_expression_block: AND @28 relation_expression relation_expression_block
+
+   65 relation_expression: not_rule expression compare expression
+   66                    | not_rule TRUE
+   67                    | not_rule FALSE
+
+   68 @29: /* empty */
+
+   69 relation_expression: not_rule LPAR @29 bool_exp RPAR
+
+   70 not_rule: /* empty */
+   71         | NOT
+
+   72 compare: EQUALTO
+   73        | LTHAN
+   74        | GTHAN
+   75        | NOTEQUAL
+   76        | LETO
+   77        | GETO
+
+   78 expression: multi_exp multi_exp_block
+
+   79 multi_exp_block: /* empty */
+   80                | PLUS multi_exp multi_exp_block
+   81                | MIN multi_exp multi_exp_block multi_exp_block
+
+   82 multi_exp: term term_block
+
+   83 term_block: /* empty */
+   84           | MULT term term_block
+   85           | DIV term term_block
+   86           | MOD term term_block
+
+   87 term: min_rule var
+   88     | min_rule NUM
+   89     | min_rule LPAR expression RPAR
+
+   90 min_rule: /* empty */
+   91         | MIN
+
+   92 var: IDENT
+
+   93 @30: /* empty */
+
+   94 var: IDENT LPAR @30 expression RPAR
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+PROGRAM (258) 4
+ENDPROGRAM (259) 4
+BEGINPROGRAM (260) 6
+ARRAY (261) 22
+IF (262) 37
+OF (263) 22
+INT (264) 11
+THEN (265) 37
+ELSE (266) 40
+ENDIF (267) 37
+WHILE (268) 43 48
+DO (269) 48
+READ (270) 50
+ENDLOOP (271) 43 48
+BEGINLOOP (272) 43 48
+WRITE (273) 52
+CONTINUE (274) 32
+OR (275) 61
+NOT (276) 71
+AND (277) 64
+TRUE (278) 66
+FALSE (279) 67
+EQUAL (280)
+LINE (281)
+PLUS (282) 80
+MIN (283) 81 91
+DIV (284) 85
+MULT (285) 84
+MOD (286) 86
+LPAR (287) 22 69 89 94
+RPAR (288) 22 69 89 94
+SEMI (289) 4 9 25
+COLON (290) 11
+COMMA (291) 16 56
+LETO (292) 76
+GETO (293) 77
+LTHAN (294) 73
+GTHAN (295) 74
+NOTEQUAL (296) 75
+EQUALTO (297) 72
+ASSIGN (298) 34
+NUM (299) 22 88
+IDENT (300) 4 13 16 92 94
+
+
+Nonterminals, with rules where they appear
+
+$accept (46)
+    on left: 0
+program (47)
+    on left: 4, on right: 0
+@1 (48)
+    on left: 1, on right: 4
+@2 (49)
+    on left: 2, on right: 4
+@3 (50)
+    on left: 3, on right: 4
+block (51)
+    on left: 6, on right: 4
+@4 (52)
+    on left: 5, on right: 6
+decl_block (53)
+    on left: 7 9, on right: 6 9
+@5 (54)
+    on left: 8, on right: 9
+declaration (55)
+    on left: 11, on right: 9
+@6 (56)
+    on left: 10, on right: 11
+ident_block (57)
+    on left: 12 13 16, on right: 11 16
+@7 (58)
+    on left: 14, on right: 16
+@8 (59)
+    on left: 15, on right: 16
+array_block (60)
+    on left: 17 22, on right: 11
+@9 (61)
+    on left: 18, on right: 22
+@10 (62)
+    on left: 19, on right: 22
+@11 (63)
+    on left: 20, on right: 22
+@12 (64)
+    on left: 21, on right: 22
+stmt_block (65)
+    on left: 23 25, on right: 6 25 37 40 43 48
+@13 (66)
+    on left: 24, on right: 25
+statement (67)
+    on left: 26 27 28 29 30 31 32, on right: 25
+stmt_var (68)
+    on left: 34, on right: 26
+@14 (69)
+    on left: 33, on right: 34
+stmt_if (70)
+    on left: 37, on right: 27
+@15 (71)
+    on left: 35, on right: 37
+@16 (72)
+    on left: 36, on right: 37
+stmt_else (73)
+    on left: 38 40, on right: 37
+@17 (74)
+    on left: 39, on right: 40
+stmt_while (75)
+    on left: 43, on right: 28
+@18 (76)
+    on left: 41, on right: 43
+@19 (77)
+    on left: 42, on right: 43
+stmt_do (78)
+    on left: 48, on right: 29
+@20 (79)
+    on left: 44, on right: 48
+@21 (80)
+    on left: 45, on right: 48
+@22 (81)
+    on left: 46, on right: 48
+@23 (82)
+    on left: 47, on right: 48
+stmt_read (83)
+    on left: 50, on right: 30
+@24 (84)
+    on left: 49, on right: 50
+stmt_write (85)
+    on left: 52, on right: 31
+@25 (86)
+    on left: 51, on right: 52
+var_block (87)
+    on left: 53 54 56, on right: 50 52 56
+@26 (88)
+    on left: 55, on right: 56
+bool_exp (89)
+    on left: 57, on right: 37 43 48 69
+relation_and_expression (90)
+    on left: 58, on right: 57 61
+relation_and_expression_block (91)
+    on left: 59 61, on right: 57 61
+@27 (92)
+    on left: 60, on right: 61
+relation_expression_block (93)
+    on left: 62 64, on right: 58 64
+@28 (94)
+    on left: 63, on right: 64
+relation_expression (95)
+    on left: 65 66 67 69, on right: 58 64
+@29 (96)
+    on left: 68, on right: 69
+not_rule (97)
+    on left: 70 71, on right: 65 66 67 69
+compare (98)
+    on left: 72 73 74 75 76 77, on right: 65
+expression (99)
+    on left: 78, on right: 34 65 89 94
+multi_exp_block (100)
+    on left: 79 80 81, on right: 78 80 81
+multi_exp (101)
+    on left: 82, on right: 78 80 81
+term_block (102)
+    on left: 83 84 85 86, on right: 82 84 85 86
+term (103)
+    on left: 87 88 89, on right: 82 84 85 86
+min_rule (104)
+    on left: 90 91, on right: 87 88 89
+var (105)
+    on left: 92 94, on right: 34 54 56 87
+@30 (106)
+    on left: 93, on right: 94
+
+
+state 0
+
+    0 $accept: . program $end
+
+    PROGRAM  shift, and go to state 1
+
+    program  go to state 2
+
+
+state 1
+
+    4 program: PROGRAM . @1 IDENT @2 SEMI @3 block ENDPROGRAM
+
+    $default  reduce using rule 1 (@1)
+
+    @1  go to state 3
+
+
+state 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 4
+
+
+state 3
+
+    4 program: PROGRAM @1 . IDENT @2 SEMI @3 block ENDPROGRAM
+
+    IDENT  shift, and go to state 5
+
+
+state 4
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+state 5
+
+    4 program: PROGRAM @1 IDENT . @2 SEMI @3 block ENDPROGRAM
+
+    $default  reduce using rule 2 (@2)
+
+    @2  go to state 6
+
+
+state 6
+
+    4 program: PROGRAM @1 IDENT @2 . SEMI @3 block ENDPROGRAM
+
+    SEMI  shift, and go to state 7
+
+
+state 7
+
+    4 program: PROGRAM @1 IDENT @2 SEMI . @3 block ENDPROGRAM
+
+    $default  reduce using rule 3 (@3)
+
+    @3  go to state 8
+
+
+state 8
+
+    4 program: PROGRAM @1 IDENT @2 SEMI @3 . block ENDPROGRAM
+
+    IDENT  shift, and go to state 9
+
+    COLON     reduce using rule 12 (ident_block)
+    $default  reduce using rule 7 (decl_block)
+
+    block        go to state 10
+    decl_block   go to state 11
+    declaration  go to state 12
+    ident_block  go to state 13
+
+
+state 9
+
+   13 ident_block: IDENT .
+   16            | IDENT . @7 COMMA @8 ident_block
+
+    COMMA     reduce using rule 14 (@7)
+    $default  reduce using rule 13 (ident_block)
+
+    @7  go to state 14
+
+
+state 10
+
+    4 program: PROGRAM @1 IDENT @2 SEMI @3 block . ENDPROGRAM
+
+    ENDPROGRAM  shift, and go to state 15
+
+
+state 11
+
+    6 block: decl_block . BEGINPROGRAM @4 stmt_block
+
+    BEGINPROGRAM  shift, and go to state 16
+
+
+state 12
+
+    9 decl_block: declaration . SEMI @5 decl_block
+
+    SEMI  shift, and go to state 17
+
+
+state 13
+
+   11 declaration: ident_block . COLON @6 array_block INT
+
+    COLON  shift, and go to state 18
+
+
+state 14
+
+   16 ident_block: IDENT @7 . COMMA @8 ident_block
+
+    COMMA  shift, and go to state 19
+
+
+state 15
+
+    4 program: PROGRAM @1 IDENT @2 SEMI @3 block ENDPROGRAM .
+
+    $default  reduce using rule 4 (program)
+
+
+state 16
+
+    6 block: decl_block BEGINPROGRAM . @4 stmt_block
+
+    $default  reduce using rule 5 (@4)
+
+    @4  go to state 20
+
+
+state 17
+
+    9 decl_block: declaration SEMI . @5 decl_block
+
+    $default  reduce using rule 8 (@5)
+
+    @5  go to state 21
+
+
+state 18
+
+   11 declaration: ident_block COLON . @6 array_block INT
+
+    $default  reduce using rule 10 (@6)
+
+    @6  go to state 22
+
+
+state 19
+
+   16 ident_block: IDENT @7 COMMA . @8 ident_block
+
+    $default  reduce using rule 15 (@8)
+
+    @8  go to state 23
+
+
+state 20
+
+    6 block: decl_block BEGINPROGRAM @4 . stmt_block
+
+    IF        shift, and go to state 24
+    WHILE     shift, and go to state 25
+    DO        shift, and go to state 26
+    READ      shift, and go to state 27
+    WRITE     shift, and go to state 28
+    CONTINUE  shift, and go to state 29
+    IDENT     shift, and go to state 30
+
+    $default  reduce using rule 23 (stmt_block)
+
+    stmt_block  go to state 31
+    statement   go to state 32
+    stmt_var    go to state 33
+    stmt_if     go to state 34
+    stmt_while  go to state 35
+    stmt_do     go to state 36
+    stmt_read   go to state 37
+    stmt_write  go to state 38
+    var         go to state 39
+
+
+state 21
+
+    9 decl_block: declaration SEMI @5 . decl_block
+
+    IDENT  shift, and go to state 9
+
+    COLON     reduce using rule 12 (ident_block)
+    $default  reduce using rule 7 (decl_block)
+
+    decl_block   go to state 40
+    declaration  go to state 12
+    ident_block  go to state 13
+
+
+state 22
+
+   11 declaration: ident_block COLON @6 . array_block INT
+
+    ARRAY  shift, and go to state 41
+
+    $default  reduce using rule 17 (array_block)
+
+    array_block  go to state 42
+
+
+state 23
+
+   16 ident_block: IDENT @7 COMMA @8 . ident_block
+
+    IDENT  shift, and go to state 9
+
+    $default  reduce using rule 12 (ident_block)
+
+    ident_block  go to state 43
+
+
+state 24
+
+   37 stmt_if: IF . @15 bool_exp THEN @16 stmt_block stmt_else ENDIF
+
+    $default  reduce using rule 35 (@15)
+
+    @15  go to state 44
+
+
+state 25
+
+   43 stmt_while: WHILE . @18 bool_exp BEGINLOOP @19 stmt_block ENDLOOP
+
+    $default  reduce using rule 41 (@18)
+
+    @18  go to state 45
+
+
+state 26
+
+   48 stmt_do: DO . @20 BEGINLOOP @21 stmt_block ENDLOOP @22 WHILE @23 bool_exp
+
+    $default  reduce using rule 44 (@20)
+
+    @20  go to state 46
+
+
+state 27
+
+   50 stmt_read: READ . @24 var_block
+
+    $default  reduce using rule 49 (@24)
+
+    @24  go to state 47
+
+
+state 28
+
+   52 stmt_write: WRITE . @25 var_block
+
+    $default  reduce using rule 51 (@25)
+
+    @25  go to state 48
+
+
+state 29
+
+   32 statement: CONTINUE .
+
+    $default  reduce using rule 32 (statement)
+
+
+state 30
+
+   92 var: IDENT .
+   94    | IDENT . LPAR @30 expression RPAR
+
+    LPAR  shift, and go to state 49
+
+    $default  reduce using rule 92 (var)
+
+
+state 31
+
+    6 block: decl_block BEGINPROGRAM @4 stmt_block .
+
+    $default  reduce using rule 6 (block)
+
+
+state 32
+
+   25 stmt_block: statement . SEMI @13 stmt_block
+
+    SEMI  shift, and go to state 50
+
+
+state 33
+
+   26 statement: stmt_var .
+
+    $default  reduce using rule 26 (statement)
+
+
+state 34
+
+   27 statement: stmt_if .
+
+    $default  reduce using rule 27 (statement)
+
+
+state 35
+
+   28 statement: stmt_while .
+
+    $default  reduce using rule 28 (statement)
+
+
+state 36
+
+   29 statement: stmt_do .
+
+    $default  reduce using rule 29 (statement)
+
+
+state 37
+
+   30 statement: stmt_read .
+
+    $default  reduce using rule 30 (statement)
+
+
+state 38
+
+   31 statement: stmt_write .
+
+    $default  reduce using rule 31 (statement)
+
+
+state 39
+
+   34 stmt_var: var . ASSIGN @14 expression
+
+    ASSIGN  shift, and go to state 51
+
+
+state 40
+
+    9 decl_block: declaration SEMI @5 decl_block .
+
+    $default  reduce using rule 9 (decl_block)
+
+
+state 41
+
+   22 array_block: ARRAY . @9 LPAR @10 NUM @11 RPAR @12 OF
+
+    $default  reduce using rule 18 (@9)
+
+    @9  go to state 52
+
+
+state 42
+
+   11 declaration: ident_block COLON @6 array_block . INT
+
+    INT  shift, and go to state 53
+
+
+state 43
+
+   16 ident_block: IDENT @7 COMMA @8 ident_block .
+
+    $default  reduce using rule 16 (ident_block)
+
+
+state 44
+
+   37 stmt_if: IF @15 . bool_exp THEN @16 stmt_block stmt_else ENDIF
+
+    NOT  shift, and go to state 54
+
+    $default  reduce using rule 70 (not_rule)
+
+    bool_exp                 go to state 55
+    relation_and_expression  go to state 56
+    relation_expression      go to state 57
+    not_rule                 go to state 58
+
+
+state 45
+
+   43 stmt_while: WHILE @18 . bool_exp BEGINLOOP @19 stmt_block ENDLOOP
+
+    NOT  shift, and go to state 54
+
+    $default  reduce using rule 70 (not_rule)
+
+    bool_exp                 go to state 59
+    relation_and_expression  go to state 56
+    relation_expression      go to state 57
+    not_rule                 go to state 58
+
+
+state 46
+
+   48 stmt_do: DO @20 . BEGINLOOP @21 stmt_block ENDLOOP @22 WHILE @23 bool_exp
+
+    BEGINLOOP  shift, and go to state 60
+
+
+state 47
+
+   50 stmt_read: READ @24 . var_block
+
+    IDENT  shift, and go to state 30
+
+    $default  reduce using rule 53 (var_block)
+
+    var_block  go to state 61
+    var        go to state 62
+
+
+state 48
+
+   52 stmt_write: WRITE @25 . var_block
+
+    IDENT  shift, and go to state 30
+
+    $default  reduce using rule 53 (var_block)
+
+    var_block  go to state 63
+    var        go to state 62
+
+
+state 49
+
+   94 var: IDENT LPAR . @30 expression RPAR
+
+    $default  reduce using rule 93 (@30)
+
+    @30  go to state 64
+
+
+state 50
+
+   25 stmt_block: statement SEMI . @13 stmt_block
+
+    $default  reduce using rule 24 (@13)
+
+    @13  go to state 65
+
+
+state 51
+
+   34 stmt_var: var ASSIGN . @14 expression
+
+    $default  reduce using rule 33 (@14)
+
+    @14  go to state 66
+
+
+state 52
+
+   22 array_block: ARRAY @9 . LPAR @10 NUM @11 RPAR @12 OF
+
+    LPAR  shift, and go to state 67
+
+
+state 53
+
+   11 declaration: ident_block COLON @6 array_block INT .
+
+    $default  reduce using rule 11 (declaration)
+
+
+state 54
+
+   71 not_rule: NOT .
+
+    $default  reduce using rule 71 (not_rule)
+
+
+state 55
+
+   37 stmt_if: IF @15 bool_exp . THEN @16 stmt_block stmt_else ENDIF
+
+    THEN  shift, and go to state 68
+
+
+state 56
+
+   57 bool_exp: relation_and_expression . relation_and_expression_block
+
+    OR  shift, and go to state 69
+
+    $default  reduce using rule 59 (relation_and_expression_block)
+
+    relation_and_expression_block  go to state 70
+
+
+state 57
+
+   58 relation_and_expression: relation_expression . relation_expression_block
+
+    AND  shift, and go to state 71
+
+    $default  reduce using rule 62 (relation_expression_block)
+
+    relation_expression_block  go to state 72
+
+
+state 58
+
+   65 relation_expression: not_rule . expression compare expression
+   66                    | not_rule . TRUE
+   67                    | not_rule . FALSE
+   69                    | not_rule . LPAR @29 bool_exp RPAR
+
+    TRUE   shift, and go to state 73
+    FALSE  shift, and go to state 74
+    MIN    shift, and go to state 75
+    LPAR   shift, and go to state 76
+
+    LPAR      [reduce using rule 90 (min_rule)]
+    $default  reduce using rule 90 (min_rule)
+
+    expression  go to state 77
+    multi_exp   go to state 78
+    term        go to state 79
+    min_rule    go to state 80
+
+
+state 59
+
+   43 stmt_while: WHILE @18 bool_exp . BEGINLOOP @19 stmt_block ENDLOOP
+
+    BEGINLOOP  shift, and go to state 81
+
+
+state 60
+
+   48 stmt_do: DO @20 BEGINLOOP . @21 stmt_block ENDLOOP @22 WHILE @23 bool_exp
+
+    $default  reduce using rule 45 (@21)
+
+    @21  go to state 82
+
+
+state 61
+
+   50 stmt_read: READ @24 var_block .
+
+    $default  reduce using rule 50 (stmt_read)
+
+
+state 62
+
+   54 var_block: var .
+   56          | var . COMMA @26 var_block
+
+    COMMA  shift, and go to state 83
+
+    $default  reduce using rule 54 (var_block)
+
+
+state 63
+
+   52 stmt_write: WRITE @25 var_block .
+
+    $default  reduce using rule 52 (stmt_write)
+
+
+state 64
+
+   94 var: IDENT LPAR @30 . expression RPAR
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    expression  go to state 84
+    multi_exp   go to state 78
+    term        go to state 79
+    min_rule    go to state 80
+
+
+state 65
+
+   25 stmt_block: statement SEMI @13 . stmt_block
+
+    IF        shift, and go to state 24
+    WHILE     shift, and go to state 25
+    DO        shift, and go to state 26
+    READ      shift, and go to state 27
+    WRITE     shift, and go to state 28
+    CONTINUE  shift, and go to state 29
+    IDENT     shift, and go to state 30
+
+    $default  reduce using rule 23 (stmt_block)
+
+    stmt_block  go to state 85
+    statement   go to state 32
+    stmt_var    go to state 33
+    stmt_if     go to state 34
+    stmt_while  go to state 35
+    stmt_do     go to state 36
+    stmt_read   go to state 37
+    stmt_write  go to state 38
+    var         go to state 39
+
+
+state 66
+
+   34 stmt_var: var ASSIGN @14 . expression
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    expression  go to state 86
+    multi_exp   go to state 78
+    term        go to state 79
+    min_rule    go to state 80
+
+
+state 67
+
+   22 array_block: ARRAY @9 LPAR . @10 NUM @11 RPAR @12 OF
+
+    $default  reduce using rule 19 (@10)
+
+    @10  go to state 87
+
+
+state 68
+
+   37 stmt_if: IF @15 bool_exp THEN . @16 stmt_block stmt_else ENDIF
+
+    $default  reduce using rule 36 (@16)
+
+    @16  go to state 88
+
+
+state 69
+
+   61 relation_and_expression_block: OR . @27 relation_and_expression relation_and_expression_block
+
+    $default  reduce using rule 60 (@27)
+
+    @27  go to state 89
+
+
+state 70
+
+   57 bool_exp: relation_and_expression relation_and_expression_block .
+
+    $default  reduce using rule 57 (bool_exp)
+
+
+state 71
+
+   64 relation_expression_block: AND . @28 relation_expression relation_expression_block
+
+    $default  reduce using rule 63 (@28)
+
+    @28  go to state 90
+
+
+state 72
+
+   58 relation_and_expression: relation_expression relation_expression_block .
+
+    $default  reduce using rule 58 (relation_and_expression)
+
+
+state 73
+
+   66 relation_expression: not_rule TRUE .
+
+    $default  reduce using rule 66 (relation_expression)
+
+
+state 74
+
+   67 relation_expression: not_rule FALSE .
+
+    $default  reduce using rule 67 (relation_expression)
+
+
+state 75
+
+   91 min_rule: MIN .
+
+    $default  reduce using rule 91 (min_rule)
+
+
+state 76
+
+   69 relation_expression: not_rule LPAR . @29 bool_exp RPAR
+
+    $default  reduce using rule 68 (@29)
+
+    @29  go to state 91
+
+
+state 77
+
+   65 relation_expression: not_rule expression . compare expression
+
+    LETO      shift, and go to state 92
+    GETO      shift, and go to state 93
+    LTHAN     shift, and go to state 94
+    GTHAN     shift, and go to state 95
+    NOTEQUAL  shift, and go to state 96
+    EQUALTO   shift, and go to state 97
+
+    compare  go to state 98
+
+
+state 78
+
+   78 expression: multi_exp . multi_exp_block
+
+    PLUS  shift, and go to state 99
+    MIN   shift, and go to state 100
+
+    $default  reduce using rule 79 (multi_exp_block)
+
+    multi_exp_block  go to state 101
+
+
+state 79
+
+   82 multi_exp: term . term_block
+
+    DIV   shift, and go to state 102
+    MULT  shift, and go to state 103
+    MOD   shift, and go to state 104
+
+    $default  reduce using rule 83 (term_block)
+
+    term_block  go to state 105
+
+
+state 80
+
+   87 term: min_rule . var
+   88     | min_rule . NUM
+   89     | min_rule . LPAR expression RPAR
+
+    LPAR   shift, and go to state 106
+    NUM    shift, and go to state 107
+    IDENT  shift, and go to state 30
+
+    var  go to state 108
+
+
+state 81
+
+   43 stmt_while: WHILE @18 bool_exp BEGINLOOP . @19 stmt_block ENDLOOP
+
+    $default  reduce using rule 42 (@19)
+
+    @19  go to state 109
+
+
+state 82
+
+   48 stmt_do: DO @20 BEGINLOOP @21 . stmt_block ENDLOOP @22 WHILE @23 bool_exp
+
+    IF        shift, and go to state 24
+    WHILE     shift, and go to state 25
+    DO        shift, and go to state 26
+    READ      shift, and go to state 27
+    WRITE     shift, and go to state 28
+    CONTINUE  shift, and go to state 29
+    IDENT     shift, and go to state 30
+
+    $default  reduce using rule 23 (stmt_block)
+
+    stmt_block  go to state 110
+    statement   go to state 32
+    stmt_var    go to state 33
+    stmt_if     go to state 34
+    stmt_while  go to state 35
+    stmt_do     go to state 36
+    stmt_read   go to state 37
+    stmt_write  go to state 38
+    var         go to state 39
+
+
+state 83
+
+   56 var_block: var COMMA . @26 var_block
+
+    $default  reduce using rule 55 (@26)
+
+    @26  go to state 111
+
+
+state 84
+
+   94 var: IDENT LPAR @30 expression . RPAR
+
+    RPAR  shift, and go to state 112
+
+
+state 85
+
+   25 stmt_block: statement SEMI @13 stmt_block .
+
+    $default  reduce using rule 25 (stmt_block)
+
+
+state 86
+
+   34 stmt_var: var ASSIGN @14 expression .
+
+    $default  reduce using rule 34 (stmt_var)
+
+
+state 87
+
+   22 array_block: ARRAY @9 LPAR @10 . NUM @11 RPAR @12 OF
+
+    NUM  shift, and go to state 113
+
+
+state 88
+
+   37 stmt_if: IF @15 bool_exp THEN @16 . stmt_block stmt_else ENDIF
+
+    IF        shift, and go to state 24
+    WHILE     shift, and go to state 25
+    DO        shift, and go to state 26
+    READ      shift, and go to state 27
+    WRITE     shift, and go to state 28
+    CONTINUE  shift, and go to state 29
+    IDENT     shift, and go to state 30
+
+    $default  reduce using rule 23 (stmt_block)
+
+    stmt_block  go to state 114
+    statement   go to state 32
+    stmt_var    go to state 33
+    stmt_if     go to state 34
+    stmt_while  go to state 35
+    stmt_do     go to state 36
+    stmt_read   go to state 37
+    stmt_write  go to state 38
+    var         go to state 39
+
+
+state 89
+
+   61 relation_and_expression_block: OR @27 . relation_and_expression relation_and_expression_block
+
+    NOT  shift, and go to state 54
+
+    $default  reduce using rule 70 (not_rule)
+
+    relation_and_expression  go to state 115
+    relation_expression      go to state 57
+    not_rule                 go to state 58
+
+
+state 90
+
+   64 relation_expression_block: AND @28 . relation_expression relation_expression_block
+
+    NOT  shift, and go to state 54
+
+    $default  reduce using rule 70 (not_rule)
+
+    relation_expression  go to state 116
+    not_rule             go to state 58
+
+
+state 91
+
+   69 relation_expression: not_rule LPAR @29 . bool_exp RPAR
+
+    NOT  shift, and go to state 54
+
+    $default  reduce using rule 70 (not_rule)
+
+    bool_exp                 go to state 117
+    relation_and_expression  go to state 56
+    relation_expression      go to state 57
+    not_rule                 go to state 58
+
+
+state 92
+
+   76 compare: LETO .
+
+    $default  reduce using rule 76 (compare)
+
+
+state 93
+
+   77 compare: GETO .
+
+    $default  reduce using rule 77 (compare)
+
+
+state 94
+
+   73 compare: LTHAN .
+
+    $default  reduce using rule 73 (compare)
+
+
+state 95
+
+   74 compare: GTHAN .
+
+    $default  reduce using rule 74 (compare)
+
+
+state 96
+
+   75 compare: NOTEQUAL .
+
+    $default  reduce using rule 75 (compare)
+
+
+state 97
+
+   72 compare: EQUALTO .
+
+    $default  reduce using rule 72 (compare)
+
+
+state 98
+
+   65 relation_expression: not_rule expression compare . expression
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    expression  go to state 118
+    multi_exp   go to state 78
+    term        go to state 79
+    min_rule    go to state 80
+
+
+state 99
+
+   80 multi_exp_block: PLUS . multi_exp multi_exp_block
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    multi_exp  go to state 119
+    term       go to state 79
+    min_rule   go to state 80
+
+
+state 100
+
+   81 multi_exp_block: MIN . multi_exp multi_exp_block multi_exp_block
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    multi_exp  go to state 120
+    term       go to state 79
+    min_rule   go to state 80
+
+
+state 101
+
+   78 expression: multi_exp multi_exp_block .
+
+    $default  reduce using rule 78 (expression)
+
+
+state 102
+
+   85 term_block: DIV . term term_block
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    term      go to state 121
+    min_rule  go to state 80
+
+
+state 103
+
+   84 term_block: MULT . term term_block
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    term      go to state 122
+    min_rule  go to state 80
+
+
+state 104
+
+   86 term_block: MOD . term term_block
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    term      go to state 123
+    min_rule  go to state 80
+
+
+state 105
+
+   82 multi_exp: term term_block .
+
+    $default  reduce using rule 82 (multi_exp)
+
+
+state 106
+
+   89 term: min_rule LPAR . expression RPAR
+
+    MIN  shift, and go to state 75
+
+    $default  reduce using rule 90 (min_rule)
+
+    expression  go to state 124
+    multi_exp   go to state 78
+    term        go to state 79
+    min_rule    go to state 80
+
+
+state 107
+
+   88 term: min_rule NUM .
+
+    $default  reduce using rule 88 (term)
+
+
+state 108
+
+   87 term: min_rule var .
+
+    $default  reduce using rule 87 (term)
+
+
+state 109
+
+   43 stmt_while: WHILE @18 bool_exp BEGINLOOP @19 . stmt_block ENDLOOP
+
+    IF        shift, and go to state 24
+    WHILE     shift, and go to state 25
+    DO        shift, and go to state 26
+    READ      shift, and go to state 27
+    WRITE     shift, and go to state 28
+    CONTINUE  shift, and go to state 29
+    IDENT     shift, and go to state 30
+
+    $default  reduce using rule 23 (stmt_block)
+
+    stmt_block  go to state 125
+    statement   go to state 32
+    stmt_var    go to state 33
+    stmt_if     go to state 34
+    stmt_while  go to state 35
+    stmt_do     go to state 36
+    stmt_read   go to state 37
+    stmt_write  go to state 38
+    var         go to state 39
+
+
+state 110
+
+   48 stmt_do: DO @20 BEGINLOOP @21 stmt_block . ENDLOOP @22 WHILE @23 bool_exp
+
+    ENDLOOP  shift, and go to state 126
+
+
+state 111
+
+   56 var_block: var COMMA @26 . var_block
+
+    IDENT  shift, and go to state 30
+
+    $default  reduce using rule 53 (var_block)
+
+    var_block  go to state 127
+    var        go to state 62
+
+
+state 112
+
+   94 var: IDENT LPAR @30 expression RPAR .
+
+    $default  reduce using rule 94 (var)
+
+
+state 113
+
+   22 array_block: ARRAY @9 LPAR @10 NUM . @11 RPAR @12 OF
+
+    $default  reduce using rule 20 (@11)
+
+    @11  go to state 128
+
+
+state 114
+
+   37 stmt_if: IF @15 bool_exp THEN @16 stmt_block . stmt_else ENDIF
+
+    ELSE  shift, and go to state 129
+
+    $default  reduce using rule 38 (stmt_else)
+
+    stmt_else  go to state 130
+
+
+state 115
+
+   61 relation_and_expression_block: OR @27 relation_and_expression . relation_and_expression_block
+
+    OR  shift, and go to state 69
+
+    $default  reduce using rule 59 (relation_and_expression_block)
+
+    relation_and_expression_block  go to state 131
+
+
+state 116
+
+   64 relation_expression_block: AND @28 relation_expression . relation_expression_block
+
+    AND  shift, and go to state 71
+
+    $default  reduce using rule 62 (relation_expression_block)
+
+    relation_expression_block  go to state 132
+
+
+state 117
+
+   69 relation_expression: not_rule LPAR @29 bool_exp . RPAR
+
+    RPAR  shift, and go to state 133
+
+
+state 118
+
+   65 relation_expression: not_rule expression compare expression .
+
+    $default  reduce using rule 65 (relation_expression)
+
+
+state 119
+
+   80 multi_exp_block: PLUS multi_exp . multi_exp_block
+
+    PLUS  shift, and go to state 99
+    MIN   shift, and go to state 100
+
+    PLUS      [reduce using rule 79 (multi_exp_block)]
+    MIN       [reduce using rule 79 (multi_exp_block)]
+    $default  reduce using rule 79 (multi_exp_block)
+
+    multi_exp_block  go to state 134
+
+
+state 120
+
+   81 multi_exp_block: MIN multi_exp . multi_exp_block multi_exp_block
+
+    PLUS  shift, and go to state 99
+    MIN   shift, and go to state 100
+
+    PLUS      [reduce using rule 79 (multi_exp_block)]
+    MIN       [reduce using rule 79 (multi_exp_block)]
+    $default  reduce using rule 79 (multi_exp_block)
+
+    multi_exp_block  go to state 135
+
+
+state 121
+
+   85 term_block: DIV term . term_block
+
+    DIV   shift, and go to state 102
+    MULT  shift, and go to state 103
+    MOD   shift, and go to state 104
+
+    $default  reduce using rule 83 (term_block)
+
+    term_block  go to state 136
+
+
+state 122
+
+   84 term_block: MULT term . term_block
+
+    DIV   shift, and go to state 102
+    MULT  shift, and go to state 103
+    MOD   shift, and go to state 104
+
+    $default  reduce using rule 83 (term_block)
+
+    term_block  go to state 137
+
+
+state 123
+
+   86 term_block: MOD term . term_block
+
+    DIV   shift, and go to state 102
+    MULT  shift, and go to state 103
+    MOD   shift, and go to state 104
+
+    $default  reduce using rule 83 (term_block)
+
+    term_block  go to state 138
+
+
+state 124
+
+   89 term: min_rule LPAR expression . RPAR
+
+    RPAR  shift, and go to state 139
+
+
+state 125
+
+   43 stmt_while: WHILE @18 bool_exp BEGINLOOP @19 stmt_block . ENDLOOP
+
+    ENDLOOP  shift, and go to state 140
+
+
+state 126
+
+   48 stmt_do: DO @20 BEGINLOOP @21 stmt_block ENDLOOP . @22 WHILE @23 bool_exp
+
+    $default  reduce using rule 46 (@22)
+
+    @22  go to state 141
+
+
+state 127
+
+   56 var_block: var COMMA @26 var_block .
+
+    $default  reduce using rule 56 (var_block)
+
+
+state 128
+
+   22 array_block: ARRAY @9 LPAR @10 NUM @11 . RPAR @12 OF
+
+    RPAR  shift, and go to state 142
+
+
+state 129
+
+   40 stmt_else: ELSE . @17 stmt_block
+
+    $default  reduce using rule 39 (@17)
+
+    @17  go to state 143
+
+
+state 130
+
+   37 stmt_if: IF @15 bool_exp THEN @16 stmt_block stmt_else . ENDIF
+
+    ENDIF  shift, and go to state 144
+
+
+state 131
+
+   61 relation_and_expression_block: OR @27 relation_and_expression relation_and_expression_block .
+
+    $default  reduce using rule 61 (relation_and_expression_block)
+
+
+state 132
+
+   64 relation_expression_block: AND @28 relation_expression relation_expression_block .
+
+    $default  reduce using rule 64 (relation_expression_block)
+
+
+state 133
+
+   69 relation_expression: not_rule LPAR @29 bool_exp RPAR .
+
+    $default  reduce using rule 69 (relation_expression)
+
+
+state 134
+
+   80 multi_exp_block: PLUS multi_exp multi_exp_block .
+
+    $default  reduce using rule 80 (multi_exp_block)
+
+
+state 135
+
+   81 multi_exp_block: MIN multi_exp multi_exp_block . multi_exp_block
+
+    PLUS  shift, and go to state 99
+    MIN   shift, and go to state 100
+
+    PLUS      [reduce using rule 79 (multi_exp_block)]
+    MIN       [reduce using rule 79 (multi_exp_block)]
+    $default  reduce using rule 79 (multi_exp_block)
+
+    multi_exp_block  go to state 145
+
+
+state 136
+
+   85 term_block: DIV term term_block .
+
+    $default  reduce using rule 85 (term_block)
+
+
+state 137
+
+   84 term_block: MULT term term_block .
+
+    $default  reduce using rule 84 (term_block)
+
+
+state 138
+
+   86 term_block: MOD term term_block .
+
+    $default  reduce using rule 86 (term_block)
+
+
+state 139
+
+   89 term: min_rule LPAR expression RPAR .
+
+    $default  reduce using rule 89 (term)
+
+
+state 140
+
+   43 stmt_while: WHILE @18 bool_exp BEGINLOOP @19 stmt_block ENDLOOP .
+
+    $default  reduce using rule 43 (stmt_while)
+
+
+state 141
+
+   48 stmt_do: DO @20 BEGINLOOP @21 stmt_block ENDLOOP @22 . WHILE @23 bool_exp
+
+    WHILE  shift, and go to state 146
+
+
+state 142
+
+   22 array_block: ARRAY @9 LPAR @10 NUM @11 RPAR . @12 OF
+
+    $default  reduce using rule 21 (@12)
+
+    @12  go to state 147
+
+
+state 143
+
+   40 stmt_else: ELSE @17 . stmt_block
+
+    IF        shift, and go to state 24
+    WHILE     shift, and go to state 25
+    DO        shift, and go to state 26
+    READ      shift, and go to state 27
+    WRITE     shift, and go to state 28
+    CONTINUE  shift, and go to state 29
+    IDENT     shift, and go to state 30
+
+    $default  reduce using rule 23 (stmt_block)
+
+    stmt_block  go to state 148
+    statement   go to state 32
+    stmt_var    go to state 33
+    stmt_if     go to state 34
+    stmt_while  go to state 35
+    stmt_do     go to state 36
+    stmt_read   go to state 37
+    stmt_write  go to state 38
+    var         go to state 39
+
+
+state 144
+
+   37 stmt_if: IF @15 bool_exp THEN @16 stmt_block stmt_else ENDIF .
+
+    $default  reduce using rule 37 (stmt_if)
+
+
+state 145
+
+   81 multi_exp_block: MIN multi_exp multi_exp_block multi_exp_block .
+
+    $default  reduce using rule 81 (multi_exp_block)
+
+
+state 146
+
+   48 stmt_do: DO @20 BEGINLOOP @21 stmt_block ENDLOOP @22 WHILE . @23 bool_exp
+
+    $default  reduce using rule 47 (@23)
+
+    @23  go to state 149
+
+
+state 147
+
+   22 array_block: ARRAY @9 LPAR @10 NUM @11 RPAR @12 . OF
+
+    OF  shift, and go to state 150
+
+
+state 148
+
+   40 stmt_else: ELSE @17 stmt_block .
+
+    $default  reduce using rule 40 (stmt_else)
+
+
+state 149
+
+   48 stmt_do: DO @20 BEGINLOOP @21 stmt_block ENDLOOP @22 WHILE @23 . bool_exp
+
+    NOT  shift, and go to state 54
+
+    $default  reduce using rule 70 (not_rule)
+
+    bool_exp                 go to state 151
+    relation_and_expression  go to state 56
+    relation_expression      go to state 57
+    not_rule                 go to state 58
+
+
+state 150
+
+   22 array_block: ARRAY @9 LPAR @10 NUM @11 RPAR @12 OF .
+
+    $default  reduce using rule 22 (array_block)
+
+
+state 151
+
+   48 stmt_do: DO @20 BEGINLOOP @21 stmt_block ENDLOOP @22 WHILE @23 bool_exp .
+
+    $default  reduce using rule 48 (stmt_do)

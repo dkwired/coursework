@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">cell_dont_care_bit</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_17</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_18</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_19</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_24</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_25</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_26</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_27</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_28</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_29</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_30</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_31</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_32</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_33</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_34</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_35</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_36</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_37</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_38</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_39</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_40</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_41</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_42</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_43</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_44</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_45</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_46</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_47</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_48</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_49</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_50</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_51</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_52</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_53</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_54</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_55</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_56</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_57</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_58</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_59</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_60</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_61</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_62</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_63</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_64</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_65</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_66</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_67</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_68</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_69</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_70</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_71</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_72</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_73</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_74</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_75</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_76</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_77</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_78</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_79</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_80</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_81</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_82</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_83</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_84</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_85</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_86</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_87</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_88</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_89</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_90</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_91</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_92</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_93</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_94</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_95</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_96</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_97</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_98</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_99</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_100</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_101</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_102</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_103</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_104</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_105</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_106</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_107</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_108</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_109</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_110</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_111</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_112</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_113</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_114</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_115</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_116</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_117</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_118</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_119</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_120</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_121</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_122</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_123</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_124</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_125</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_126</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">dont_care_mask_buffered_127</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">CAM_Wrapper</arg>&gt;.
+</msg>
+
+</messages>
+

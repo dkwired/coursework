@@ -1,0 +1,3 @@
+bill:x:1008:555:William Williams:/home/bill:/bin/bash
+xavier:x:1095:588:Xavier Rodriguez:/home/bob:/bin/bash
+tammy:x:1008:565:Tammy Klein:/home/bill:/bin/bash

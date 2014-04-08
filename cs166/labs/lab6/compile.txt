@@ -1,0 +1,15 @@
+/* Indicate the path of the java compiler to use */
+JAVAHOME=/usr/csshare/pkgs/jdk1.6.0_02/bin/
+export JAVAHOME
+
+/* Export classpath with the postgressql driver */
+CLASSPATH=$CLASSPATH:$PWD/pg73jdbc3.jar
+export CLASSPATH
+
+/* compile the java program */
+javac EmbeddedSQL.java
+
+/* run the java program */
+/* Use your database name, port number and the login and password for EON */
+java EmbeddedSQL kdb 43783 kleind laskdj
+

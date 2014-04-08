@@ -1,0 +1,18 @@
+---------------------------------------------------------------------
+name: David Klein
+sid: 860880864
+name of lab partner, if any:
+---------------------------------------------------------------------
+any feedback or questions:
+
+---------------------------------------------------------------------
+ANSWERS TO 1:
+a) The largest number we can run on fib1 is 39 which ran in 41.003567934 sec.
+b) The number of recursive calls of N at N/2 is 2^(N/2 - 1). Which is of O(2^n). This is due to each recursive call we call two of the same number except at the start.
+c) The running time of fib1(N) is not polynomial since it is at most running time O(2^n). By drawing a tree for fib1 we see that the depth of tree corresponds to a exponential increase in recursive calls.
+
+ANSWERS TO 2:
+a) The largest number we can run on fib2 before getting a runtime error is n = 995. This error is a due to a general cap on the number of recursive calls you can do. There is no bug. To fix this problem you simply introduce the code: sys.setrecursionlimit(limit) to increase the number of recursive calls. The algorithm is correct for calculating the fibinacci number sequence. Since it does calculate the two previous numbers and add them together.
+b) The largest N for fib2 to complete in under 1 sec ~ 900,000. The largest N for fib2 to complete in under a day would be 900,000 x 86400 sec/day.
+c) The runnig time of fib2 is N polynomial since the only calculations done is a+b which is done in constant time. N polynomial refers to the depth at which fib2 is called which is at most N times.
+---------------------------------------------------------------------

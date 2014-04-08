@@ -1,0 +1,11 @@
+---------------------------------------------------------------------
+name: David Klein
+sid: 860880864
+name of lab partner, if any:
+---------------------------------------------------------------------
+
+Best value of C that you found:
+
+The best value I found for the set of maxbits = 600 was: 7.02062e-05. This best value will keep decreasing in a general fashio if you keep increasing the maxbits.
+
+---------------------------------------------------------------------

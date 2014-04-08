@@ -1,0 +1,10 @@
+#! /usr/bin/python
+
+k = 2
+N = 9630
+while N > 1:
+    if N % k == 0:
+        print k
+        N = N / k
+    else:
+        k = k + 1

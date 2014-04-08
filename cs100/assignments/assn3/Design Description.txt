@@ -1,0 +1,33 @@
+1. INTRODUCTION
+ 1. Design Overview
+ 	1 - Output prompt
+	2 - Get input from user
+	3 - Separate input then pass vector to function
+	4 - Parse out "cd" command first
+	5 - Determine if child is parent
+	6 - If not pass to child
+	7 - Call functions in child to get work done
+	8 - Once done, exit
+ 2. Requirements Matrix
+    None currently.
+
+2. SYSTEM ARCHITECTURAL DESIGN
+ 1. Chosen System Archeticture: x86
+ 2. Discussion of Alternative Designs
+    None currently.
+ 3. System Interface Description
+    "?" is your prompt to enter your commands. This is chosen because this what is actually used in Linux.
+
+3. DETAIL DESCRIPTION OF COMPONENTS
+	1. "tok" is our passed vector
+	2. "temp" is our temporary string we use and push onto the vector
+	3. "Ger_Er_Done" function is where we call our commands
+	4. "mypipe" is our file descriptors for the pipe
+	5. "ss" is our stringstream where we remove the white spaces
+	6. "arglist" is our temporary array of character pointers to tok's c-strings
+
+4. USER INTERFACE DESIGN
+ 1. Design of the User Interface
+    Basic command prompt.
+
+5. ADDITIONAL MATERIAL

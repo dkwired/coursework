@@ -1,0 +1,2383 @@
+%!PS-Adobe-3.0
+%%Title: lab2_report1.txt, my_converter_tb.vhd, my_converter.vhd, lab2_part1.s
+%%For: David Klein
+%%Creator: a2ps version 4.13
+%%CreationDate: Fri Apr 27 17:54:23 2012
+%%BoundingBox: 24 24 588 768
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%Pages: 7
+%%PageOrder: Ascend
+%%DocumentMedia: Letter 612 792 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontType get 0 eq {
+    currentfont /FontMatrix get 3 get
+  }{
+    currentfont /FontMatrix get 3 get 1000 mul
+  } ifelse
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% composite fonts for ASCII-EUC mixed string
+% Version 1.2 1/31/1990
+% Orignal Ken'ichi HANDA (handa@etl.go.jp)
+% Modified Norio Katayama (katayama@rd.nacsis.ac.jp),1998
+% Extend & Fix Koji Nakamaru (maru@on.cs.keio.ac.jp), 1999
+% Anyone can freely copy, modify, distribute this program.
+
+/copyfont {	% font-dic extra-entry-count  copyfont  font-dic
+	1 index maxlength add dict begin
+	{	1 index /FID ne 2 index /UniqueID ne and
+		{def} {pop pop} ifelse
+	} forall
+	currentdict
+	end
+} bind def
+
+/compositefont { % ASCIIFontName EUCFontName RomanScale RomanOffset Rot(T/F) compositefont font
+    /RomanRotation exch def
+    /RomanOffset exch def
+    /RomanScale exch def
+    userdict /fixeucfont_dict known not {
+	userdict begin
+	    /fixeucfont_dict 2 dict begin
+		/UpperByteEncoding [
+		    16#00 1 16#20 { pop 0 } for
+		    16#21 1 16#28 { 16#20 sub } for
+		    16#29 1 16#2F { pop 0 } for
+		    16#30 1 16#74 { 16#27 sub } for
+		    16#75 1 16#FF { pop 0 } for
+		] def
+	        /LowerByteEncoding [
+		    16#00 1 16#A0 { pop /.notdef } for
+		    16#A1 1 16#FE { 16#80 sub 16 2 string cvrs
+				    (cXX) dup 1 4 -1 roll
+				    putinterval cvn } for
+		    /.notdef
+		] def
+		currentdict
+	    end def
+	end
+    } if
+    findfont dup /FontType get 0 eq {
+	14 dict begin
+	    %
+	    % 7+8 bit EUC font
+	    %
+	    12 dict begin
+		/EUCFont exch def
+		/FontInfo (7+8 bit EUC font) readonly def
+		/PaintType 0 def
+		/FontType 0 def
+		/FontMatrix matrix def
+		% /FontName
+		/Encoding fixeucfont_dict /UpperByteEncoding get def
+		/FMapType 2 def
+		EUCFont /WMode known
+		{ EUCFont /WMode get /WMode exch def }
+		{ /WMode 0 def } ifelse
+		/FDepVector [
+		    EUCFont /FDepVector get 0 get
+		    [ 16#21 1 16#28 {} for 16#30 1 16#74 {} for ]
+		    {
+			13 dict begin
+			    /EUCFont EUCFont def
+			    /UpperByte exch 16#80 add def	
+			    % /FontName
+			    /FontInfo (EUC lower byte font) readonly def
+			    /PaintType 0 def
+			    /FontType 3 def
+			    /FontMatrix matrix def
+			    /FontBBox {0 0 0 0} def
+			    /Encoding
+				fixeucfont_dict /LowerByteEncoding get def
+			    % /UniqueID
+			    % /WMode
+			    /BuildChar {
+				gsave
+				exch dup /EUCFont get setfont
+				/UpperByte get
+				2 string
+				dup 0 4 -1 roll put
+				dup 1 4 -1 roll put
+				dup stringwidth setcharwidth
+				0 0 moveto show
+				grestore
+			    } bind def
+			    currentdict
+			end
+			/lowerbytefont exch definefont
+		    } forall
+		] def
+		currentdict
+	    end
+	    /eucfont exch definefont
+	    exch
+	    findfont 1 copyfont dup begin
+		RomanRotation {
+			/FontMatrix FontMatrix
+			[ 0 RomanScale neg RomanScale 0 RomanOffset neg 0 ]
+			matrix concatmatrix def
+		}{
+			/FontMatrix FontMatrix
+			[ RomanScale 0 0 RomanScale 0 RomanOffset ] matrix concatmatrix
+			def
+			/CDevProc
+			    {pop pop pop pop 0 exch -1000 exch 2 div 880} def
+		} ifelse
+	    end
+	    /asciifont exch definefont
+	    exch
+	    /FDepVector [ 4 2 roll ] def
+	    /FontType 0 def
+	    /WMode 0 def
+	    /FMapType 4 def
+	    /FontMatrix matrix def
+	    /Encoding [0 1] def
+	    /FontBBox {0 0 0 0} def
+%	    /FontHeight 1.0 def % XXXX
+	    /FontHeight RomanScale 1.0 ge { RomanScale }{ 1.0 } ifelse def
+	    /Descent -0.3 def   % XXXX
+	    currentdict
+	end
+	/tmpfont exch definefont
+	pop
+	/tmpfont findfont
+    }{
+	pop findfont 0 copyfont
+    } ifelse
+} def	
+
+/slantfont {	% FontName slant-degree  slantfont  font'
+    exch findfont 1 copyfont begin
+    [ 1 0 4 -1 roll 1 0 0 ] FontMatrix exch matrix concatmatrix
+    /FontMatrix exch def
+    currentdict
+    end
+} def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 612 def
+/sw 792 def
+/llx 24 def
+/urx 768 def
+/ury 588 def
+/lly 24 def
+/#copies 1 def
+/th 15.000000 def
+/fnfs 11 def
+/bfs 7.060185 def
+/cw 4.236111 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   520.335631 th add
+def
+/pmw urx llx sub pw 2 mul sub 1 div def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+  dup pmw add pw add
+] def
+/y [
+  pmh ph add 0 mul ph add
+  dup
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 5 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (Names: Jeffrey Shaw, David Klien) p n
+(2) # (Login: shawj, kliend) N
+(3) # (Email: shawj@cs.ucr.edu, dklie003@ucr.edu) N
+(4) # (Lab Section: 022) N
+(5) # (Assignment: Lab #2) N
+(6) # (I acknowledge all content is original.) N
+(7) # () N
+(8) # (I. Lab objective) N
+(9) # (The lab objective was to write a floating point to fixed point converter in both) N
+0 T ( the mips language and VHDL.) N
+(10) # () N
+(11) # (II . Personal contributions) N
+(12) # (The work was mostly shared for these exercises. We both wrote portions of code i) N
+0 T (n both mips and VHDL. On the mips, work was shared, we took turns writing the co) N
+0 T (de and testing. On the VHDL the work was a little more skewed. David was able to) N
+0 T ( work on the code for longer and contributed more time into the VHDL portion of ) N
+0 T (the lab. In return, Jeff wrote this lab report.) N
+(13) # () N
+(14) # (III. Skill learned & knowledge gained.) N
+(15) # (In the first part of this lab, we learned how to write mips code and became comf) N
+0 T (ortable with the commands and style of the language.) N
+(16) # (In the second part, we increased our familiarity of the VHDL language and workin) N
+0 T (g with Xilinx. We learned the most in the actual debugging of the code. We got m) N
+0 T (ore familiar with debugging the VHDL and what certain types of errors meant.) N
+(17) # () N
+(18) # (IV. Known bugs locations) N
+(19) # (Known bug locations are as follows:) N
+(20) # (Part 1: \(MIPS\)) N
+(21) # (Our mips program works well on positive inputs, but on negative inputs there is ) N
+0 T (a small error. The binary code is correct, however when outputing to a decimal, ) N
+0 T (only for negative numbers, we receive an arithmetic error.) N
+(22) # () N
+(23) # (Part 2: \(VHDL\)) N
+(24) # (Our VHDL has an error we can not track down. We get have a missing bit in our fi) N
+0 T (xed point output. The shifting seems to work, so we are unsure if the problem is) N
+0 T ( in our shifting processes or in our concatenation.) N
+(25) # () N
+(26) # (V. Feedback on the lab) N
+(27) # (The lab specification could be a little more clear. If there was a straight layo) N
+0 T (ut of the binary representation of floating and a binary representation of fixed) N
+0 T ( point, it might have been more understanadable the task of the lab. A lot of ou) N
+0 T (r time was spent trying to understand what we needed to do, less on how to do it) N
+0 T (.) S
+(lab2_report1.txt) (Page 1/1) (Apr 27, 12 17:46) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab2_report1.txt) (1/7) (Friday April 27, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 2
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--------------------------------------------------------------------------------) c n
+0 T (--) N
+(2) # (--Names: Jeffrey Shaw, David Klien) N
+(3) # (--Login: shawj, kliend) N
+(4) # (--Email: shawj@cs.ucr.edu, dklie003@ucr.edu) N
+(5) # (--Lab Section: 022) N
+(6) # (--Assignment: Lab #2) N
+(7) # (--I acknowledge all content is original.) N
+(8) # (--------------------------------------------------------------------------------) N
+0 T (--) N
+(9) # () S
+(LIBRARY ) K
+(ieee) l
+(;) p n
+(10) # () S
+(USE) K
+( ieee.std_logic_1164.) p
+(ALL) K
+(;) p n
+(11) # ( ) N
+(12) # () S
+(-- Uncomment the following library declaration if using) c n
+(13) # (-- arithmetic functions with Signed or Unsigned values) N
+(14) # (--USE ieee.numeric_std.ALL;) N
+(15) # () S
+( ) p n
+(16) # () S
+(ENTITY) K
+( ) p
+(my_converter_tb) l
+( ) p
+(IS) K n
+(17) # (END) S
+( my_converter_tb;) p n
+(18) # ( ) N
+(19) # () S
+(ARCHITECTURE) K
+( behavior ) p
+(OF) K
+( my_converter_tb ) p
+(IS) K
+( ) p n
+(20) # ( ) N
+(21) # (    ) S
+(-- Component Declaration for the Unit Under Test \(UUT\)) c n
+(22) # () S
+( ) p n
+(23) # (    ) S
+(COMPONENT) K
+( my_converter) p n
+(24) # (    ) S
+(PORT) K
+(\() p n
+(25) # (         floating : ) S
+(IN) K
+(  std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(26) # (         fixed : ) S
+(OUT) K
+(  std_logic_vector\(31 ) p
+(downto) K
+( 0\)) p n
+(27) # (        \);) N
+(28) # (    ) S
+(END) K
+( ) p
+(COMPONENT) K
+(;) p n
+(29) # (    ) N
+(30) # () N
+(31) # (   ) S
+(--Inputs) c n
+(32) # () S
+(   ) p
+(signal) K
+( floating : std_logic_vector\(31 ) p
+(downto) K
+( 0\) := \() p
+(others) K
+( => ') p
+(0) str
+('\);) p n
+(33) # () N
+(34) # ( ) S 8 T () S
+(--Outputs) c n
+(35) # () S
+(   ) p
+(signal) K
+( fixed : std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(36) # (   ) S
+(constant) K
+( clock_period : time := 10 ns;) p n
+(37) # ( ) N
+(38) # () S
+(BEGIN) K n
+(39) # () S
+( ) p n
+(40) # () S 8 T () S
+(-- Instantiate the Unit Under Test \(UUT\)) c n
+(41) # () S
+(   uut: my_converter ) p
+(PORT) K
+( ) p
+(MAP) K
+( \() p n
+(42) # (          floating => floating,) N
+(43) # (          fixed => fixed) N
+(44) # (        \);) N
+(45) # () N
+(46) # () N
+(47) # () N
+(48) # (   ) S
+(-- Stimulus process) c n
+(49) # () S
+(   stim_proc: ) p
+(process) K n
+(50) # () S
+(   ) p
+(begin) K
+() p 16 T () S 24 T () N
+(51) # (      ) S
+(-- hold reset state for 100 ns.) c n
+(52) # () S
+(      ) p
+(wait) K
+( ) p
+(for) K
+( clock_period;) p n
+(53) # () N
+(54) # () S 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(55) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(56) # () S
+() p 8 T () S 16 T () S
+(-- Testing) c n
+(57) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(58) # () S
+() p 8 T () S 16 T () S
+(-- -------------------------------------------------------------) c n
+0 T (-------------------) N
+(59) # () S
+() p 8 T () S 16 T () S
+(report) K
+( ") p
+(Testing) str
+(";) p n
+(60) # () N
+(61) # () S 8 T () S 16 T (floating <= ") S
+(01000001000001000000000000000000) str
+(";) p n
+(62) # () S 8 T () S 16 T () N
+(63) # (      ) S
+(wait) K
+(;) p n
+(64) # (   ) S
+(end) K
+( ) p
+(process) K
+(;) p n
+(65) # () N
+(66) # () S
+(END) K
+(;) p n
+(my_converter_tb.vhd) (Page 1/1) (Apr 27, 12 17:51) title
+border
+grestore
+(Printed by David Klein) rhead
+(my_converter_tb.vhd) (2/7) (Friday April 27, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 3
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (--------------------------------------------------------------------------------) c n
+0 T (--) N
+(2) # (--Names: Jeffrey Shaw, David Klien) N
+(3) # (--Login: shawj, kliend) N
+(4) # (--Email: shawj@cs.ucr.edu, dklie003@ucr.edu) N
+(5) # (--Lab Section: 022) N
+(6) # (--Assignment: Lab #2) N
+(7) # (--I acknowledge all content is original.) N
+(8) # (--------------------------------------------------------------------------------) N
+0 T (--) N
+(9) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(10) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(11) # () S
+(use) K
+( IEEE.STD_LOGIC_ARITH.) p
+(ALL) K
+(;) p n
+(12) # () S
+(use) K
+( IEEE.STD_LOGIC_UNSIGNED.) p
+(ALL) K
+(;) p n
+(13) # () S
+(use) K
+( ieee.numeric_bit.) p
+(all) K
+(;) p n
+(14) # () N
+(15) # () N
+(16) # () S
+(-- Uncomment the following library declaration if using) c n
+(17) # (-- arithmetic functions with Signed or Unsigned values) N
+(18) # (--use IEEE.NUMERIC_STD.ALL;) N
+(19) # () N
+(20) # (-- Uncomment the following library declaration if instantiating) N
+(21) # (-- any Xilinx primitives in this code.) N
+(22) # (--library UNISIM;) N
+(23) # (--use UNISIM.VComponents.all;) N
+(24) # () N
+(25) # () S
+(entity) K
+( ) p
+(my_converter) l
+( ) p
+(is) K n
+(26) # () S
+() p 8 T () S
+(generic) K
+(\() p n
+(27) # () S 8 T () S 16 T (numbits) S 24 T (: integer) S 40 T (:= 32) N
+(28) # () S 8 T (\);) N
+(29) # (    ) S
+(Port) K
+( \( floating : ) p
+(in) K
+(  STD_LOGIC_VECTOR\(numbits - 1 ) p
+(downto) K
+( 0\);) p n
+(30) # (           fixed : ) S
+(out) K
+(  STD_LOGIC_VECTOR\(numbits - 1 ) p
+(downto) K
+( 0\)\);) p n
+(31) # () S
+(end) K
+( my_converter;) p n
+(32) # () N
+(33) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( my_converter ) p
+(is) K n
+(34) # () S
+() p 8 T () S
+(signal) K
+( sign_sig: std_logic;) p n
+(35) # () S 8 T () S
+(signal) K
+( exponent: std_logic_vector\(7 ) p
+(downto) K
+( 0\);) p n
+(36) # () S 8 T () S
+(signal) K
+( mantissa: std_logic_vector\(22 ) p
+(downto) K
+( 0\);) p n
+(37) # () S 8 T () N
+(38) # () S 8 T () S
+(signal) K
+( fixed_sig: std_logic_vector\(31 ) p
+(downto) K
+( 0\);) p n
+(39) # () S 8 T () S
+(signal) K
+( signal_to_shift: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(40) # () S 8 T () S
+(signal) K
+( pos_signal_to_shift_1: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(41) # () S 8 T () S
+(signal) K
+( pos_signal_to_shift_2: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(42) # () S 8 T () S
+(signal) K
+( pos_signal_to_shift_3: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(43) # () S 8 T () S
+(signal) K
+( pos_signal_to_shift_4: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(44) # () S 8 T () S
+(signal) K
+( pos_signal_to_shift_5: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(45) # () S 8 T () S
+(signal) K
+( neg_signal_to_shift_1: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(46) # () S 8 T () S
+(signal) K
+( neg_signal_to_shift_2: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(47) # () S 8 T () S
+(signal) K
+( neg_signal_to_shift_3: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(48) # () S 8 T () S
+(signal) K
+( neg_signal_to_shift_4: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(49) # () S 8 T () S
+(signal) K
+( neg_signal_to_shift_5: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(50) # () S 8 T () S
+(signal) K
+( pos_shift_sig: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(51) # () S 8 T () S
+(signal) K
+( neg_shift_sig: std_logic_vector\(38 ) p
+(downto) K
+( 0\);) p n
+(52) # () S 8 T () S
+(signal) K
+( shift_enable: std_logic_vector\(7 ) p
+(downto) K
+( 0\);) p n
+(53) # () S 8 T () S
+(signal) K
+( mux_select: std_logic;) p n
+(54) # () S 8 T () S
+(signal) K
+( positive_shift_out: std_logic;) p n
+(55) # () S 8 T () S
+(signal) K
+( negative_shift_out: std_logic;) p n
+(56) # () N
+(57) # () N
+(58) # () S
+(begin) K n
+(59) # () S
+() p 8 T (my_converter_process: ) S
+(process) K
+(\( floating, sign_sig, exponent, mantissa \)) p n
+(60) # () S 8 T () S 16 T () S
+(begin) K n
+(61) # () S
+() p 8 T () S 16 T () S 24 T (exponent <= floating\(30 ) S
+(downto) K
+( 23\);) p n
+(62) # () S 8 T () S 16 T () S 24 T (mantissa <= floating\(22 ) S
+(downto) K
+( 0\);) p n
+(63) # () S 8 T () S 16 T () S 24 T (sign_sig <= floating\(31\);) S 56 T () S 64 T () N
+(64) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( my_converter_process;) p n
+(65) # () S 8 T () S 16 T () N
+(66) # () S 8 T (controller: ) S
+(process) K
+(\( exponent, mantissa, signal_to_shift, shift_enable, ) p n
+0 T (mux_select , positive_shift_out, negative_shift_out \)) N
+(67) # () S 8 T () S 16 T () S
+(begin) K n
+(68) # () S
+() p 8 T () S 16 T () S 24 T (signal_to_shift <= ") S
+(000000000000000) str
+(" & ') p
+(1) str
+(' & mantissa\(22 ) p
+(d) K n
+0 T (ownto) S
+( 0\);) p n
+(69) # () S 8 T () S 16 T () S 24 T () S
+(if) K
+(\( exponent > 127 \) ) p
+(then) K n
+(my_converter.vhd) (Page 1/4) (Apr 27, 12 17:51) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(70) # () p 8 T () S 16 T () S 24 T () S 32 T (shift_enable <= exponent - 127;) N
+(71) # () S 8 T () S 16 T () S 24 T () S 32 T (mux_select <= ') S
+(0) str
+(';) p n
+(72) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(73) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (shift_enable <= 127 - exponent;) N
+(74) # () S 8 T () S 16 T () S 24 T () S 32 T (mux_select <= ') S
+(1) str
+(';) p 56 T () S 64 T () S 72 T () N
+(75) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(76) # () S 8 T () S 16 T () S 24 T () N
+(77) # () S 8 T () S 16 T () S 24 T () S
+(--Positive Shift) c n
+(78) # () S
+() p 8 T () S 16 T () S 24 T (POS_SHIFT: ) S
+(if) K
+(\( shift_enable > 39 \) ) p
+(then) K n
+(79) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (positive_shift_out <= ') S
+(0) str
+(';) p
+(-- junk <= \(others => ) c n
+0 T ('0'\);) N
+(80) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () N
+(81) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(82) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(--perform positive shift) c n
+(83) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (positive_shift_out <= ') S
+(1) str
+(';) p n
+(84) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+( POS_SHIFT;) p n
+(85) # () S 8 T () S 16 T () S 24 T () N
+(86) # () S 8 T () S 16 T () S 24 T () S
+(--Negative Shift) c n
+(87) # () S
+() p 8 T () S 16 T () S 24 T (NEGATIVE_SHIFT:) S
+(if) K
+(\( shift_enable > 24 \) ) p
+(then) K n
+(88) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (negative_shift_out <= ') S
+(0) str
+(';) p n
+(89) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(90) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(--perform negative shift) c n
+(91) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (negative_shift_out <= ') S
+(1) str
+(';) p n
+(92) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+( NEGATIVE_SHIFT;) p n
+(93) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( controller;) p n
+(94) # () S 8 T () S 16 T () N
+(95) # () S 8 T () S
+(--SHIFT 1 BLOCK - POS) c n
+(96) # () S
+() p 8 T (shift_1_postive: ) S
+(process) K
+(\( signal_to_shift, shift_enable, positive_shift_) p n
+0 T (out \)) N
+(97) # () S 8 T () S 16 T () S
+(begin) K n
+(98) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(0\) = ') p
+(1) str
+(' ) p
+(AND) K
+( positive_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(99) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_1 <= signal_to_shift\(37 ) S
+(down) K n
+0 T (to) S
+( 0\) & ') p
+(0) str
+(';) p n
+(100) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(101) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_1 <= signal_to_shift;) N
+(102) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(103) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_1_postive;) p n
+(104) # () S 8 T () N
+(105) # () S 8 T () S
+(--SHIFT 2 BLOCK - POS \(LEFT\)) c n
+(106) # () S
+() p 8 T (shift_2_postive: ) S
+(process) K
+(\( shift_enable, positive_shift_out, pos_signal_t) p n
+0 T (o_shift_1 \)) N
+(107) # () S 8 T () S 16 T () S
+(begin) K n
+(108) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(1\) = ') p
+(1) str
+(' ) p
+(AND) K
+( positive_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(109) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_2 <= pos_signal_to_shift_1\(3) N
+0 T (6 ) S
+(downto) K
+( 0\) & ") p
+(00) str
+(";) p n
+(110) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(111) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_2 <= pos_signal_to_shift_1;) N
+(112) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(113) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_2_postive;) p n
+(114) # () S 8 T () S 16 T () N
+(115) # () S 8 T () S
+(--SHIFT 4 BLOCK - POS \(LEFT\)) c n
+(116) # () S
+() p 8 T (shift_4_postive: ) S
+(process) K
+(\( shift_enable, positive_shift_out, pos_signal_t) p n
+0 T (o_shift_2) S 16 T (\)) N
+(117) # () S 8 T () S 16 T () S
+(begin) K n
+(118) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(2\) = ') p
+(1) str
+(' ) p
+(AND) K
+( positive_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(119) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_3 <= pos_signal_to_shift_2\(3) N
+0 T (4 ) S
+(downto) K
+( 0\) & x") p
+(0) str
+(";) p n
+(120) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(121) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_3 <= pos_signal_to_shift_2;) N
+(122) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(123) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_4_postive;) p n
+(124) # () S 8 T () S 16 T () N
+(125) # () S 8 T () S
+(--SHIFT 8 BLOCK - POS \(LEFT\)) c n
+(126) # () S
+() p 8 T (shift_8_postive: ) S
+(process) K
+(\( shift_enable, positive_shift_out, pos_signal_t) p n
+0 T (o_shift_3 \)) N
+(127) # () S 8 T () S 16 T () S
+(begin) K n
+(128) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(3\) = ') p
+(1) str
+(' ) p
+(AND) K
+( positive_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(129) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_4 <= pos_signal_to_shift_3\(3) N
+0 T (0 ) S
+(downto) K
+( 0\) & x") p
+(00) str
+(";) p n
+(my_converter.vhd) (Page 2/4) (Apr 27, 12 17:51) title
+border
+grestore
+(Printed by David Klein) rhead
+(my_converter.vhd) (3/7) (Friday April 27, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 4
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(130) # () p 8 T () S 16 T () S 24 T () S
+(else) K n
+(131) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_4 <= pos_signal_to_shift_3;) N
+(132) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(133) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_8_postive;) p n
+(134) # () S 8 T () S 16 T () N
+(135) # () S 8 T () S
+(--SHIFT 16 BLOCK - POS \(LEFT\)) c n
+(136) # () S
+() p 8 T (shift_16_postive: ) S
+(process) K
+(\( shift_enable, positive_shift_out, pos_signal_) p n
+0 T (to_shift_4 \)) N
+(137) # () S 8 T () S 16 T () S
+(begin) K n
+(138) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(4\) = ') p
+(1) str
+(' ) p
+(AND) K
+( positive_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(139) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_5 <= pos_signal_to_shift_4\(2) N
+0 T (2 ) S
+(downto) K
+( 0\) & x") p
+(0000) str
+(";) p n
+(140) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(141) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (pos_signal_to_shift_5 <= pos_signal_to_shift_4;) N
+(142) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(143) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_16_postive;) p n
+(144) # () S 8 T () S 16 T () N
+(145) # () S 8 T () S
+(--SHIFT 1 BLOCK - NEG \(RIGHT\)) c n
+(146) # () S
+() p 8 T (shift_1_negative: ) S
+(process) K
+(\( signal_to_shift, shift_enable, negative_shift) p n
+0 T (_out \)) N
+(147) # () S 8 T () S 16 T () S
+(begin) K n
+(148) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(0\) = ') p
+(1) str
+(' ) p
+(AND) K
+( negative_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(149) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_1 <= ') S
+(0) str
+(' & signal_to_shift\(3) p n
+0 T (8 ) S
+(downto) K
+( 1\);) p n
+(150) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(151) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_1 <= signal_to_shift;) N
+(152) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(153) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_1_negative;) p n
+(154) # () S 8 T () N
+(155) # () S 8 T () S
+(--SHIFT 2 BLOCK - NEG \(RIGHT\)) c n
+(156) # () S
+() p 8 T (shift_2_negative: ) S
+(process) K
+(\( shift_enable, negative_shift_out, neg_signal_) p n
+0 T (to_shift_1 \)) N
+(157) # () S 8 T () S 16 T () S
+(begin) K n
+(158) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(1\) = ') p
+(1) str
+(' ) p
+(AND) K
+( negative_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(159) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_2 <= ") S
+(00) str
+(" & neg_signal_to_sh) p n
+0 T (ift_1\(38 ) S
+(downto) K
+( 2\);) p n
+(160) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(161) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_2 <= neg_signal_to_shift_1;) N
+(162) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(163) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_2_negative;) p n
+(164) # () S 8 T () S 16 T () N
+(165) # () S 8 T () S
+(--SHIFT 4 BLOCK - NEG \(RIGHT\)) c n
+(166) # () S
+() p 8 T (shift_4_negative: ) S
+(process) K
+(\( shift_enable, negative_shift_out, neg_signal_) p n
+0 T (to_shift_2 \)) N
+(167) # () S 8 T () S 16 T () S
+(begin) K n
+(168) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(2\) = ') p
+(1) str
+(' ) p
+(AND) K
+( negative_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(169) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_3 <= x") S
+(0) str
+(" & neg_signal_to_sh) p n
+0 T (ift_2\(38 ) S
+(downto) K
+( 4\);) p n
+(170) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(171) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_3 <= neg_signal_to_shift_2;) N
+(172) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(173) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_4_negative;) p n
+(174) # () S 8 T () S 16 T () N
+(175) # () S 8 T () S
+(--SHIFT 8 BLOCK - NEG \(RIGHT\)) c n
+(176) # () S
+() p 8 T (shift_8_negative: ) S
+(process) K
+(\( shift_enable, negative_shift_out, neg_signal_) p n
+0 T (to_shift_3 \)) N
+(177) # () S 8 T () S 16 T () S
+(begin) K n
+(178) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(3\) = ') p
+(1) str
+(' ) p
+(AND) K
+( negative_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(179) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_4 <= x") S
+(00) str
+(" & neg_signal_to_s) p n
+0 T (hift_3\(38 ) S
+(downto) K
+( 8\);) p n
+(180) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(181) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_4 <= neg_signal_to_shift_3;) N
+(182) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(183) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_8_negative;) p n
+(184) # () S 8 T () S 16 T () N
+(185) # () S 8 T () S
+(--SHIFT 16 BLOCK - NEG \(RIGHT\)) c n
+(186) # () S
+() p 8 T (shift_16_negative: ) S
+(process) K
+(\( shift_enable, negative_shift_out, neg_signal) p n
+0 T (_to_shift_4 \)) N
+(my_converter.vhd) (Page 3/4) (Apr 27, 12 17:51) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(187) # () p 8 T () S 16 T () S
+(begin) K n
+(188) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\(shift_enable\(4\) = ') p
+(1) str
+(' ) p
+(AND) K
+( negative_shift_out = ') p
+(1) str
+('\) ) p
+(t) K n
+0 T (hen) N
+(189) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_5 <= x") S
+(0000) str
+(" & neg_signal_to) p n
+0 T (_shift_4\(38 ) S
+(downto) K
+( 16\);) p n
+(190) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(191) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_signal_to_shift_5 <= neg_signal_to_shift_4;) N
+(192) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(193) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_16_negative;) p n
+(194) # () S 8 T () S 16 T () N
+(195) # () S 8 T (sign_select_process: ) S
+(process) K
+(\( sign_sig, pos_shift_sig, neg_shift_sig, po) p n
+0 T (s_signal_to_shift_5, neg_signal_to_shift_5 \)) N
+(196) # () S 8 T () S 16 T () S
+(begin) K n
+(197) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\( sign_sig = ') p
+(1) str
+(' \) ) p
+(then) K n
+(198) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_shift_sig <= \() S
+(not) K
+( neg_signal_to_shift_5\) + 1) p n
+0 T (;) N
+(199) # () S 8 T () S 16 T () S 24 T () S 32 T (pos_shift_sig <= pos_signal_to_shift_5;) N
+(200) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(201) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (neg_shift_sig <= neg_signal_to_shift_5;) N
+(202) # () S 8 T () S 16 T () S 24 T () S 32 T (pos_shift_sig <= pos_signal_to_shift_5;) N
+(203) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(204) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( sign_select_process;) p n
+(205) # () S 8 T () S 16 T () N
+(206) # () S 8 T () S
+(--MUX - controls whether to output the positive or negative signal) c n
+(207) # () S
+() p 8 T (shift_select_mux: ) S
+(process) K
+(\( mux_select, pos_shift_sig, neg_shift_sig \)) p n
+(208) # () S 8 T () S 16 T () S
+(begin) K n
+(209) # () S
+() p 8 T () S 16 T () S 24 T () S
+(if) K
+(\( mux_select = ') p
+(0) str
+(' \) ) p
+(then) K n
+(210) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (fixed_sig <= neg_shift_sig\(31 ) S
+(downto) K
+( 0\);) p n
+(211) # () S 8 T () S 16 T () S 24 T () S
+(else) K n
+(212) # () S
+() p 8 T () S 16 T () S 24 T () S 32 T (fixed_sig <= pos_shift_sig\(38 ) S
+(downto) K
+( 7\);) p n
+(213) # () S 8 T () S 16 T () S 24 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(214) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(process) K
+( shift_select_mux;) p n
+(215) # () S 8 T () S 16 T () N
+(216) # () S 8 T (fixed <= fixed_sig;) N
+(217) # () S 8 T () S 16 T () N
+(218) # () S
+(end) K
+( Behavioral;) p n
+(219) # () N
+(my_converter.vhd) (Page 4/4) (Apr 27, 12 17:51) title
+border
+grestore
+(Printed by David Klein) rhead
+(my_converter.vhd) (4/7) (Friday April 27, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 5
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (#Names: Jeffrey Shaw, David Klien) p n
+(2) # (#Login: shawj, kliend) N
+(3) # (#Email: shawj@cs.ucr.edu, kliend@cs.ucr.edu) N
+(4) # (#Lab Section: 022) N
+(5) # (#Assignment: Lab #2) N
+(6) # (#I acknowledge all content is original.) N
+(7) # () N
+(8) # () N
+(9) # (#-----------------------------------------------------------) N
+(10) # (#) N
+(11) # (#Instructions:) N
+(12) # (# inputs: A, B) N
+(13) # (#) S 8 T (input A -> location of binary point from the right) N
+(14) # (#) S 8 T ( example: 0100 00100 0000 location = 7 for 8.25) N
+(15) # (#) N
+(16) # (#) S 8 T (input B -> number to convert to float) N
+(17) # (#) S 8 T ( example: 8.25) N
+(18) # (#) N
+(19) # (#-----------------------------------------------------------) N
+(20) # () N
+(21) # () N
+(22) # () S
+(.text) K n
+(23) # (.globl) S
+( main) p n
+(24) # () N
+(25) # (main:) N
+(26) # () S 8 T (subu $sp, $sp, 32 ) N
+(27) # () S 8 T (sw $ra, 20\($sp\)) N
+(28) # () S 8 T (sw $fp, 16\($sp\)) N
+(29) # () S 8 T (addiu $fp, $sp, 28) N
+(30) # () N
+(31) # (#User Interface) N
+(32) # () N
+(33) # () N
+(34) # (#Print "Running Fixed Point to Float Point Application") N
+(35) # () N
+(36) # () N
+(37) # (li $v0,4) N
+(38) # (la $a0, STR1) S 16 T () S 24 T (#Print "Enter L: ") N
+(39) # (syscall) N
+(40) # () N
+(41) # (li $v0,5) N
+(42) # (syscall) N
+(43) # () N
+(44) # (add $s0, $v0, $zero) S 24 T (#s0 -> location of binary point) N
+(45) # (add $a0, $v0, $zero) N
+(46) # (li $v0, 1) N
+(47) # (syscall) N
+(48) # () N
+(49) # (li $v0,4) N
+(50) # (la $a0, STR2) S 16 T () S 24 T (#Print "Enter fixed-point: ") N
+(51) # (syscall) N
+(52) # () N
+(53) # (li $v0,5) N
+(54) # (syscall) N
+(55) # () N
+(56) # (add $s1, $v0, $zero ) S 24 T (#s1 -> fixed point number) N
+(57) # (add $a0, $v0, $zero) N
+(58) # (li $v0, 1) N
+(59) # (syscall) N
+(60) # () N
+(61) # (bge $s1, $zero, positive) N
+(62) # () N
+(63) # (#negative) S 16 T (convert to positive) N
+(64) # (nor $s1, $s1, $s1) N
+(65) # (add $s1, $s1, 1) N
+(66) # () N
+(67) # (#need to store negative bit as msb of float) N
+(68) # (add $s3, $zero, 1) N
+(69) # () N
+(70) # (positive:) N
+(71) # () N
+(72) # (add $s4, $s1, $zero) N
+(73) # (lw $t0, var1) S 16 T () S 24 T () S 32 T () S 40 T (# $t0 = 32 this is our counter) N
+(lab2_part1.s) (Page 1/6) (Apr 23, 12 14:33) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(74) # (add $t4, $zero, $zero) p 24 T () S 32 T () S 40 T (# $t4 is incrimentor) N
+(75) # () N
+(76) # (la $t1, array1) S 16 T () S 24 T () S 32 T () S 40 T (# load base address of array into regist) N
+0 T (er $t1) N
+(77) # (li $t2, 0) S 16 T () S 24 T () S 32 T () S 40 T (# $t2 = 0 \(load immidiate\)) N
+(78) # (li $t3, 1) S 16 T () S 24 T () S 32 T () S 40 T (# $t3 = 1 \(load immidiate\)) N
+(79) # (li $t6, 0x80000000) N
+(80) # () N
+(81) # () N
+(82) # (#_______________________________________) N
+(83) # (li $v0,4) N
+(84) # (la $a0, STR3) S 16 T () S 24 T () N
+(85) # (syscall) N
+(86) # (#_______________________________________) N
+(87) # () N
+(88) # () N
+(89) # (bit_check_loop:) N
+(90) # () N
+(91) # (and $t7, $s4, $t6) N
+(92) # (bge $t7, $zero, add_zero) S 32 T () S 40 T (# branch \(positive\) >= 0 to add a zero t) N
+0 T (o array) N
+(93) # (blt $t7, $zero, add_one) S 24 T () S 32 T () S 40 T (# branch \(negative\) < 0 to add a one to ) N
+0 T (array) N
+(94) # () N
+(95) # (add_zero:) N
+(96) # () N
+(97) # (add $t5, $t1, $t4) S 24 T () S 32 T () S 40 T (# store base + offset) N
+(98) # (sw $t2, 0\($t5\)) S 16 T () S 24 T () S 32 T () S 40 T (# add 0 to array) N
+(99) # (addi $t4, $t4, 4) S 24 T () S 32 T () S 40 T (# incriment incrimentor) N
+(100) # (addi $t0, $t0, -1) S 24 T () S 32 T () S 40 T (# decriment counter) N
+(101) # (sll $s4, $s4, 1) S 16 T () S 24 T () S 32 T () S 40 T (# left shift) N
+(102) # () S
+(bgt) K
+( $t0, $zero, bit_check_loop) p 32 T () S 40 T (# if counter > 0 continue loop) N
+(103) # () S
+(ble) K
+( $t0, $zero, bit_done) p 32 T () S 40 T (# if counter <= 0 finished loop ) N
+(104) # () N
+(105) # (add_one:) N
+(106) # () N
+(107) # (add $t5, $t1, $t4) S 24 T () S 32 T () S 40 T (# store base + offset) N
+(108) # (sw $t3, 0\($t5\)) S 16 T () S 24 T () S 32 T () S 40 T (# add 1 to array) N
+(109) # (addi $t4, $t4, 4) S 24 T () S 32 T () S 40 T (# incriment incrimentor) N
+(110) # (addi $t0, $t0, -1) S 24 T () S 32 T () S 40 T (# decriment counter) N
+(111) # (sll $s4, $s4, 1) S 16 T () S 24 T () S 32 T () S 40 T (# left shift) N
+(112) # () S
+(bgt) K
+( $t0, $zero, bit_check_loop) p 32 T () S 40 T (# if counter > 0 continue loop) N
+(113) # () S
+(ble) K
+( $t0, $zero, bit_done) p 32 T () S 40 T (# if counter <= 0 finished loop ) N
+(114) # () N
+(115) # (bit_done:) N
+(116) # () N
+(117) # (#------------------PRINT LOOP------------------#) N
+(118) # (add $t4, $zero, $zero) N
+(119) # (addi $t0, $zero, 32) N
+(120) # () N
+(121) # (li $v0,4) N
+(122) # (la $a0, STR4) S 16 T () S 24 T () N
+(123) # (syscall) N
+(124) # () N
+(125) # (Print_Loop:) N
+(126) # () N
+(127) # (add $t5, $t1, $t4) N
+(128) # (lw $t2, 0\($t5\)) N
+(129) # (li $v0, 1) N
+(130) # (move $a0, $t2) N
+(131) # (syscall) N
+(132) # (addi $t4, $t4, 4) N
+(133) # (addi $t0, $t0, -1) N
+(134) # () S
+(bgt) K
+( $t0, $zero, Print_Loop) p n
+(135) # (#----------------END PRINT LOOP----------------#) N
+(136) # () N
+(137) # (#--------------FIND FIRST BIT LOOP-------------#) N
+(138) # (add $t4, $zero, $zero) N
+(139) # (add $t0, $zero, $zero) N
+(140) # () N
+(141) # (find_first_bit_loop:) N
+(142) # (add $t5, $t1, $t4) S 24 T () S 32 T () S 40 T (# store base + offset) N
+(143) # (lw $t2, 0\($t5\)) N
+(lab2_part1.s) (Page 2/6) (Apr 23, 12 14:33) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab2_part1.s) (5/7) (Friday April 27, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 6
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(144) # (addi $t4, $t4, 4) p n
+(145) # (addi $t0, $t0, 1) N
+(146) # (addi $t2, $t2, -1) N
+(147) # () S
+(bne) K
+( $t2, $zero, find_first_bit_loop) p n
+(148) # (#-----------END FIND FIRST BIT LOOP------------#) N
+(149) # () N
+(150) # (li $v0,4) N
+(151) # (la $a0, STR6) S 16 T () S 24 T () N
+(152) # (syscall) N
+(153) # () N
+(154) # (addi $t0, $t0, -1) N
+(155) # (li $t7, 0) N
+(156) # (li $t6, 4) N
+(157) # (mult $t0, $t6) N
+(158) # (mflo) S 8 T ($t6) N
+(159) # (add $t4, $t1, $t6) N
+(160) # (sw $t7, 0\($t4\)) N
+(161) # () N
+(162) # (addi $t0, $t0, 1) N
+(163) # (add $s5, $t0, $zero) S 24 T () S 32 T (# s0 <- t0) N
+(164) # () N
+(165) # (#--------------CALCULATE EXPONENT--------------#) N
+(166) # (addi $t2, $zero, 32) S 24 T () S 32 T (# t2 <- 32) N
+(167) # (add $t0, $t0, $s0) S 24 T () S 32 T (# t0 <- t0 + s0) N
+(168) # (sub $t0 $t2, $t0) S 24 T () S 32 T (# t0 <- t2 - t0) N
+(169) # (lw $t2, var2) S 16 T () S 24 T () S 32 T (# t2 <- 127) N
+(170) # (add $t0, $t0, $t2) S 24 T () S 32 T (# t0 <- t0 + 127) N
+(171) # (add $s0, $t0, $zero) S 24 T () S 32 T (# s0 <- t0) N
+(172) # (#------------END CALCULATE EXPONENT------------#) N
+(173) # () N
+(174) # (#-----------------CREATE ARRAY2----------------#) N
+(175) # (la $t1, array2) S 16 T () S 24 T () S 32 T () S 40 T (# load address of array2 into $t2) N
+(176) # (lw $t0, var1) S 16 T () S 24 T () S 32 T () S 40 T (# $t0 = 32 this is our counter) N
+(177) # (add $t4, $zero, $zero) S 24 T () S 32 T () S 40 T (# $t4 is incrimentor) N
+(178) # (li $t2, 0) S 16 T () S 24 T () S 32 T () S 40 T (# $t2 = 0 \(load immidiate\)) N
+(179) # (li $t3, 1) S 16 T () S 24 T () S 32 T () S 40 T (# $t3 = 1 \(load immidiate\)) N
+(180) # (li $t6, 0x80000000) N
+(181) # () N
+(182) # (bit_check_loop2:) N
+(183) # () N
+(184) # (and $t7, $s0, $t6) N
+(185) # (bge $t7, $zero, add_zero2) S 32 T () S 40 T (# branch \(positive\) >= 0 to add a zero t) N
+0 T (o array) N
+(186) # (blt $t7, $zero, add_one2) S 32 T () S 40 T (# branch \(negative\) < 0 to add a one to ) N
+(187) # () N
+(188) # (add_zero2:) N
+(189) # () N
+(190) # (add $t5, $t1, $t4) S 24 T () S 32 T () S 40 T (# store base + offset) N
+(191) # (sw $t2, 0\($t5\)) S 16 T () S 24 T () S 32 T () S 40 T (# add 0 to array) N
+(192) # (addi $t4, $t4, 4) S 24 T () S 32 T () S 40 T (# incriment incrimentor) N
+(193) # (addi $t0, $t0, -1) S 24 T () S 32 T () S 40 T (# decriment counter) N
+(194) # (sll $s0, $s0, 1) S 16 T () S 24 T () S 32 T () S 40 T (# left shift) N
+(195) # () S
+(bgt) K
+( $t0, $zero, bit_check_loop2) p 32 T () S 40 T (# if counter > 0 continue loop) N
+(196) # () S
+(ble) K
+( $t0, $zero, bit_done2) p 32 T () S 40 T (# if counter <= 0 finished loop ) N
+(197) # () N
+(198) # (add_one2:) N
+(199) # () N
+(200) # (add $t5, $t1, $t4) S 24 T () S 32 T () S 40 T (# store base + offset) N
+(201) # (sw $t3, 0\($t5\)) S 16 T () S 24 T () S 32 T () S 40 T (# add 1 to array) N
+(202) # (addi $t4, $t4, 4) S 24 T () S 32 T () S 40 T (# incriment incrimentor) N
+(203) # (addi $t0, $t0, -1) S 24 T () S 32 T () S 40 T (# decriment counter) N
+(204) # (sll $s0, $s0, 1) S 16 T () S 24 T () S 32 T () S 40 T (# left shift) N
+(205) # () S
+(bgt) K
+( $t0, $zero, bit_check_loop2) p 32 T () S 40 T (# if counter > 0 continue loop) N
+(206) # () S
+(ble) K
+( $t0, $zero, bit_done2) p 32 T () S 40 T (# if counter <= 0 finished loop ) N
+(207) # () N
+(208) # (bit_done2:) N
+(209) # (#---------------END CREATE ARRAY2----------------#) N
+(210) # () N
+(211) # (#-----------------CREATE ARRAY3------------------#) N
+(212) # (addi $t4, $zero, 4) N
+(213) # () N
+(214) # (la $t1, array2) N
+(215) # (la $t2, array3) N
+(lab2_part1.s) (Page 3/6) (Apr 23, 12 14:33) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(216) # () p n
+(217) # (li $t7, 23) N
+(218) # (mult $t7, $t4) N
+(219) # (mflo $t7) N
+(220) # () N
+(221) # (add $t1, $t1, $t7) N
+(222) # (li $t6, 9) N
+(223) # (array3_loop:) N
+(224) # (lw $t5, 0\($t1\)) N
+(225) # (sw $t5, 0\($t2\)) N
+(226) # (add $t1, $t1, $t4) N
+(227) # (add $t2, $t2, $t4) N
+(228) # (addi $t6, $t6, -1) N
+(229) # () S
+(bne) K
+( $t6, $zero, array3_loop) p n
+(230) # (#---------------END CREATE ARRAY3----------------#) N
+(231) # () N
+(232) # (#---------------CREATE ARRAY3 PART2--------------#) N
+(233) # (addi $t4, $zero, 4) N
+(234) # () N
+(235) # (la $t1, array1) N
+(236) # (la $t2, array3) N
+(237) # (addi $s5, $s5, -1) N
+(238) # () N
+(239) # (mult $s5, $t4) N
+(240) # (mflo $t7) N
+(241) # (add $t1, $t1, $t7) N
+(242) # () N
+(243) # (li $t6, 8) N
+(244) # (mult $t6, $t4) N
+(245) # (mflo $t7) N
+(246) # (add $t2, $t2, $t7) N
+(247) # () N
+(248) # (li $t6, 32) S 16 T () S 24 T () S 32 T () S 40 T (# t6 is our counter) N
+(249) # (sub $t6, $t6, $s5) N
+(250) # () N
+(251) # (array3_loop2:) N
+(252) # (lw $t5, 0\($t1\)) N
+(253) # (sw $t5, 0\($t2\)) N
+(254) # (add $t1, $t1, $t4) N
+(255) # (add $t2, $t2, $t4) N
+(256) # (addi $t6, $t6, -1) N
+(257) # () S
+(bne) K
+( $t6, $zero, array3_loop2) p n
+(258) # (#----------END CREATE ARRAY3 PART2-------------#) N
+(259) # () N
+(260) # (#------------------PRINT LOOP------------------#) N
+(261) # (add $t4, $zero, $zero) N
+(262) # (addi $t0, $zero, 32) N
+(263) # (la $t1, array3) N
+(264) # () N
+(265) # (li $v0,4) N
+(266) # (la $a0, STR4) S 16 T () S 24 T () N
+(267) # (syscall) N
+(268) # () N
+(269) # (Print_Loop2:) N
+(270) # () N
+(271) # (add $t5, $t1, $t4) N
+(272) # (lw $t2, 0\($t5\)) N
+(273) # (li $v0, 1) N
+(274) # (move $a0, $t2) N
+(275) # (syscall) N
+(276) # (addi $t4, $t4, 4) N
+(277) # (addi $t0, $t0, -1) N
+(278) # () S
+(bgt) K
+( $t0, $zero, Print_Loop2) p n
+(279) # (#----------------END PRINT LOOP----------------#) N
+(280) # () N
+(281) # (li $v0,4) N
+(282) # (la $a0, STR6) S 16 T () S 24 T () N
+(283) # (syscall) N
+(284) # () N
+(285) # () S
+(beq) K
+( $s3, $zero, calc_num) p 32 T () S 40 T (# this will add the msb if our original ) N
+(286) # (la $t1, array3) S 16 T () S 24 T () S 32 T () S 40 T (#) S 48 T (number is negative) N
+(287) # (sw $s3, 0\($t1\)) N
+(288) # () N
+(lab2_part1.s) (Page 4/6) (Apr 23, 12 14:33) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab2_part1.s) (6/7) (Friday April 27, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5-6) 7
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(289) # (#------------------PRINT LOOP------------------#) p n
+(290) # (add $t4, $zero, $zero) N
+(291) # (addi $t0, $zero, 32) N
+(292) # (la $t1, array3) N
+(293) # () N
+(294) # (li $v0,4) N
+(295) # (la $a0, STR4) S 16 T () S 24 T () N
+(296) # (syscall) N
+(297) # () N
+(298) # (Print_Loop3:) N
+(299) # () N
+(300) # (add $t5, $t1, $t4) N
+(301) # (lw $t2, 0\($t5\)) N
+(302) # (li $v0, 1) N
+(303) # (move $a0, $t2) N
+(304) # (syscall) N
+(305) # (addi $t4, $t4, 4) N
+(306) # (addi $t0, $t0, -1) N
+(307) # () S
+(bgt) K
+( $t0, $zero, Print_Loop3) p n
+(308) # (#----------------END PRINT LOOP----------------#) N
+(309) # () N
+(310) # (li $v0,4) N
+(311) # (la $a0, STR6) S 16 T () S 24 T () N
+(312) # (syscall) N
+(313) # () N
+(314) # (#-------------CALCULATE FINAL NUMBER-----------#) N
+(315) # (calc_num:) N
+(316) # (la $t1, array3) N
+(317) # (li $t2, 32) N
+(318) # (add $s5, $zero, $zero) N
+(319) # (addi $t4, $zero, 4) N
+(320) # (addi $t6, $zero, 1) N
+(321) # () N
+(322) # (mult $t2, $t4) N
+(323) # (mflo $t2) N
+(324) # () N
+(325) # (add $t3, $t1, $t2) N
+(326) # (addi $t3, $t3, -4) N
+(327) # (li $t5, 32) N
+(328) # () N
+(329) # (calc_loop:) N
+(330) # (lw $t0, 0\($t3\)) N
+(331) # () S
+(bne) K
+( $t0, $zero, do_add) p n
+(332) # (add $t6, $t6, $t6) N
+(333) # (addi $t3, $t3, -4) N
+(334) # (addi $t5, $t5, -1) N
+(335) # (bge $t5, $zero, calc_loop) N
+(336) # () N
+(337) # (j finish) N
+(338) # () N
+(339) # (do_add:) N
+(340) # (add $s5, $s5, $t6) N
+(341) # (add $t6, $t6, $t6) N
+(342) # (addi $t3, $t3, -4) N
+(343) # (addi $t5, $t5, -1) N
+(344) # () S
+(bne) K
+( $t5, $zero, calc_loop) p n
+(345) # (#----------END CALCULATE FINAL NUMBER-----------#) N
+(346) # () N
+(347) # (finish:) N
+(348) # () N
+(349) # (li $v0,4) N
+(350) # (la $a0, STR6) S 16 T () S 24 T () N
+(351) # (syscall) N
+(352) # () N
+(353) # (li $v0, 1) N
+(354) # (move $a0, $s5) N
+(355) # (syscall) N
+(356) # () N
+(357) # (li $v0,4) N
+(358) # (la $a0, STR5) S 16 T () S 24 T () N
+(359) # (syscall) N
+(360) # () N
+(361) # (DONE:) N
+(lab2_part1.s) (Page 5/6) (Apr 23, 12 14:33) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(362) # () p n
+(363) # () S
+(.data) K n
+(364) # () N
+(365) # () S
+(array1:) p 8 T () S 16 T (.space) S 24 T (128) S 32 T (# set array size to hold 32 integers) N
+(366) # (array2:) S 8 T () S 16 T (.space) S 24 T (128) S 32 T (# set array size to hold 32 integers) N
+(367) # (array3:) S 8 T () S 16 T (.space) S 24 T (128) S 32 T (# set array size to hold 32 integers) N
+(368) # (var1:) S 8 T () S 16 T (.word) S 24 T (32) N
+(369) # (var2:) S 8 T () S 16 T (.word) S 24 T (127) N
+(370) # () N
+(371) # (STR1:) N
+(372) # () S 8 T (.asciiz "Enter L: ") N
+(373) # () N
+(374) # (STR2:) N
+(375) # () S 8 T (.asciiz "Enter fixed-point: ") N
+(376) # () N
+(377) # (STR3:) N
+(378) # () S 8 T (.asciiz "\\ncomputing binary number\\n") N
+(379) # () N
+(380) # (STR4:) N
+(381) # () S 8 T (.asciiz "printing binary number\\n") N
+(382) # () N
+(383) # (STR5:) N
+(384) # () S 8 T (.asciiz "\\nEND\\n") N
+(385) # () N
+(386) # (STR6:) N
+(387) # () S 8 T (.asciiz "\\n") N
+(388) # () N
+(389) # (STR7:) N
+(390) # () S 8 T (.asciiz "Adding One\\n") N
+(391) # () N
+(392) # (STR8:) N
+(393) # () S 8 T (.asciiz "Adding Zero\\n") N
+(394) # (STR9:) N
+(395) # () S 8 T (.asciiz "Number is negative!\\n") N
+(lab2_part1.s) (Page 6/6) (Apr 23, 12 14:33) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab2_part1.s) (7/7) (Friday April 27, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

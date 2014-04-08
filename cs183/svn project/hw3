@@ -1,0 +1,14 @@
+#! /bin/bash
+
+cd svn183
+
+LVERS=`svn info | grep "Last Changed Date"`
+
+svn up
+
+NVERS=`svn info | grep "Last Changed Date"`
+
+if [[ $LVERS != $NVERS ]]
+then
+	echo hi | mail -s 'hello' dklei003@ucr.edu
+fi

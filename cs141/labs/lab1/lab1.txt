@@ -1,0 +1,74 @@
+Lab 1: Intro to unix and python
+=================================
+Unix/Linux commands:
+    - ls
+    - pwd
+    - less/cat
+    - chmod
+    - mkdir/rm/rmdir
+    + optional (svn or other version control)
+
+Editor:
+    - vi/vim
+    - emacs
+    - other: pico/nano/gedit
+
+Python specific:
+=================================
+That way students could simply type "python2.7" to get the interpreter, and put "#!/usr/bin/env python2.7" at the top of their
+executable scripts.
+
+data types:
+    - int
+    - bool: True False
+    - string: '%d' % 123
+    - compound: list [], tuple (), dict { key: value }, set {}
+    + optional: list comprehension
+
+operator and expr: similar to C/C++/Java
+
+stmt and control structure:
+        - if/else
+        - while loop
+        - for loop
+
+function:
+        def foo(x, y):
+        return x+y
+
+i/o:
+        raw_input('prompt')
+        print
+
+edit and run:
+        edit file.py
+        python file.py
+
+sample code
+================================
+ #!/usr/bin/env python2.7
+
+ ###################################
+ # CS141, 12 Spring
+ #
+ # lab1.py
+ ###################################
+ import sys, timeit
+
+ def fib1(n):
+    if n<=1:
+        return n
+    return fib1(n-1)+fib1(n-2)
+
+ def time_fib1(n):
+    # begin timing
+    t=timeit.Timer(lambda: fib1(n))
+    l=t.timeit(1)
+    print l
+
+ if len(sys.argv) > 1:
+     n=int(sys.argv[1])
+ else:
+     n=10
+ time_fib1(n)
+

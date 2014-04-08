@@ -1,0 +1,27 @@
+Names: Jeffrey Shaw, David Klien
+Login: shawj, kliend
+Email: shawj@cs.ucr.edu, dklie003@ucr.edu
+Lab Section: 022
+Assignment: Lab #2
+I acknowledge all content is original.
+
+I. Lab objective
+The lab objective was to write a floating point to fixed point converter in both the mips language and VHDL.
+
+II . Personal contributions
+The work was mostly shared for these exercises. We both wrote portions of code in both mips and VHDL. On the mips, work was shared, we took turns writing the code and testing. On the VHDL the work was a little more skewed. David was able to work on the code for longer and contributed more time into the VHDL portion of the lab. In return, Jeff wrote this lab report.
+
+III. Skill learned & knowledge gained.
+In the first part of this lab, we learned how to write mips code and became comfortable with the commands and style of the language.
+In the second part, we increased our familiarity of the VHDL language and working with Xilinx. We learned the most in the actual debugging of the code. We got more familiar with debugging the VHDL and what certain types of errors meant.
+
+IV. Known bugs locations
+Known bug locations are as follows:
+Part 1: (MIPS)
+Our mips program works well on positive inputs, but on negative inputs there is a small error. The binary code is correct, however when outputing to a decimal, only for negative numbers, we receive an arithmetic error.
+
+Part 2: (VHDL)
+Our VHDL has an error we can not track down. We get have a missing bit in our fixed point output. The shifting seems to work, so we are unsure if the problem is in our shifting processes or in our concatenation.
+
+V. Feedback on the lab
+The lab specification could be a little more clear. If there was a straight layout of the binary representation of floating and a binary representation of fixed point, it might have been more understanadable the task of the lab. A lot of our time was spent trying to understand what we needed to do, less on how to do it.

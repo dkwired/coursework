@@ -1,0 +1,340 @@
+--------------------------------------------------------------------------------
+Release 13.3 Trace  (nt)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\13.3\ISE_DS\ISE\bin\nt\unwrapped\trce.exe -intstyle ise -v 3 -s 1 -n
+3 -fastpaths -xml CAM_Wrapper.twx CAM_Wrapper.ncd -o CAM_Wrapper.twr
+CAM_Wrapper.pcf
+
+Design file:              CAM_Wrapper.ncd
+Physical constraint file: CAM_Wrapper.pcf
+Device,package,speed:     xc6vlx240t,ff1156,C,-1 (PRODUCTION 1.15 2011-10-03, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clk
+-------------------------+------------+------------+------------+------------+------------------+--------+
+                         |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source                   | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+-------------------------+------------+------------+------------+------------+------------------+--------+
+dont_care_mask<0>        |   -0.041(R)|      FAST  |    1.264(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<1>        |    0.003(R)|      FAST  |    1.232(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<2>        |    0.063(R)|      FAST  |    1.203(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<3>        |   -0.159(R)|      FAST  |    1.407(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<4>        |   -0.146(R)|      FAST  |    1.402(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<5>        |   -0.181(R)|      FAST  |    1.493(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<6>        |   -0.176(R)|      FAST  |    1.490(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<7>        |   -0.216(R)|      FAST  |    1.517(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<8>        |   -0.183(R)|      FAST  |    1.469(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<9>        |   -0.170(R)|      FAST  |    1.492(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<10>       |   -0.129(R)|      FAST  |    1.410(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<11>       |   -0.172(R)|      FAST  |    1.459(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<12>       |   -0.197(R)|      FAST  |    1.464(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<13>       |   -0.128(R)|      FAST  |    1.405(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<14>       |   -0.119(R)|      FAST  |    1.398(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<15>       |   -0.203(R)|      FAST  |    1.503(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<16>       |   -0.540(R)|      FAST  |    1.952(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<17>       |   -0.498(R)|      FAST  |    1.920(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<18>       |   -0.437(R)|      FAST  |    1.819(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<19>       |   -0.475(R)|      FAST  |    1.849(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<20>       |   -0.115(R)|      FAST  |    1.379(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<21>       |   -0.077(R)|      FAST  |    1.312(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<22>       |   -0.051(R)|      FAST  |    1.282(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<23>       |    0.338(R)|      FAST  |    0.646(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<24>       |   -0.542(R)|      FAST  |    1.956(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<25>       |   -0.519(R)|      FAST  |    1.895(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<26>       |   -0.485(R)|      FAST  |    1.857(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<27>       |   -0.450(R)|      FAST  |    1.826(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<28>       |   -0.525(R)|      FAST  |    1.941(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<29>       |   -0.511(R)|      FAST  |    1.889(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<30>       |   -0.451(R)|      FAST  |    1.793(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<31>       |   -0.458(R)|      FAST  |    1.833(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<32>       |   -0.480(R)|      FAST  |    1.884(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<33>       |   -0.408(R)|      FAST  |    1.779(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<34>       |   -0.373(R)|      FAST  |    1.703(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<35>       |   -0.418(R)|      FAST  |    1.736(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<36>       |   -0.420(R)|      FAST  |    1.736(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<37>       |   -0.405(R)|      FAST  |    1.725(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<38>       |   -0.385(R)|      FAST  |    1.700(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<39>       |   -0.318(R)|      FAST  |    1.640(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<40>       |   -0.294(R)|      FAST  |    1.604(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<41>       |   -0.228(R)|      FAST  |    1.459(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<42>       |   -0.267(R)|      FAST  |    1.519(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<43>       |   -0.194(R)|      FAST  |    1.460(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<44>       |   -0.222(R)|      FAST  |    1.499(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<45>       |   -0.206(R)|      FAST  |    1.441(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<46>       |   -0.178(R)|      FAST  |    1.409(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<47>       |   -0.173(R)|      FAST  |    1.402(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<48>       |   -0.226(R)|      FAST  |    1.492(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<49>       |   -0.163(R)|      FAST  |    1.353(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<50>       |   -0.110(R)|      FAST  |    1.295(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<51>       |   -0.098(R)|      FAST  |    1.285(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<52>       |   -0.106(R)|      FAST  |    1.322(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<53>       |   -0.085(R)|      FAST  |    1.222(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<54>       |   -0.031(R)|      FAST  |    1.166(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<55>       |    0.000(R)|      FAST  |    1.139(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<56>       |    0.154(R)|      FAST  |    0.897(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<57>       |    0.145(R)|      FAST  |    0.860(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<58>       |    0.185(R)|      FAST  |    0.815(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<59>       |    0.279(R)|      FAST  |    0.694(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<60>       |   -0.344(R)|      FAST  |    1.796(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<61>       |   -0.331(R)|      FAST  |    1.783(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<62>       |   -0.348(R)|      FAST  |    1.798(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<63>       |    0.032(R)|      FAST  |    1.158(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<64>       |   -0.283(R)|      FAST  |    1.617(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<65>       |   -0.261(R)|      FAST  |    1.550(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<66>       |   -0.279(R)|      FAST  |    1.663(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<67>       |   -0.215(R)|      FAST  |    1.508(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<68>       |   -0.190(R)|      FAST  |    1.474(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<69>       |   -0.116(R)|      FAST  |    1.296(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<70>       |   -0.169(R)|      FAST  |    1.375(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<71>       |    0.013(R)|      FAST  |    1.155(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<72>       |   -0.353(R)|      FAST  |    1.673(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<73>       |   -0.290(R)|      FAST  |    1.616(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<74>       |   -0.284(R)|      FAST  |    1.605(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<75>       |   -0.268(R)|      FAST  |    1.548(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<76>       |   -0.258(R)|      FAST  |    1.536(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<77>       |   -0.208(R)|      FAST  |    1.476(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<78>       |   -0.157(R)|      FAST  |    1.399(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<79>       |   -0.220(R)|      FAST  |    1.493(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<80>       |   -0.263(R)|      FAST  |    1.542(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<81>       |   -0.300(R)|      FAST  |    1.570(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<82>       |   -0.282(R)|      FAST  |    1.550(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<83>       |   -0.150(R)|      FAST  |    1.382(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<84>       |   -0.063(R)|      FAST  |    1.282(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<85>       |    0.015(R)|      FAST  |    1.144(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<86>       |   -0.062(R)|      FAST  |    1.316(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<87>       |   -0.063(R)|      FAST  |    1.226(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<88>       |   -0.226(R)|      FAST  |    1.506(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<89>       |   -0.153(R)|      FAST  |    1.400(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<90>       |   -0.120(R)|      FAST  |    1.360(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<91>       |   -0.217(R)|      FAST  |    1.484(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<92>       |   -0.205(R)|      FAST  |    1.445(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<93>       |   -0.113(R)|      FAST  |    1.355(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<94>       |   -0.041(R)|      FAST  |    1.235(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<95>       |   -0.057(R)|      FAST  |    1.239(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<96>       |   -0.067(R)|      FAST  |    1.256(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<97>       |   -0.055(R)|      FAST  |    1.259(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<98>       |    0.038(R)|      FAST  |    1.113(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<99>       |   -0.074(R)|      FAST  |    1.264(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<100>      |    0.953(R)|      SLOW  |   -0.067(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<101>      |    0.998(R)|      SLOW  |   -0.109(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<102>      |    1.058(R)|      SLOW  |   -0.151(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<103>      |    0.513(R)|      FAST  |    0.412(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<104>      |   -0.544(R)|      FAST  |    1.886(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<105>      |   -0.529(R)|      FAST  |    1.883(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<106>      |   -0.526(R)|      FAST  |    1.879(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<107>      |   -0.503(R)|      FAST  |    1.812(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<108>      |   -0.373(R)|      FAST  |    1.680(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<109>      |   -0.403(R)|      FAST  |    1.710(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<110>      |   -0.388(R)|      FAST  |    1.681(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<111>      |   -0.374(R)|      FAST  |    1.682(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<112>      |   -0.429(R)|      FAST  |    1.741(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<113>      |   -0.491(R)|      FAST  |    1.799(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<114>      |   -0.479(R)|      FAST  |    1.788(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<115>      |   -0.429(R)|      FAST  |    1.740(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<116>      |   -0.437(R)|      FAST  |    1.745(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<117>      |   -0.465(R)|      FAST  |    1.774(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<118>      |   -0.470(R)|      FAST  |    1.777(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<119>      |   -0.435(R)|      FAST  |    1.744(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<120>      |   -0.500(R)|      FAST  |    1.842(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<121>      |   -0.514(R)|      FAST  |    1.863(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<122>      |   -0.510(R)|      FAST  |    1.859(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<123>      |   -0.435(R)|      FAST  |    1.783(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<124>      |   -0.531(R)|      FAST  |    1.918(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<125>      |   -0.519(R)|      FAST  |    1.864(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<126>      |   -0.473(R)|      FAST  |    1.778(R)|      SLOW  |clk_BUFGP         |   0.000|
+dont_care_mask<127>      |   -0.416(R)|      FAST  |    1.724(R)|      SLOW  |clk_BUFGP         |   0.000|
+rst                      |   -0.492(R)|      FAST  |    1.905(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<0>           |    0.301(R)|      FAST  |    0.664(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<1>           |    0.338(R)|      FAST  |    0.595(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<2>           |    0.377(R)|      FAST  |    0.538(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<3>           |    0.294(R)|      FAST  |    0.672(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<4>           |    0.347(R)|      FAST  |    0.600(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<5>           |    0.317(R)|      FAST  |    0.604(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<6>           |    0.372(R)|      FAST  |    0.532(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<7>           |    0.407(R)|      SLOW  |    0.482(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<8>           |    0.351(R)|      FAST  |    0.566(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<9>           |    0.023(R)|      FAST  |    1.041(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<10>          |    0.031(R)|      FAST  |    1.023(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<11>          |    0.059(R)|      FAST  |    0.987(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<12>          |    0.199(R)|      FAST  |    0.765(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<13>          |    0.098(R)|      FAST  |    0.944(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<14>          |    0.218(R)|      FAST  |    0.730(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<15>          |    0.828(R)|      FAST  |    0.086(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<16>          |    0.392(R)|      FAST  |    0.714(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<17>          |    0.438(R)|      FAST  |    0.641(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<18>          |    0.372(R)|      FAST  |    0.746(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<19>          |    0.425(R)|      FAST  |    0.684(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<20>          |    0.633(R)|      FAST  |    0.379(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<21>          |    0.609(R)|      FAST  |    0.416(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<22>          |    0.162(R)|      FAST  |    0.986(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<23>          |   -0.021(R)|      FAST  |    1.209(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<24>          |    0.078(R)|      FAST  |    1.119(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<25>          |    0.754(R)|      FAST  |    0.228(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<26>          |    0.695(R)|      FAST  |    0.322(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<27>          |    0.725(R)|      FAST  |    0.258(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<28>          |    0.653(R)|      FAST  |    0.384(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<29>          |    0.987(R)|      SLOW  |   -0.059(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<30>          |    0.809(R)|      FAST  |    0.188(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<31>          |    0.057(R)|      FAST  |    0.605(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<32>          |    0.741(R)|      FAST  |    0.225(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<33>          |    0.451(R)|      SLOW  |    0.214(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<34>          |    0.498(R)|      FAST  |    0.591(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<35>          |    0.038(R)|      FAST  |    0.600(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<36>          |    0.402(R)|      FAST  |    0.698(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<37>          |    0.459(R)|      FAST  |    0.601(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<38>          |    0.384(R)|      FAST  |    0.731(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<39>          |    0.351(R)|      FAST  |    0.749(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<40>          |    0.291(R)|      FAST  |    0.849(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<41>          |    0.247(R)|      FAST  |    0.955(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<42>          |    0.160(R)|      FAST  |    1.042(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<43>          |    0.047(R)|      FAST  |    1.282(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<44>          |    0.209(R)|      FAST  |    0.952(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<45>          |    0.300(R)|      FAST  |    0.882(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<46>          |    0.074(R)|      FAST  |    1.161(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<47>          |    0.121(R)|      FAST  |    1.034(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<48>          |    0.180(R)|      FAST  |    1.040(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<49>          |    0.137(R)|      FAST  |    1.095(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<50>          |   -0.017(R)|      FAST  |    1.244(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<51>          |    0.303(R)|      FAST  |    0.809(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<52>          |    0.303(R)|      FAST  |    1.388(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<53>          |    0.342(R)|      FAST  |    1.315(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<54>          |    0.450(R)|      FAST  |    0.657(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<55>          |    0.881(R)|      SLOW  |   -0.033(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<56>          |    0.651(R)|      FAST  |    0.244(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<57>          |    0.751(R)|      FAST  |    0.109(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<58>          |    0.392(R)|      FAST  |    0.657(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<59>          |    0.586(R)|      FAST  |    0.552(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<60>          |    0.649(R)|      FAST  |    0.523(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<61>          |    0.455(R)|      FAST  |    0.563(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<62>          |    0.407(R)|      FAST  |    0.654(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<63>          |    0.308(R)|      FAST  |    0.775(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<64>          |    0.302(R)|      FAST  |    0.798(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<65>          |    0.595(R)|      FAST  |    0.510(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<66>          |    0.333(R)|      FAST  |    0.747(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<67>          |    0.202(R)|      FAST  |    0.940(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<68>          |    0.292(R)|      FAST  |    0.777(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<69>          |    0.086(R)|      FAST  |    1.039(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<70>          |    0.048(R)|      FAST  |    1.089(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<71>          |    0.130(R)|      FAST  |    0.945(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<72>          |    0.405(R)|      FAST  |    0.564(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<73>          |    0.375(R)|      FAST  |    0.676(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<74>          |    0.373(R)|      FAST  |    0.681(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<75>          |    0.463(R)|      FAST  |    0.966(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<76>          |    0.164(R)|      FAST  |    0.973(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<77>          |    0.558(R)|      FAST  |    0.536(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<78>          |    0.524(R)|      FAST  |    0.569(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<79>          |    0.184(R)|      FAST  |    0.917(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<80>          |    0.473(R)|      FAST  |    0.533(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<81>          |    0.431(R)|      FAST  |    0.685(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<82>          |    0.584(R)|      FAST  |    0.459(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<83>          |    0.417(R)|      FAST  |    0.747(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<84>          |    0.033(R)|      FAST  |    1.096(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<85>          |    0.061(R)|      FAST  |    1.155(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<86>          |   -0.048(R)|      FAST  |    1.265(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<87>          |   -0.022(R)|      FAST  |    1.196(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<88>          |   -0.064(R)|      FAST  |    1.287(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<89>          |    0.061(R)|      FAST  |    1.152(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<90>          |    0.043(R)|      FAST  |    1.172(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<91>          |    0.283(R)|      FAST  |    0.962(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<92>          |   -0.187(R)|      FAST  |    1.453(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<93>          |   -0.175(R)|      FAST  |    1.474(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<94>          |   -0.114(R)|      FAST  |    1.378(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<95>          |    1.178(R)|      SLOW  |   -0.312(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<96>          |    0.675(R)|      FAST  |    0.268(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<97>          |    0.660(R)|      FAST  |    0.241(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<98>          |    0.666(R)|      FAST  |    0.241(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<99>          |    1.088(R)|      FAST  |   -0.193(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<100>         |    0.925(R)|      FAST  |   -0.041(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<101>         |    0.857(R)|      FAST  |    0.009(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<102>         |    0.814(R)|      FAST  |    0.093(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<103>         |    0.827(R)|      FAST  |    0.072(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<104>         |    0.759(R)|      FAST  |    0.192(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<105>         |    0.662(R)|      FAST  |    0.301(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<106>         |    0.705(R)|      FAST  |    0.244(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<107>         |    0.647(R)|      FAST  |    0.324(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<108>         |    0.708(R)|      FAST  |    0.235(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<109>         |    0.572(R)|      FAST  |    0.437(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<110>         |    0.623(R)|      FAST  |    0.334(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<111>         |    0.680(R)|      FAST  |    0.303(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<112>         |    0.770(R)|      FAST  |    0.223(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<113>         |    0.591(R)|      FAST  |    0.405(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<114>         |    0.777(R)|      FAST  |    0.187(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<115>         |    0.779(R)|      FAST  |    0.215(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<116>         |    0.793(R)|      FAST  |    0.185(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<117>         |    0.948(R)|      SLOW  |   -0.043(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<118>         |    0.650(R)|      FAST  |    0.330(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<119>         |    0.615(R)|      FAST  |    0.392(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<120>         |    0.725(R)|      FAST  |    0.232(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<121>         |    0.745(R)|      FAST  |    0.217(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<122>         |    0.726(R)|      FAST  |    0.217(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<123>         |    0.805(R)|      FAST  |    0.110(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<124>         |    0.715(R)|      FAST  |    0.232(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<125>         |    0.455(R)|      FAST  |    0.636(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<126>         |    0.568(R)|      FAST  |    0.482(R)|      SLOW  |clk_BUFGP         |   0.000|
+search_word<127>         |    0.741(R)|      FAST  |    0.206(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<0>|   -0.346(R)|      FAST  |    1.723(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<1>|   -0.581(R)|      FAST  |    1.962(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<2>|   -0.338(R)|      FAST  |    1.716(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<3>|   -0.216(R)|      FAST  |    1.551(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<4>|   -0.350(R)|      FAST  |    1.708(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<5>|   -0.458(R)|      FAST  |    1.895(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<6>|   -0.470(R)|      FAST  |    1.906(R)|      SLOW  |clk_BUFGP         |   0.000|
+we_decoded_row_address<7>|   -0.326(R)|      FAST  |    1.718(R)|      SLOW  |clk_BUFGP         |   0.000|
+-------------------------+------------+------------+------------+------------+------------------+--------+
+
+Clock clk to Pad
+------------------------+-----------------+------------+-----------------+------------+------------------+--------+
+                        |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination             |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------------------+-----------------+------------+-----------------+------------+------------------+--------+
+decoded_match_address<0>|         8.262(R)|      SLOW  |         3.650(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<1>|         8.160(R)|      SLOW  |         3.621(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<2>|         8.205(R)|      SLOW  |         3.669(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<3>|         8.133(R)|      SLOW  |         3.600(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<4>|         8.188(R)|      SLOW  |         3.647(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<5>|         8.221(R)|      SLOW  |         3.680(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<6>|         7.547(R)|      SLOW  |         3.356(R)|      FAST  |clk_BUFGP         |   0.000|
+decoded_match_address<7>|         7.424(R)|      SLOW  |         3.308(R)|      FAST  |clk_BUFGP         |   0.000|
+------------------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    4.418|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Fri Jun 01 17:27:36 2012 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 471 MB
+
+
+

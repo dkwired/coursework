@@ -1,0 +1,2 @@
+vhdl isim_temp "my_converter.vhd"
+vhdl isim_temp "my_converter_tb.vhd"

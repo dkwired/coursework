@@ -1,0 +1,2096 @@
+%!PS-Adobe-3.0
+%%Title: lab5_report.txt, dpd_adder.vhdl, dpd_to_bcd.vhdl, second_test.vhd, SampleTestBenches.vhdl
+%%For: David Klein
+%%Creator: a2ps version 4.13
+%%CreationDate: Fri May 18 20:01:08 2012
+%%BoundingBox: 24 24 588 768
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%Pages: 6
+%%PageOrder: Ascend
+%%DocumentMedia: Letter 612 792 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontType get 0 eq {
+    currentfont /FontMatrix get 3 get
+  }{
+    currentfont /FontMatrix get 3 get 1000 mul
+  } ifelse
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% composite fonts for ASCII-EUC mixed string
+% Version 1.2 1/31/1990
+% Orignal Ken'ichi HANDA (handa@etl.go.jp)
+% Modified Norio Katayama (katayama@rd.nacsis.ac.jp),1998
+% Extend & Fix Koji Nakamaru (maru@on.cs.keio.ac.jp), 1999
+% Anyone can freely copy, modify, distribute this program.
+
+/copyfont {	% font-dic extra-entry-count  copyfont  font-dic
+	1 index maxlength add dict begin
+	{	1 index /FID ne 2 index /UniqueID ne and
+		{def} {pop pop} ifelse
+	} forall
+	currentdict
+	end
+} bind def
+
+/compositefont { % ASCIIFontName EUCFontName RomanScale RomanOffset Rot(T/F) compositefont font
+    /RomanRotation exch def
+    /RomanOffset exch def
+    /RomanScale exch def
+    userdict /fixeucfont_dict known not {
+	userdict begin
+	    /fixeucfont_dict 2 dict begin
+		/UpperByteEncoding [
+		    16#00 1 16#20 { pop 0 } for
+		    16#21 1 16#28 { 16#20 sub } for
+		    16#29 1 16#2F { pop 0 } for
+		    16#30 1 16#74 { 16#27 sub } for
+		    16#75 1 16#FF { pop 0 } for
+		] def
+	        /LowerByteEncoding [
+		    16#00 1 16#A0 { pop /.notdef } for
+		    16#A1 1 16#FE { 16#80 sub 16 2 string cvrs
+				    (cXX) dup 1 4 -1 roll
+				    putinterval cvn } for
+		    /.notdef
+		] def
+		currentdict
+	    end def
+	end
+    } if
+    findfont dup /FontType get 0 eq {
+	14 dict begin
+	    %
+	    % 7+8 bit EUC font
+	    %
+	    12 dict begin
+		/EUCFont exch def
+		/FontInfo (7+8 bit EUC font) readonly def
+		/PaintType 0 def
+		/FontType 0 def
+		/FontMatrix matrix def
+		% /FontName
+		/Encoding fixeucfont_dict /UpperByteEncoding get def
+		/FMapType 2 def
+		EUCFont /WMode known
+		{ EUCFont /WMode get /WMode exch def }
+		{ /WMode 0 def } ifelse
+		/FDepVector [
+		    EUCFont /FDepVector get 0 get
+		    [ 16#21 1 16#28 {} for 16#30 1 16#74 {} for ]
+		    {
+			13 dict begin
+			    /EUCFont EUCFont def
+			    /UpperByte exch 16#80 add def	
+			    % /FontName
+			    /FontInfo (EUC lower byte font) readonly def
+			    /PaintType 0 def
+			    /FontType 3 def
+			    /FontMatrix matrix def
+			    /FontBBox {0 0 0 0} def
+			    /Encoding
+				fixeucfont_dict /LowerByteEncoding get def
+			    % /UniqueID
+			    % /WMode
+			    /BuildChar {
+				gsave
+				exch dup /EUCFont get setfont
+				/UpperByte get
+				2 string
+				dup 0 4 -1 roll put
+				dup 1 4 -1 roll put
+				dup stringwidth setcharwidth
+				0 0 moveto show
+				grestore
+			    } bind def
+			    currentdict
+			end
+			/lowerbytefont exch definefont
+		    } forall
+		] def
+		currentdict
+	    end
+	    /eucfont exch definefont
+	    exch
+	    findfont 1 copyfont dup begin
+		RomanRotation {
+			/FontMatrix FontMatrix
+			[ 0 RomanScale neg RomanScale 0 RomanOffset neg 0 ]
+			matrix concatmatrix def
+		}{
+			/FontMatrix FontMatrix
+			[ RomanScale 0 0 RomanScale 0 RomanOffset ] matrix concatmatrix
+			def
+			/CDevProc
+			    {pop pop pop pop 0 exch -1000 exch 2 div 880} def
+		} ifelse
+	    end
+	    /asciifont exch definefont
+	    exch
+	    /FDepVector [ 4 2 roll ] def
+	    /FontType 0 def
+	    /WMode 0 def
+	    /FMapType 4 def
+	    /FontMatrix matrix def
+	    /Encoding [0 1] def
+	    /FontBBox {0 0 0 0} def
+%	    /FontHeight 1.0 def % XXXX
+	    /FontHeight RomanScale 1.0 ge { RomanScale }{ 1.0 } ifelse def
+	    /Descent -0.3 def   % XXXX
+	    currentdict
+	end
+	/tmpfont exch definefont
+	pop
+	/tmpfont findfont
+    }{
+	pop findfont 0 copyfont
+    } ifelse
+} def	
+
+/slantfont {	% FontName slant-degree  slantfont  font'
+    exch findfont 1 copyfont begin
+    [ 1 0 4 -1 roll 1 0 0 ] FontMatrix exch matrix concatmatrix
+    /FontMatrix exch def
+    currentdict
+    end
+} def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 612 def
+/sw 792 def
+/llx 24 def
+/urx 768 def
+/ury 588 def
+/lly 24 def
+/#copies 1 def
+/th 15.000000 def
+/fnfs 11 def
+/bfs 7.060185 def
+/cw 4.236111 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 86.400000 mul
+def
+/ph
+   520.335631 th add
+def
+/pmw urx llx sub pw 2 mul sub 1 div def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+  dup pmw add pw add
+] def
+/y [
+  pmh ph add 0 mul ph add
+  dup
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 5 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1) 1
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (Names: David Klein, William Thurston) p n
+(2) # (Login: kleind, wthur001) N
+(3) # (Email: dklei003@ucr.edu, wthur001@ucr.edu) N
+(4) # (Lab Section: 021) N
+(5) # (Assignment: Lab #5) N
+(6) # (I acknowledge all content is original.) N
+(7) # () N
+(8) # (I. Lab Objective) N
+(9) # () N
+(10) # (This lab was to understand and convert densely packed decimals and binary coded ) N
+0 T (decimals. ) N
+(11) # () N
+(12) # (II. Personal Contributions) N
+(13) # () N
+(14) # (Will worked on the VHDL coding, and David helped with DCD coding logic.) N
+(15) # () N
+(16) # (III. Skills Learned & Knowledge Gained) N
+(17) # () N
+(18) # (Learned how to convert DCD and BCD) N
+(19) # () N
+(20) # (IV. Known Bug Locations) N
+(21) # () N
+(22) # (None) N
+(23) # () N
+(24) # (V. Feedback on the Lab) N
+(25) # () N
+(26) # (Most excellent!) N
+(lab5_report.txt) (Page 1/1) (May 18, 12 19:58) title
+border
+grestore
+(Printed by David Klein) rhead
+(lab5_report.txt) (1/6) (Friday May 18, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 2
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # () p n
+(2) # () S
+(--) c n
+(3) # (-- You only have to implement the logic for the Binary Coded Decimal ) N
+(4) # (-- Full Adder. You should not have to change anything else) N
+(5) # (--) N
+(6) # (-- ---------- ---------- --------- ----------- ---------- ----------) N
+(7) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(8) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(9) # () S
+(use) K
+( IEEE.STD_LOGIC_UNSIGNED.) p
+(ALL) K
+(;) p n
+(10) # () N
+(11) # () S
+(entity) K
+( ) p
+(bcd_full_adder) l
+( ) p
+(is) K n
+(12) # () S
+() p 8 T () S
+(port) K
+(\() p n
+(13) # () S 8 T () S 16 T (val_1) S 24 T () S 32 T (: ) S
+(in) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(14) # () S 8 T () S 16 T (val_2) S 24 T () S 32 T (: ) S
+(in) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(15) # () S 8 T () S 16 T (c_in) S 24 T () S 32 T (: ) S
+(in) K
+( std_logic;) p n
+(16) # () S 8 T () S 16 T () N
+(17) # () S 8 T () S 16 T (result) S 24 T (: ) S
+(out) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(18) # () S 8 T () S 16 T (c_out) S 24 T () S 32 T (: ) S
+(out) K
+( std_logic) p n
+(19) # () S 8 T (\);) N
+(20) # () S
+(end) K
+( bcd_full_adder;) p n
+(21) # () N
+(22) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( bcd_full_adder ) p
+(is) K n
+(23) # () N
+(24) # () S
+() p 8 T () S
+(-- Add User's Singals Here) c n
+(25) # () S
+() p 8 T () N
+(26) # () S
+(begin) K n
+(27) # () N
+(28) # () S
+() p 8 T () S
+(-- Add User's Logic Here) c n
+(29) # () S
+() p 8 T () S
+(process) K
+(\(val_1, val_2, c_in\)) p n
+(30) # () S 8 T () S 16 T () S
+(variable) K
+( temp_sum : std_logic_vector\(4 ) p
+(downto) K
+( 0\);) p n
+(31) # () S 8 T () S
+(begin) K n
+(32) # () S
+() p 8 T () S 16 T (temp_sum := \(') S
+(0) str
+(' & val_1\) + \(') p
+(0) str
+(' & val_2\) + \(") p
+(000) str
+(" & c_in\);) p n
+(33) # () S 8 T () S 16 T () S
+(if) K
+( temp_sum > 9 ) p
+(then) K n
+(34) # () S
+() p 8 T () S 16 T () S 24 T (temp_sum := temp_sum+6;) N
+(35) # () S 8 T () S 16 T () S 24 T (result <= temp_sum\(3 ) S
+(downto) K
+( 0\);) p n
+(36) # () S 8 T () S 16 T () S 24 T (c_out <= ') S
+(1) str
+(';) p n
+(37) # () S 8 T () S 16 T () S
+(else) K n
+(38) # () S
+() p 8 T () S 16 T () S 24 T (result <= temp_sum\(3 ) S
+(downto) K
+( 0\);) p n
+(39) # () S 8 T () S 16 T () S 24 T (c_out <= ') S
+(0) str
+(';) p n
+(40) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(41) # () S 8 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(42) # () S 8 T () N
+(43) # () S
+(end) K
+( Behavioral;) p n
+(44) # () N
+(45) # () N
+(46) # () N
+(47) # () N
+(48) # () N
+(49) # () S
+(-- DO NOT MODIFY BELOW THIS LINE) c n
+(50) # (-- ---------- ---------- --------- ---------- ---------- ----------) N
+(51) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(52) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(53) # () N
+(54) # () S
+(entity) K
+( ) p
+(bcd_3_digit_adder) l
+( ) p
+(is) K n
+(55) # () S
+() p 8 T () S
+(port) K
+(\() p n
+(56) # () S 8 T () S 16 T (val_1) S 24 T (: ) S
+(in) K
+( std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(57) # () S 8 T () S 16 T (val_2 : ) S
+(in) K
+( std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(58) # () S 8 T () S 16 T (c_in) S 24 T (: ) S
+(in) K
+( std_logic;) p n
+(59) # () S 8 T () S 16 T () N
+(60) # () S 8 T () S 16 T (result) S 24 T (: ) S
+(out) K
+( std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(61) # () S 8 T () S 16 T (c_out) S 24 T () S 32 T (: ) S
+(out) K
+() p 40 T (std_logic) N
+(62) # () S 8 T (\);) N
+(63) # () S
+(end) K
+( bcd_3_digit_adder;) p n
+(64) # () N
+(65) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( bcd_3_digit_adder ) p
+(is) K n
+(66) # () N
+(67) # () S
+() p 8 T () S
+(component) K
+( bcd_full_adder ) p
+(is) K n
+(68) # () S
+() p 8 T () S 16 T () S
+(port) K
+(\() p n
+(69) # () S 8 T () S 16 T () S 24 T (val_1 : ) S
+(IN) K
+(  std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(70) # () S 8 T () S 16 T () S 24 T (val_2 : ) S
+(IN) K
+(  std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(71) # () S 8 T () S 16 T () S 24 T (c_in : ) S
+(IN) K
+(  std_logic;) p n
+(72) # () S 8 T () S 16 T () S 24 T (result : ) S
+(OUT) K
+(  std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(73) # () S 8 T () S 16 T () S 24 T (c_out : ) S
+(OUT) K
+(  std_logic) p n
+(dpd_adder.vhdl) (Page 1/3) (May 18, 12 19:51) title
+border
+/v 1 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(74) # () p 8 T () S 16 T (\);) N
+(75) # () S 8 T () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(76) # () S 8 T () N
+(77) # () S 8 T () S
+(signal) K
+( ripple : std_logic_vector\(1 ) p
+(downto) K
+( 0\);) p n
+(78) # () S
+(begin) K n
+(79) # () N
+(80) # () S
+() p 8 T (lst_sig: bcd_full_adder ) S
+(port) K
+( ) p
+(map) K
+(\() p n
+(81) # () S 8 T () S 16 T (val_1 => val_1\(3 ) S
+(downto) K
+( 0\),) p n
+(82) # () S 8 T () S 16 T (val_2 => val_2\(3 ) S
+(downto) K
+( 0\),) p n
+(83) # () S 8 T () S 16 T (c_in) S 24 T (=> c_in,) N
+(84) # () S 8 T () S 16 T (result) S 24 T (=> result\(3 ) S
+(downto) K
+( 0\),) p n
+(85) # () S 8 T () S 16 T (c_out) S 24 T (=> ripple\(0\)) N
+(86) # () S 8 T (\);) N
+(87) # () N
+(88) # () S 8 T (middle: bcd_full_adder ) S
+(port) K
+( ) p
+(map) K
+(\() p n
+(89) # () S 8 T () S 16 T (val_1 => val_1\(7 ) S
+(downto) K
+( 4\),) p n
+(90) # () S 8 T () S 16 T (val_2 => val_2\(7 ) S
+(downto) K
+( 4\),) p n
+(91) # () S 8 T () S 16 T (c_in) S 24 T (=> ripple\(0\),) N
+(92) # () S 8 T () S 16 T (result) S 24 T (=> result\(7 ) S
+(downto) K
+( 4\),) p n
+(93) # () S 8 T () S 16 T (c_out) S 24 T (=> ripple\(1\)) N
+(94) # () S 8 T (\);) N
+(95) # () S 8 T () N
+(96) # () S 8 T (mst_sig: bcd_full_adder ) S
+(port) K
+( ) p
+(map) K
+(\() p n
+(97) # () S 8 T () S 16 T (val_1 => val_1\(11 ) S
+(downto) K
+( 8\),) p n
+(98) # () S 8 T () S 16 T (val_2 => val_2\(11 ) S
+(downto) K
+( 8\),) p n
+(99) # () S 8 T () S 16 T (c_in) S 24 T (=> ripple\(1\),) N
+(100) # () S 8 T () S 16 T (result) S 24 T (=> result\(11 ) S
+(downto) K
+( 8\),) p n
+(101) # () S 8 T () S 16 T (c_out) S 24 T (=> c_out) N
+(102) # () S 8 T (\);) N
+(103) # () S 8 T () N
+(104) # () S
+(end) K
+( Behavioral;) p n
+(105) # () N
+(106) # () N
+(107) # () N
+(108) # () N
+(109) # () N
+(110) # () N
+(111) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(112) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(113) # () N
+(114) # () S
+(entity) K
+( ) p
+(dpd_adder) l
+( ) p
+(is) K n
+(115) # () S
+() p 8 T () S
+(port) K
+(\() p n
+(116) # () S 8 T () S 16 T (dpd_val_1) S 32 T (: ) S
+(in) K
+( std_logic_vector\(9 ) p
+(downto) K
+( 0\);) p n
+(117) # () S 8 T () S 16 T (dpd_val_2) S 32 T (: ) S
+(in) K
+( std_logic_vector\(9 ) p
+(downto) K
+( 0\);) p n
+(118) # () S 8 T () S 16 T (c_in) S 24 T () S 32 T () S 40 T (: ) S
+(in) K
+( std_logic;) p n
+(119) # () S 8 T () S 16 T (bcd_result) S 32 T (: ) S
+(out) K
+( std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(120) # () S 8 T () S 16 T (c_out) S 24 T () S 32 T () S 40 T (: ) S
+(out) K
+( std_logic) p n
+(121) # () S 8 T (\);) N
+(122) # () S
+(end) K
+( dpd_adder;) p n
+(123) # () N
+(124) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( dpd_adder ) p
+(is) K n
+(125) # () N
+(126) # () S
+() p 8 T () S
+(component) K
+( dpd_to_bcd ) p
+(is) K n
+(127) # () S
+() p 8 T () S 16 T () S
+(port) K
+(\() p n
+(128) # () S 8 T () S 16 T () S 24 T (b) S 32 T (: ) S
+(in) K
+( std_logic_vector\(9 ) p
+(downto) K
+( 0\);) p n
+(129) # () S 8 T () S 16 T () S 24 T (d0) S 32 T (: ) S
+(out) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(130) # () S 8 T () S 16 T () S 24 T (d1) S 32 T (: ) S
+(out) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(131) # () S 8 T () S 16 T () S 24 T (d2) S 32 T (: ) S
+(out) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\)) p n
+(132) # () S 8 T () S 16 T (\);) N
+(133) # () S 8 T () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(134) # () N
+(135) # () S 8 T () S
+(component) K
+( bcd_3_digit_adder ) p
+(is) K n
+(136) # () S
+() p 8 T () S 16 T () S
+(port) K
+(\() p n
+(137) # () S 8 T () S 16 T () S 24 T (val_1 : ) S
+(IN) K
+(  std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(138) # (         val_2 : ) S
+(IN) K
+(  std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(139) # (         c_in : ) S
+(IN) K
+(  std_logic;) p n
+(140) # (         result : ) S
+(OUT) K
+(  std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(141) # (         c_out : ) S
+(OUT) K
+(  std_logic) p n
+(142) # () S 8 T () S 16 T (\);) N
+(143) # () S 8 T () S
+(end) K
+( ) p
+(component) K
+(;) p n
+(144) # () S 8 T () N
+(145) # () S 8 T () S
+(signal) K
+( val_1_d0 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(146) # () S 8 T () S
+(signal) K
+( val_1_d1 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(dpd_adder.vhdl) (Page 2/3) (May 18, 12 19:51) title
+border
+grestore
+(Printed by David Klein) rhead
+(dpd_adder.vhdl) (2/6) (Friday May 18, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3) 3
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(147) # () p 8 T () S
+(signal) K
+( val_1_d2 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(148) # () S 8 T () S
+(signal) K
+( bcd_val_1 : std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(149) # () S 8 T () N
+(150) # () S 8 T () S
+(signal) K
+( val_2_d0 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(151) # () S 8 T () S
+(signal) K
+( val_2_d1 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(152) # () S 8 T () S
+(signal) K
+( val_2_d2 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(153) # () S 8 T () S
+(signal) K
+( bcd_val_2 : std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(154) # () S 8 T () N
+(155) # () S
+(begin) K n
+(156) # () N
+(157) # () S
+() p 8 T (dpd1: dpd_to_bcd ) S
+(port) K
+( ) p
+(map) K
+(\() p n
+(158) # () S 8 T () S 16 T (b => dpd_val_1,) N
+(159) # () S 8 T () S 16 T (d0 => val_1_d0,) N
+(160) # () S 8 T () S 16 T (d1 => val_1_d1,) N
+(161) # () S 8 T () S 16 T (d2 => val_1_d2) N
+(162) # () S 8 T (\);) N
+(163) # () S 8 T () N
+(164) # () S 8 T (dpd2: dpd_to_bcd ) S
+(port) K
+( ) p
+(map) K
+(\() p n
+(165) # () S 8 T () S 16 T (b => dpd_val_2,) N
+(166) # () S 8 T () S 16 T (d0 => val_2_d0,) N
+(167) # () S 8 T () S 16 T (d1 => val_2_d1,) N
+(168) # () S 8 T () S 16 T (d2 => val_2_d2) N
+(169) # () S 8 T (\);) N
+(170) # () N
+(171) # () S 8 T (bcd_val_1 <= val_1_d2 & val_1_d1 & val_1_d0;) N
+(172) # () S 8 T (bcd_val_2 <= val_2_d2 & val_2_d1 & val_2_d0;) N
+(173) # () S 8 T () N
+(174) # () S 8 T (adder: bcd_3_digit_adder ) S
+(port) K
+( ) p
+(map) K
+(\() p n
+(175) # () S 8 T () S 16 T (val_1 => bcd_val_1,) N
+(176) # () S 8 T () S 16 T (val_2 => bcd_val_2,) N
+(177) # () S 8 T () S 16 T (c_in) S 24 T (=> c_in,) N
+(178) # () S 8 T () S 16 T (result => bcd_result,) N
+(179) # () S 8 T () S 16 T (c_out) S 24 T (=> c_out) N
+(180) # () S 8 T (\);) N
+(181) # () S 8 T () N
+(182) # () S
+(end) K
+( Behavioral;) p n
+(183) # () N
+(dpd_adder.vhdl) (Page 3/3) (May 18, 12 19:51) title
+border
+grestore
+(Printed by David Klein) rhead
+(dpd_adder.vhdl) (3/6) (Friday May 18, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 4
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # () p n
+(2) # () S
+(--) c n
+(3) # (-- Implement the Densely Packed Decimals conversion table) N
+(4) # (--) N
+(5) # (-- ---------- ---------- --------- ----------- ---------- ----------) N
+(6) # () S
+(library ) K
+(IEEE) l
+(;) p n
+(7) # () S
+(use) K
+( IEEE.STD_LOGIC_1164.) p
+(ALL) K
+(;) p n
+(8) # () N
+(9) # () S
+(entity) K
+( ) p
+(dpd_to_bcd) l
+( ) p
+(is) K n
+(10) # () S
+() p 8 T () S
+(port) K
+(\() p n
+(11) # () S 8 T () S 16 T (b) S 24 T (: ) S
+(in) K
+( std_logic_vector\(9 ) p
+(downto) K
+( 0\);) p n
+(12) # () S 8 T () S 16 T (d0) S 24 T (: ) S
+(out) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(13) # () S 8 T () S 16 T (d1) S 24 T (: ) S
+(out) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(14) # () S 8 T () S 16 T (d2) S 24 T (: ) S
+(out) K
+( std_logic_vector\(3 ) p
+(downto) K
+( 0\)) p n
+(15) # () S 8 T (\);) N
+(16) # () S
+(end) K
+( dpd_to_bcd;) p n
+(17) # () N
+(18) # () S
+(architecture) K
+( Behavioral ) p
+(of) K
+( dpd_to_bcd ) p
+(is) K n
+(19) # () N
+(20) # () S
+() p 8 T () S
+(-- Add User's Signals Here) c n
+(21) # () S
+(begin) K n
+(22) # () S
+() p 8 T () N
+(23) # () S 8 T () S
+(-- Add User's Logic Here) c n
+(24) # () S
+() p 8 T () S
+(process) K
+(\(b\)) p n
+(25) # () S 8 T () S
+(begin) K n
+(26) # () S
+() p 8 T () S 16 T () S
+(if) K
+( b\(3\) = ') p
+(0) str
+(' ) p
+(then) K n
+(27) # () S
+() p 8 T () S 16 T () S 24 T (d0 <= \(') S
+(0) str
+(' & b\(2 ) p
+(downto) K
+( 0\)\);) p n
+(28) # () S 8 T () S 16 T () S 24 T (d1 <= \(') S
+(0) str
+(' & b\(6 ) p
+(downto) K
+( 4\)\);) p n
+(29) # () S 8 T () S 16 T () S 24 T (d2 <= \(') S
+(0) str
+(' & b\(9 ) p
+(downto) K
+( 7\)\);) p n
+(30) # () S 8 T () S 16 T () S
+(elsif) K
+( b\(2 ) p
+(downto) K
+( 1\) = ") p
+(00) str
+(" ) p
+(then) K n
+(31) # () S
+() p 8 T () S 16 T () S 24 T (d0 <= \(") S
+(100) str
+(" & b\(0\)\);) p n
+(32) # () S 8 T () S 16 T () S 24 T (d1 <= \(') S
+(0) str
+(' & b\(6 ) p
+(downto) K
+( 4\)\);) p n
+(33) # () S 8 T () S 16 T () S 24 T (d2 <= \(') S
+(0) str
+(' & b\(9 ) p
+(downto) K
+( 7\)\);) p n
+(34) # () S 8 T () S 16 T () S
+(elsif) K
+( b\(2 ) p
+(downto) K
+( 1\) = ") p
+(01) str
+(" ) p
+(then) K n
+(35) # () S
+() p 8 T () S 16 T () S 24 T (d0 <= \(') S
+(0) str
+(' & b\(6\) & b\(5\) & b\(0\)\);) p n
+(36) # () S 8 T () S 16 T () S 24 T (d1 <= \(") S
+(100) str
+(" & b\(4\)\);) p n
+(37) # () S 8 T () S 16 T () S 24 T (d2 <= \(') S
+(0) str
+(' & b\(9 ) p
+(downto) K
+( 7\)\);) p n
+(38) # () S 8 T () S 16 T () S
+(elsif) K
+( b\(2 ) p
+(downto) K
+( 1\) = ") p
+(10) str
+(" ) p
+(then) K n
+(39) # () S
+() p 8 T () S 16 T () S 24 T (d0 <= \(') S
+(0) str
+(' & b\(9\) & b\(8\) & b\(0\)\);) p n
+(40) # () S 8 T () S 16 T () S 24 T (d1 <= \(') S
+(0) str
+(' & b\(6 ) p
+(downto) K
+( 4\)\);) p n
+(41) # () S 8 T () S 16 T () S 24 T (d2 <= \(") S
+(100) str
+(" & b\(7\)\);) p n
+(42) # () S 8 T () S 16 T () S
+(elsif) K
+( b\(6 ) p
+(downto) K
+( 5\) = ") p
+(10) str
+(" ) p
+(then) K n
+(43) # () S
+() p 8 T () S 16 T () S 24 T (d0 <= \(") S
+(100) str
+(" & b\(0\)\);) p n
+(44) # () S 8 T () S 16 T () S 24 T (d1 <= \(") S
+(100) str
+(" & b\(4\)\);) p n
+(45) # () S 8 T () S 16 T () S 24 T (d2 <= \(') S
+(0) str
+(' & b\(9 ) p
+(downto) K
+( 7\)\);) p n
+(46) # () S 8 T () S 16 T () S
+(elsif) K
+( b\(6 ) p
+(downto) K
+( 5\) = ") p
+(01) str
+(" ) p
+(then) K n
+(47) # () S
+() p 8 T () S 16 T () S 24 T (d0 <= \(") S
+(100) str
+(" & b\(0\)\);) p n
+(48) # () S 8 T () S 16 T () S 24 T (d1 <= \(') S
+(0) str
+(' & b\(9\) & b\(8\) & b\(4\)\);) p n
+(49) # () S 8 T () S 16 T () S 24 T (d2 <= \(") S
+(100) str
+(" & b\(7\)\);) p n
+(50) # () S 8 T () S 16 T () S
+(elsif) K
+( b\(6 ) p
+(downto) K
+( 5\) = ") p
+(00) str
+(" ) p
+(then) K n
+(51) # () S
+() p 8 T () S 16 T () S 24 T (d0 <= \(') S
+(0) str
+(' & b\(9\) & b\(8\) & b\(0\)\);) p n
+(52) # () S 8 T () S 16 T () S 24 T (d1 <= \(") S
+(100) str
+(" & b\(4\)\);) p n
+(53) # () S 8 T () S 16 T () S 24 T (d2 <= \(") S
+(100) str
+(" & b\(7\)\);) p n
+(54) # () S 8 T () S 16 T () S
+(else) K n
+(55) # () S
+() p 8 T () S 16 T () S 24 T (d0 <= \(") S
+(100) str
+(" & b\(0\)\);) p n
+(56) # () S 8 T () S 16 T () S 24 T (d1 <= \(") S
+(100) str
+(" & b\(4\)\);) p n
+(57) # () S 8 T () S 16 T () S 24 T (d2 <= \(") S
+(100) str
+(" & b\(7\)\);) p n
+(58) # () S 8 T () S 16 T () S
+(end) K
+( ) p
+(if) K
+(;) p n
+(59) # () S 8 T () S
+(end) K
+( ) p
+(process) K
+(;) p n
+(60) # () S 8 T () S 16 T () S 24 T () N
+(61) # () S 8 T () N
+(62) # () S
+(end) K
+( Behavioral;) p n
+(63) # () N
+(dpd_to_bcd.vhdl) (Page 1/1) (May 18, 12 19:51) title
+border
+grestore
+(Printed by David Klein) rhead
+(dpd_to_bcd.vhdl) (4/6) (Friday May 18, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 5
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (-- TestBench For dpd_adder converter) c n
+(2) # (-- ---------- ---------- --------- ----------- ---------- ----------) N
+(3) # () S
+(LIBRARY ) K
+(ieee) l
+(;) p n
+(4) # () S
+(USE) K
+( ieee.std_logic_1164.) p
+(ALL) K
+(;) p n
+(5) # ( ) N
+(6) # () S
+(ENTITY) K
+( ) p
+(dpd_adder_tb) l
+( ) p
+(IS) K n
+(7) # (END) S
+( dpd_adder_tb;) p n
+(8) # ( ) N
+(9) # () S
+(ARCHITECTURE) K
+( behavior ) p
+(OF) K
+( dpd_adder_tb ) p
+(IS) K
+( ) p n
+(10) # ( ) N
+(11) # (    ) S
+(COMPONENT) K
+( dpd_adder) p n
+(12) # (    ) S
+(PORT) K
+(\() p n
+(13) # (         dpd_val_1 : ) S
+(IN) K
+(  std_logic_vector\(9 ) p
+(downto) K
+( 0\);) p n
+(14) # (         dpd_val_2 : ) S
+(IN) K
+(  std_logic_vector\(9 ) p
+(downto) K
+( 0\);) p n
+(15) # (         c_in : ) S
+(IN) K
+(  std_logic;) p n
+(16) # (         bcd_result : ) S
+(OUT) K
+(  std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(17) # (         c_out : ) S
+(OUT) K
+(  std_logic) p n
+(18) # (        \);) N
+(19) # (    ) S
+(END) K
+( ) p
+(COMPONENT) K
+(;) p n
+(20) # () N
+(21) # (   ) S
+(signal) K
+( dpd_val_1 : std_logic_vector\(9 ) p
+(downto) K
+( 0\) := \() p
+(others) K
+( => ') p
+(0) str
+('\);) p n
+(22) # (   ) S
+(signal) K
+( dpd_val_2 : std_logic_vector\(9 ) p
+(downto) K
+( 0\) := \() p
+(others) K
+( => ') p
+(0) str
+('\);) p n
+(23) # (   ) S
+(signal) K
+( c_in : std_logic := ') p
+(0) str
+(';) p n
+(24) # (   ) S
+(signal) K
+( bcd_result : std_logic_vector\(11 ) p
+(downto) K
+( 0\);) p n
+(25) # (   ) S
+(signal) K
+( c_out : std_logic;) p n
+(26) # ( ) N
+(27) # () S
+(BEGIN) K n
+(28) # () N
+(29) # () S
+(   uut: dpd_adder ) p
+(PORT) K
+( ) p
+(MAP) K
+( \() p n
+(30) # (          dpd_val_1 => dpd_val_1,) N
+(31) # (          dpd_val_2 => dpd_val_2,) N
+(32) # (          c_in => c_in,) N
+(33) # (          bcd_result => bcd_result,) N
+(34) # (          c_out => c_out) N
+(35) # (        \);) N
+(36) # () N
+(37) # (   sim_proc: ) S
+(process) K n
+(38) # () S
+(   ) p
+(begin) K
+() p 16 T () S 24 T () N
+(39) # () S 8 T () S 16 T () S
+(-- 999 + 001) c n
+(40) # () S
+() p 8 T () S 16 T (dpd_val_1 <= ") S
+(0011111111) str
+(";) p n
+(41) # () S 8 T () S 16 T (dpd_val_2 <= ") S
+(0000000001) str
+(";) p n
+(42) # () S 8 T () S 16 T (c_in <= ') S
+(0) str
+(';) p n
+(43) # () S 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(44) # () S 8 T () S 16 T () N
+(45) # () S 8 T () S 16 T () S
+(-- 999 + 000 + \(1\)) c n
+(46) # () S
+() p 8 T () S 16 T (dpd_val_1 <= ") S
+(0011111111) str
+(";) p n
+(47) # () S 8 T () S 16 T (dpd_val_2 <= ") S
+(0000000000) str
+(";) p n
+(48) # () S 8 T () S 16 T (c_in <= ') S
+(1) str
+(';) p n
+(49) # () S 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(50) # () S 8 T () S 16 T () N
+(51) # () S 8 T () S 16 T () S
+(-- 732 + 108) c n
+(52) # () S
+() p 8 T () S 16 T (dpd_val_1 <= ") S
+(1110110010) str
+(";) p n
+(53) # () S 8 T () S 16 T (dpd_val_2 <= ") S
+(0010001000) str
+(";) p n
+(54) # () S 8 T () S 16 T (c_in <= ') S
+(0) str
+(';) p n
+(55) # () S 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(56) # () S 8 T () S 16 T () N
+(57) # () S 8 T () S 16 T () S
+(-- 091 + 806) c n
+(58) # () S
+() p 8 T () S 16 T (dpd_val_1 <= ") S
+(0000011011) str
+(";) p n
+(59) # () S 8 T () S 16 T (dpd_val_2 <= ") S
+(1100001100) str
+(";) p n
+(60) # () S 8 T () S 16 T (c_in <= ') S
+(0) str
+(';) p n
+(61) # () S 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(62) # (      ) S
+(wait) K
+(;) p n
+(63) # (   ) S
+(end) K
+( ) p
+(process) K
+(;) p n
+(64) # () N
+(65) # () S
+(END) K
+(;) p
+(second_test.vhd) (Page 1/1) (May 18, 12 19:51) title
+border
+grestore
+(Printed by David Klein) rhead
+(second_test.vhd) (5/6) (Friday May 18, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1) 6
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 2.965278 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # () p n
+(2) # () N
+(3) # () N
+(4) # () N
+(5) # () N
+(6) # () N
+(7) # () N
+(8) # () S
+(-- TestBench For dpd_to_bcd converter) c n
+(9) # (-- ---------- ---------- --------- ----------- ---------- ----------) N
+(10) # () S
+(LIBRARY ) K
+(ieee) l
+(;) p n
+(11) # () S
+(USE) K
+( ieee.std_logic_1164.) p
+(ALL) K
+(;) p n
+(12) # ( ) N
+(13) # () S
+(ENTITY) K
+( ) p
+(dpd_to_bcd_tb) l
+( ) p
+(IS) K n
+(14) # (END) S
+( dpd_to_bcd_tb;) p n
+(15) # ( ) N
+(16) # () S
+(ARCHITECTURE) K
+( behavior ) p
+(OF) K
+( dpd_to_bcd_tb ) p
+(IS) K
+( ) p n
+(17) # ( ) N
+(18) # (    ) S
+(COMPONENT) K
+( dpd_to_bcd) p n
+(19) # (    ) S
+(PORT) K
+(\() p n
+(20) # (         b : ) S
+(IN) K
+(  std_logic_vector\(9 ) p
+(downto) K
+( 0\);) p n
+(21) # (         d0 : ) S
+(OUT) K
+(  std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(22) # (         d1 : ) S
+(OUT) K
+(  std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(23) # (         d2 : ) S
+(OUT) K
+(  std_logic_vector\(3 ) p
+(downto) K
+( 0\)) p n
+(24) # (        \);) N
+(25) # (    ) S
+(END) K
+( ) p
+(COMPONENT) K
+(;) p n
+(26) # (    ) N
+(27) # (   ) S
+(signal) K
+( b : std_logic_vector\(9 ) p
+(downto) K
+( 0\) := \() p
+(others) K
+( => ') p
+(0) str
+('\);) p n
+(28) # (   ) S
+(signal) K
+( d0 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(29) # (   ) S
+(signal) K
+( d1 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(30) # (   ) S
+(signal) K
+( d2 : std_logic_vector\(3 ) p
+(downto) K
+( 0\);) p n
+(31) # ( ) N
+(32) # () S
+(BEGIN) K n
+(33) # () S
+(   uut: dpd_to_bcd ) p
+(PORT) K
+( ) p
+(MAP) K
+( \() p n
+(34) # (          b => b,) N
+(35) # (          d0 => d0,) N
+(36) # (          d1 => d1,) N
+(37) # (          d2 => d2) N
+(38) # (        \);) N
+(39) # () N
+(40) # (   sim_proc: ) S
+(process) K n
+(41) # () S
+(   ) p
+(begin) K
+() p 16 T () S 24 T () N
+(42) # (      ) N
+(43) # () S 8 T () S 16 T () S
+(-- Test Case\(s\): Three small digits) c n
+(44) # () S
+() p 8 T () S 16 T (b <= ") S
+(1111100101) str
+("; ) p
+(-- \(765\)) c n
+(45) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(46) # () S 8 T () S 16 T () N
+(47) # () S 8 T () S 16 T () S
+(-- Test Case\(s\): Two small digits, one large ) c n
+(48) # () S
+() p 8 T () S 16 T (b <= ") S
+(1111101000) str
+("; ) p
+(-- \(768\)) c n
+(49) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(50) # () S 8 T () S 16 T (b <= ") S
+(0010111010) str
+("; ) p
+(-- \(192\)) c n
+(51) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(52) # () S 8 T () S 16 T (b <= ") S
+(1010001100) str
+("; ) p
+(-- \(904\)) c n
+(53) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(54) # () S 8 T () S 16 T () N
+(55) # () S 8 T () S 16 T () S
+(-- Test Case\(s\): One small digit, two large) c n
+(56) # () S
+() p 8 T () S 16 T (b <= ") S
+(1010001110) str
+("; ) p
+(-- \(984\)) c n
+(57) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(58) # () S 8 T () S 16 T (b <= ") S
+(1011011110) str
+("; ) p
+(-- \(598\)) c n
+(59) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(60) # () S 8 T () S 16 T (b <= ") S
+(1100101111) str
+("; ) p
+(-- \(869\)) c n
+(61) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(62) # () S 8 T () S 16 T () N
+(63) # () S 8 T () S 16 T () S
+(-- Test Case\(s\): Three large digits) c n
+(64) # () S
+() p 8 T () S 16 T (b <= ") S
+(1111111111) str
+("; ) p
+(-- \(999\)) c n
+(65) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(66) # () S 8 T () S 16 T (b <= ") S
+(0001101110) str
+("; ) p
+(-- \(888\)) c n
+(67) # () S
+() p 8 T () S 16 T () S
+(wait) K
+( ) p
+(for) K
+( 10 ns;) p n
+(68) # () N
+(69) # (      ) S
+(wait) K
+(;) p n
+(70) # (   ) S
+(end) K
+( ) p
+(process) K
+(;) p n
+(71) # () N
+(72) # () S
+(END) K
+(;) p n
+(SampleTestBenches.vhdl) (Page 1/1) (May 18, 12 19:51) title
+border
+grestore
+(Printed by David Klein) rhead
+(SampleTestBenches.vhdl) (6/6) (Friday May 18, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF

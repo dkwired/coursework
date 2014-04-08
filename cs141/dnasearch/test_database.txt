@@ -1,0 +1,4 @@
+>gi|31338811|dbj|AB021676.1| Sporobolomyces lactosus gene for 18S ribosomal
+CGTGT
+>gi|28170595|emb|AJ431213.1|PRO431213 Proteobacterium BHI60-53 16S rRNA gene, strain BHI60-53_1 FROM:1  TO:1476
+GTGAA

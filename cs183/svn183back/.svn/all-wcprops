@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 25
+/kleind/svn183/!svn/ver/3
+END
+test_driver.sh
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/kleind/svn183/!svn/ver/3/test_driver.sh
+END
+hw3.py
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/kleind/svn183/!svn/ver/2/hw3.py
+END

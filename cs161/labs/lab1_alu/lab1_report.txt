@@ -1,0 +1,21 @@
+Names: Wojciech Karas (no longer adding), David Klein
+Login: kleind
+Email: dklei003@ucr.edu
+Lab Section: 022
+Assignment: Lab 1
+I acknowledge all content is original.
+
+I. Lab objective
+The lab objective was to introduce us to using Xilinx ISE 13 tool-chain and develop a ALU.
+
+II . Personal contributions
+The work was shared for this exercise. As a group we followed the steps to create a Xilinx project, synthesize, test, and place & route the design. Wojciech did the logic and coding for the ALU and David aided in the design of the ALU as well as coding.
+
+III. Skill learned & knowledge gained.
+For this lab project we developed our knowledge of how to implement a ALU design in Xilinx; as well as, use a test bench to similate our design.
+
+IV. Known bugs locations
+After several designs...We tested our design with all possible cases, the only bug was with our Signed Subtractor in the case of a carryout issue with -3 - -1 = -2. No idea why this was happening.
+
+V. Feedback on the lab
+Overall the lab was...interesting. Feel free to update any old files. =P
